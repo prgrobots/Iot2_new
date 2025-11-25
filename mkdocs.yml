@@ -1,0 +1,45 @@
+# MkDocs Configuration for IoT Course
+site_name: IoT Course - Physical Computing to Cloud
+site_description: 18-week IoT course covering ESP32, sensors, actuators, and AWS cloud services
+site_author: Course Team
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+
+nav:
+  - Home: index.md
+  - Course Overview: overview.md
+  - Physical Computing (Weeks 1-8):
+      - Week 1 - Electronics Basics: physcomp/01-electronics.md
+      - Week 2 - Breadboards & Buttons: physcomp/02-breadboards-buttons.md
+      - Week 3 - Temperature Sensor: physcomp/03-temperature-sensor.md
+      - Week 4 - Motion, Gas & Serial: physcomp/04-motion-gas-serial.md
+      - Week 5 - Actuators & Servo: physcomp/05-actuators-servo.md
+      - Week 6 - Signal Processing: physcomp/06-signal-processing.md
+      - Week 7 - FreeRTOS on ESP32: physcomp/07-freertos-real-esp32.md
+      - Week 8 - IoT House Synthesis: physcomp/08-iot-house-synthesis.md
+  - Assessments:
+      - Assessment Overview: assessments/index.md
+  - Resources:
+      - AWS Foundations: resources/aws-foundations.md
+      - SimuLearn Labs: resources/simulearn-list.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed
