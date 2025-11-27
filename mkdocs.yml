@@ -16,21 +16,32 @@ theme:
 
 nav:
   - Home: index.md
-  - Course Overview: overview.md
-  - Physical Computing (Weeks 1-8):
-      - Week 1 - Electronics Basics: physcomp/01-electronics.md
-      - Week 2 - Breadboards & Buttons: physcomp/02-breadboards-buttons.md
-      - Week 3 - Temperature Sensor: physcomp/03-temperature-sensor.md
-      - Week 4 - Motion, Gas & Serial: physcomp/04-motion-gas-serial.md
-      - Week 5 - Actuators & Servo: physcomp/05-actuators-servo.md
-      - Week 6 - Signal Processing: physcomp/06-signal-processing.md
-      - Week 7 - FreeRTOS on ESP32: physcomp/07-freertos-real-esp32.md
-      - Week 8 - IoT House Synthesis: physcomp/08-iot-house-synthesis.md
-  - Assessments:
-      - Assessment Overview: assessments/index.md
-  - Resources:
-      - AWS Foundations: resources/aws-foundations.md
-      - SimuLearn Labs: resources/simulearn-list.md
+  - RockCore Mining Scenario: scenario.md
+  - 3D Print Files: prints.md
+  - Electronics (Weeks 1-9):
+      - Week 01 - Electronics Basics: electronics/01.md
+      - Week 02 - LEDs & Breadboards: electronics/02.md
+      - Week 03 - Advanced Output & Buttons: electronics/03.md
+      - Week 04 - Analog Sensors: electronics/04.md
+      - Week 05 - I²C & Actuators: electronics/05.md
+      - Week 06 - RFID & Touch: electronics/06.md
+      - Week 07 - Environmental Sensors: electronics/07.md
+      - Week 08 - Signal Processing: electronics/08.md
+      - Week 09 - Full Truck Assembly: electronics/09.md
+  - AWS IoT (Weeks 10-14):
+      - Week 10 - IoT Core & Secure Connection: aws/10.md
+      - Week 11 - Data & Shadows: aws/11.md
+      - Week 12 - Fleet & OTA: aws/12.md
+      - Week 13 - Edge & Industrial: aws/13.md
+      - Week 14 - Analytics & Dashboard: aws/14.md
+  - Capstone (Weeks 15-18):
+      - Integration Guide: capstone/integration.md
+      - Pit Station Build: capstone/pit-station.md
+      - Testing Scenarios: capstone/testing.md
+      - Demo & Submission: capstone/demo.md
+  - Assessments: 
+      - A1-A6: assessments/
+  - Resources: resources.md   # Wokwi guide, PhysComp links, STL files
 
 plugins:
   - search
@@ -43,3 +54,48 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.tabbed
+
+
+
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: On this page
+      toc_depth: 2
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
