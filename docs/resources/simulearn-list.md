@@ -1,8 +1,8 @@
-# SimuLearn Labs List
+# Labs List
 
-## Available SimuLearn Laboratory Exercises
+## Available Laboratory Exercises
 
-This page lists all available SimuLearn labs with search strings for easy access.
+This page lists all available labs with search strings for easy access.
 
 ### Physical Computing Labs (Weeks 1-8)
 

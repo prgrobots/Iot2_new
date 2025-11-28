@@ -1,5 +1,5 @@
 # MkDocs Configuration for IoT Course
-site_name: IoT Course - Physical Computing to Cloud
+site_name: Industrial IoT Course - Physical Computing to Cloud
 site_description: 18-week IoT course covering ESP32, sensors, actuators, and AWS cloud services
 site_author: Course Team
 
@@ -16,8 +16,8 @@ theme:
 
 nav:
   - Home: index.md
+  - Course Overview: overview.md
   - RockCore Mining Scenario: scenario.md
-  - 3D Print Files: prints.md
   - Electronics (Weeks 1-9):
       - Week 01 - Electronics Basics: electronics/01.md
       - Week 02 - LEDs & Breadboards: electronics/02.md
@@ -39,10 +39,14 @@ nav:
       - Pit Station Build: capstone/pit-station.md
       - Testing Scenarios: capstone/testing.md
       - Demo & Submission: capstone/demo.md
-  - Assessments: 
-      - A1-A6: assessments/
-  - Resources: resources.md   # Wokwi guide, PhysComp links, STL files
-
+  - Assessments:
+      - Overview: assessments/index.md
+  - Resources:
+      - Main Resources: resources.md
+      - 3D Print Files: prints.md
+      - AWS Foundations: resources/aws-foundations.md
+      - SimuLearn List: resources/simulearn-list.md
+  
 plugins:
   - search
 

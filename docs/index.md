@@ -1,22 +1,50 @@
-### FINAL BALANCED 18-WEEK COURSE (with your latest request)
+# Welcome to the IoT Course
 
-**Session 8 removed → Electronics now finishes at Week 9**  
-**AWS expanded to 5 weeks (11–15)**  
-**Capstone expanded to 4 weeks (15–18)** – plenty of time for a polished fleet demo
 
-| Phase | Weeks | Focus | Hours |
-|-------|-------|-------|-------|
-| Phase 1 | 1–9 | Deep Electronics for Programmers + full truck build | 31.5 h |
-| Phase 2 | 10–14 | AWS IoT Foundations + SimuLearn (all with real-hardware extensions) | 17.5 h |
-| Phase 3 | 15–18 | Capstone integration, pit station, fleet dashboard, final portfolio | 14 h |
 
-### Updated 18-Week Delivery Plan
+Welcome to the IoT Course documentation site. **Physical Computing to Cloud**
+
+
+
+Use the navigation menu to access weekly sessions, resources, scenario, and assessments.This comprehensive 18-week course takes you on a journey from basic electronics to cloud-connected IoT systems.
+
+---
+
+**Quick Links:**- **Weeks 1-8**: Physical Computing with ESP32
+
+- [Course Overview](overview.md)- **Weeks 9-12**: Cloud Services and AWS Foundations
+
+- [Scenario](scenario.md)- **Weeks 13-18**: Advanced IoT Integration and Projects
+
+- [3D Print Files](prints.md)
+
+- [Resources](resources.md)
+
+### Getting Started
+
+- [Assessments](assessments/index.md)
+
+- [AWS Foundations Resources](resources/aws-foundations.md)
+
+Navigate through the course content using the menu above. Each week builds upon previous concepts, so we recommend following the sequence.
+
+
+
+
+---
+### Course Structure
+
+## 18-Week Course Overview
+
+This page provides a week-by-week timeline for the entire IoT course, including electronics, AWS, and capstone phases. Use this as your main reference for session topics, hardware focus, and assessment deadlines.
+
+---
 
 | Week | Session Title | Simulator / Hardware | Key Content | Truck Progress | Assessment |
 |------|---------------|----------------------|-------------|----------------|------------|
-| 1 | L1–L3: Voltage, Current, Ohm’s Law | Tinkercad Circuits | PhysComp Electronics basics, build series circuit with current measurement | Print chassis | — |
+| 1 | L1–L3: Voltage, Current, Ohm’s Law | Tinkercad Circuits | PhysComp Electronics basics, build series circuit with current measurement | — | — |
 | 2 | L4–L7: Resistors, LEDs, Breadboards | Wokwi | LED on, blink, serial, fade, RGB | Front panel RGB status | — |
-| 3 | Advanced Output + Buttons | Wokwi (ESP32) | Fade PWM, RGB crossfade, buttons, debouncing | Front panel alerts | A1 start |
+| 3 | Advanced Output + Buttons | Wokwi (ESP32) | Fade PWM, RGB crossfade, buttons, debouncing | Front panel alerts, chassis assembly begins | A1 start |
 | 4 | Analog Input + Sensors | Wokwi → Real ESP32 | DHT11, MQ-2, flame sensor | Front panel sensors | A1 complete |
 | 5 | I²C + Actuators | Real ESP32 | OLED, GY-521, servo sweep | Base + Back panels | A3 & A4 start |
 | 6 | RFID, RTC, Touch | Real ESP32 | PhysComp ESP32 Lesson 6–7 (touch + IoT intro) | Left panel access system | A2 complete |
@@ -33,21 +61,9 @@
 | 17 | Capstone: Testing & Video | Real ESP32 | Simulate 3+ real faults (gas leak, vibration spike, unauthorized entry) | Record 5-minute demo | — |
 | 18 | Capstone: Demo & Final Submission | Real ESP32 | Live/recorded demo + portfolio mapping to every performance criterion | Final zip upload | A6 complete |
 
-### Final Assessment Structure (unchanged – still perfect)
+---
 
-| # | Title | Weeks Due | Unit Evidence |
-|---|-------|-----------|---------------|
-| 1 | Engine Compartment Monitor | 4 | ICTIOT502 Device 1 Condition 1 |
-| 2 | Operator Cabin Safety System | 6 | ICTIOT502 Device 1 Condition 2 |
-| 3 | Tire & Suspension Health Monitor | 8 | ICTIOT503 Device 1 |
-| 4 | Payload & Load Management | 9 | ICTIOT503 Device 2 |
-| 5 | Haul Road Environmental Monitor | 9 | Integration |
-| 6 | Capstone – Full Fleet System + AWS Dashboard | 18 | All elements of both units |
+*Return to: [Home](index.md)*
 
-
-This version gives you:
-- 9 solid weeks of hands-on electronics (Wokwi → real ESP32)
-- 5 full weeks of AWS with real-hardware extensions
-- 4 weeks of capstone (perfect for a high-quality fleet demo)
-- Zero wasted time — every session directly contributes to the final truck
-
+*Last updated: November 2025*
+Last updated: November 2025
