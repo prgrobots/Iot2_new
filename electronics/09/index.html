@@ -1,0 +1,1781 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="18-week IoT course covering ESP32, sensors, actuators, and AWS cloud services">
+      
+      
+        <meta name="author" content="Course Team">
+      
+      
+      
+        <link rel="prev" href="../08/">
+      
+      
+        <link rel="next" href="../../aws/10/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Week 09 - Full Truck Assembly - Industrial IoT Course - Physical Computing to Cloud</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#session-09-full-truck-assembly" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Industrial IoT Course - Physical Computing to Cloud" class="md-header__button md-logo" aria-label="Industrial IoT Course - Physical Computing to Cloud" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Industrial IoT Course - Physical Computing to Cloud
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 09 - Full Truck Assembly
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../overview/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Course Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../scenario/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  RockCore Mining Scenario
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01/" class="md-tabs__link">
+          
+  
+  
+  Electronics (Weeks 1-9)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../aws/10/" class="md-tabs__link">
+          
+  
+  
+  AWS IoT (Weeks 10-14)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../capstone/integration/" class="md-tabs__link">
+          
+  
+  
+  Capstone (Weeks 15-18)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../assessments/" class="md-tabs__link">
+          
+  
+  
+  Assessments
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../resources/" class="md-tabs__link">
+          
+  
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Industrial IoT Course - Physical Computing to Cloud" class="md-nav__button md-logo" aria-label="Industrial IoT Course - Physical Computing to Cloud" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Industrial IoT Course - Physical Computing to Cloud
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RockCore Mining Scenario
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Electronics (Weeks 1-9)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Electronics (Weeks 1-9)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 01 - Electronics Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 02 - LEDs & Breadboards
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 03 - Advanced Output & Buttons
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 04 - Analog Sensors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 05 - I²C & Actuators
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 06 - RFID & Touch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 07 - Environmental Sensors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 08 - Signal Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Week 09 - Full Truck Assembly
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 09 - Full Truck Assembly
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#session-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-session-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Session Preparation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rockcore-mining-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      RockCore Mining Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hands-On Tasks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Your Knowledge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assessment-4-finalization-payload-load-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment 4 Finalization: Payload &amp; Load Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assessment-5-finalization-haul-road-environmental-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment 5 Finalization: Haul Road Environmental Monitor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-week-preview-aws-iot-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Week Preview: AWS IoT Core
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portfolio-checkpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Portfolio Checkpoint
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AWS IoT (Weeks 10-14)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            AWS IoT (Weeks 10-14)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 10 - IoT Core & Secure Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 11 - Data & Shadows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 12 - Fleet & OTA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 13 - Edge & Industrial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 14 - Analytics & Dashboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Capstone (Weeks 15-18)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Capstone (Weeks 15-18)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capstone/integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capstone/pit-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pit Station Build
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capstone/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Testing Scenarios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capstone/demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Demo & Submission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assessments
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Assessments
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Main Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3D Print Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/aws-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AWS Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/simulearn-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SimuLearn List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="session-09-full-truck-assembly">Session 09: Full Truck Assembly<a class="headerlink" href="#session-09-full-truck-assembly" title="Permanent link">&para;</a></h1>
+<p><strong>Week:</strong> 9<br />
+<strong>Element:</strong> ICTIOT502 All Elements | ICTIOT503 Element 4: Test connectivity<br />
+<strong>Duration:</strong> 3.5 hours<br />
+<strong>Phase:</strong> Electronics for Programmers (Final Integration)</p>
+<hr />
+<blockquote>
+<p><strong>Note:</strong> All electronics sessions can be completed using either Arduino (C++) or MicroPython on the ESP32. You may choose your preferred language for all programming tasks, code submissions, and portfolio checkpoints.</p>
+</blockquote>
+<hr />
+<h2 id="session-introduction">Session Introduction<a class="headerlink" href="#session-introduction" title="Permanent link">&para;</a></h2>
+<p>This is the <strong>final electronics session</strong> – you'll integrate all five panels into one complete haul truck system. You'll implement inter-panel I²C communication, comprehensive fault testing, and finalize <strong>Assessments 4 &amp; 5</strong>. By the end of today, your truck will be a fully functional standalone system ready for AWS cloud connectivity in Week 10.</p>
+<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this session, you will be able to:</p>
+<ul>
+<li>Integrate multi-panel sensor networks using shared I²C bus</li>
+<li>Implement system-wide fault detection and recovery</li>
+<li>Test complete truck system under simulated failure scenarios</li>
+<li>Finalize Assessments 4 &amp; 5 documentation</li>
+<li>Prepare truck for AWS IoT Core integration</li>
+</ul>
+<hr />
+<h2 id="session-structure">Session Structure<a class="headerlink" href="#session-structure" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>System Integration</strong> – Connect all five panels</li>
+<li><strong>Master Controller</strong> – Central ESP32 coordination</li>
+<li><strong>Fault Testing</strong> – Simulate real-world failures</li>
+<li><strong>Assessment 4 &amp; 5 Completion</strong> – Final submissions</li>
+<li><strong>AWS Preparation</strong> – MQTT readiness check</li>
+</ol>
+<hr />
+<h2 id="pre-session-preparation">Pre-Session Preparation<a class="headerlink" href="#pre-session-preparation" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Required Completion</p>
+<ul>
+<li>All panels physically built (front, back, left, right, roof, base)</li>
+<li>Assessments 1-3 submitted</li>
+<li>3D printed chassis fully assembled</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Setup Check</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> All ESP32 modules programmed and tested individually</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> I²C addressing documented (OLED, GY-521, RTC)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Power distribution plan (one 5V supply, multiple 3.3V regulators)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> GitHub repo organized with folders for each assessment</li>
+</ul>
+</div>
+<hr />
+<h2 id="rockcore-mining-context">RockCore Mining Context<a class="headerlink" href="#rockcore-mining-context" title="Permanent link">&para;</a></h2>
+<p>Your truck now has:
+- <strong>Front panel</strong>: RGB status indicator (Assessment 1 support)
+- <strong>Engine compartment</strong>: DHT11, MQ-2, flame sensor (Assessment 1)
+- <strong>Cabin (left panel)</strong>: RFID, RTC, touch (Assessment 2)
+- <strong>Base panel</strong>: OLED, GY-521 vibration (Assessment 3)
+- <strong>Back panel</strong>: Servo dump bed (Assessment 4)
+- <strong>Roof panel</strong>: Rain, light, ultrasonic, buzzer (Assessment 5)</p>
+<p>Today you'll make them work together as one fleet-ready vehicle.</p>
+<hr />
+<h2 id="system-architecture">System Architecture<a class="headerlink" href="#system-architecture" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TB
+    Master[Master ESP32&lt;br/&gt;GPIO Coordinator] --&gt; I2C[I²C Bus&lt;br/&gt;SDA/SCL]
+    I2C --&gt; OLED[OLED Display&lt;br/&gt;0x3C]
+    I2C --&gt; GY521[GY-521 Accel&lt;br/&gt;0x68]
+    I2C --&gt; RTC[DS3231 RTC&lt;br/&gt;0x68*]
+    Master --&gt; Analog[Analog Sensors]
+    Analog --&gt; DHT11[DHT11 Temp]
+    Analog --&gt; MQ2[MQ-2 Gas]
+    Analog --&gt; Rain[Rain Sensor]
+    Analog --&gt; Light[Photoresistor]
+    Master --&gt; Digital[Digital I/O]
+    Digital --&gt; RFID[RFID RC522]
+    Digital --&gt; Ultrasonic[HC-SR04]
+    Digital --&gt; Servo[Servo Motor]
+    Digital --&gt; LEDs[RGB LEDs]
+    Digital --&gt; Buzzer[Piezo Buzzer]</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">I²C Address Conflict</p>
+<p>GY-521 and DS3231 both default to 0x68. Options:
+1. Use separate I²C buses (ESP32 has two: Wire and Wire1)
+2. Change DS3231 address (requires hardware mod)
+3. Disable one temporarily for testing</p>
+</div>
+<hr />
+<h2 id="hands-on-tasks">Hands-On Tasks<a class="headerlink" href="#hands-on-tasks" title="Permanent link">&para;</a></h2>
+<h3 id="task-1-master-controller-data-aggregation">Task 1: Master Controller - Data Aggregation<a class="headerlink" href="#task-1-master-controller-data-aggregation" title="Permanent link">&para;</a></h3>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Week 9 Task 1 - Master Controller</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;DHT.h&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MPU6050.h&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_SSD1306.h&gt;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cp">#define DHTPIN 4</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">DHT</span><span class="w"> </span><span class="nf">dht</span><span class="p">(</span><span class="n">DHTPIN</span><span class="p">,</span><span class="w"> </span><span class="n">DHT11</span><span class="p">);</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">Adafruit_SSD1306</span><span class="w"> </span><span class="nf">display</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Wire</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">);</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">struct</span><span class="w"> </span><span class="nc">TruckData</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">temperature</span><span class="p">;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">gasLevel</span><span class="p">;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">vibration</span><span class="p">;</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">rainLevel</span><span class="p">;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">lightLevel</span><span class="p">;</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">distance</span><span class="p">;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">accessGranted</span><span class="p">;</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="p">};</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">TruckData</span><span class="w"> </span><span class="n">truck</span><span class="p">;</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="n">dht</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">MPU6050_SCALE_2000DPS</span><span class="p">,</span><span class="w"> </span><span class="n">MPU6050_RANGE_2G</span><span class="p">);</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">SSD1306_SWITCHCAPVCC</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3C</span><span class="p">);</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;=== RockCore Fleet Truck HC-01 ===&quot;</span><span class="p">);</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="n">truck</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;INITIALIZING&quot;</span><span class="p">;</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="p">}</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="kt">void</span><span class="w"> </span><span class="nf">updateSensors</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="n">truck</span><span class="p">.</span><span class="n">temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="n">truck</span><span class="p">.</span><span class="n">gasLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="mi">34</span><span class="p">);</span><span class="w">  </span><span class="c1">// MQ-2</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="n">accel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">readNormalizeAccel</span><span class="p">();</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">  </span><span class="n">truck</span><span class="p">.</span><span class="n">vibration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">accel</span><span class="p">.</span><span class="n">XAxis</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accel</span><span class="p">.</span><span class="n">XAxis</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">                         </span><span class="n">accel</span><span class="p">.</span><span class="n">YAxis</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accel</span><span class="p">.</span><span class="n">YAxis</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">                         </span><span class="n">accel</span><span class="p">.</span><span class="n">ZAxis</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accel</span><span class="p">.</span><span class="n">ZAxis</span><span class="p">);</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span><span class="n">truck</span><span class="p">.</span><span class="n">rainLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="mi">35</span><span class="p">);</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span><span class="n">truck</span><span class="p">.</span><span class="n">lightLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="mi">36</span><span class="p">);</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span><span class="c1">// Update status based on all sensors</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">temperature</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">truck</span><span class="p">.</span><span class="n">gasLevel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">300</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">    </span><span class="n">truck</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;FAULT&quot;</span><span class="p">;</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">temperature</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">truck</span><span class="p">.</span><span class="n">vibration</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">    </span><span class="n">truck</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WARNING&quot;</span><span class="p">;</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">    </span><span class="n">truck</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;OPERATIONAL&quot;</span><span class="p">;</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="p">}</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="kt">void</span><span class="w"> </span><span class="nf">updateDisplay</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">clearDisplay</span><span class="p">();</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">setTextSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Truck: HC-01&quot;</span><span class="p">);</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">status</span><span class="p">);</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;----------------&quot;</span><span class="p">);</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Temp: &quot;</span><span class="p">);</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">temperature</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">);</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Gas: &quot;</span><span class="p">);</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">gasLevel</span><span class="p">);</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Vibe: &quot;</span><span class="p">);</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">vibration</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Rain: &quot;</span><span class="p">);</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">rainLevel</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2000</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;YES&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;NO&quot;</span><span class="p">);</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">display</span><span class="p">();</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="p">}</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="w">  </span><span class="n">updateSensors</span><span class="p">();</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="w">  </span><span class="n">updateDisplay</span><span class="p">();</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="w">  </span><span class="c1">// Serial logging (JSON format for AWS later)</span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">truck</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">HC-01</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">temp</span><span class="se">\&quot;</span><span class="s">:&quot;</span><span class="p">);</span>
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">temperature</span><span class="p">);</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;,</span><span class="se">\&quot;</span><span class="s">gas</span><span class="se">\&quot;</span><span class="s">:&quot;</span><span class="p">);</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">gasLevel</span><span class="p">);</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;,</span><span class="se">\&quot;</span><span class="s">vibe</span><span class="se">\&quot;</span><span class="s">:&quot;</span><span class="p">);</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">vibration</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;,</span><span class="se">\&quot;</span><span class="s">status</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">status</span><span class="p">);</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">}&quot;</span><span class="p">);</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="task-2-fault-injection-testing">Task 2: Fault Injection Testing<a class="headerlink" href="#task-2-fault-injection-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Test Scenarios:</strong></p>
+<ol>
+<li><strong>Engine Overheat</strong>: Heat DHT11 above 80°C</li>
+<li><strong>Gas Leak</strong>: Blow on MQ-2 sensor</li>
+<li><strong>Tire Imbalance</strong>: Shake base panel (GY-521)</li>
+<li><strong>Rain Storm</strong>: Drop water on rain sensor</li>
+<li><strong>Collision Warning</strong>: Wave hand in front of ultrasonic</li>
+<li><strong>Unauthorized Access</strong>: Use unregistered RFID card</li>
+</ol>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Week 9 Task 2 - Fault Testing Code</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">// Add to master controller loop()</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kt">void</span><span class="w"> </span><span class="nf">testFaultConditions</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="c1">// Check for critical faults</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">criticalFault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">faultMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isnan</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">temperature</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="n">criticalFault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="n">faultMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SENSOR FAULT: DHT11 disconnected&quot;</span><span class="p">;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">temperature</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="n">criticalFault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="n">faultMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CRITICAL: Engine overheat&quot;</span><span class="p">;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">gasLevel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="n">criticalFault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="n">faultMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CRITICAL: Gas leak detected&quot;</span><span class="p">;</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">vibration</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">2.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="n">criticalFault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="n">faultMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CRITICAL: Severe vibration&quot;</span><span class="p">;</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">criticalFault</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">RED_LED</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="n">tone</span><span class="p">(</span><span class="n">BUZZER</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;FAULT: &quot;</span><span class="p">);</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">faultMessage</span><span class="p">);</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="n">truck</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SHUTDOWN&quot;</span><span class="p">;</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="task-3-system-recovery-graceful-degradation">Task 3: System Recovery &amp; Graceful Degradation<a class="headerlink" href="#task-3-system-recovery-graceful-degradation" title="Permanent link">&para;</a></h3>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Week 9 Task 3 - Fault Recovery</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">checkSensorHealth</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="c1">// DHT11 health check</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isnan</span><span class="p">(</span><span class="n">truck</span><span class="p">.</span><span class="n">temperature</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;WARNING: DHT11 offline - using last known value&quot;</span><span class="p">);</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="c1">// Use cached value or safe default</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="c1">// I²C device health check</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">beginTransmission</span><span class="p">(</span><span class="mh">0x3C</span><span class="p">);</span><span class="w">  </span><span class="c1">// OLED</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Wire</span><span class="p">.</span><span class="n">endTransmission</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;WARNING: OLED offline - continuing without display&quot;</span><span class="p">);</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">beginTransmission</span><span class="p">(</span><span class="mh">0x68</span><span class="p">);</span><span class="w">  </span><span class="c1">// GY-521</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Wire</span><span class="p">.</span><span class="n">endTransmission</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;WARNING: GY-521 offline - vibration monitoring disabled&quot;</span><span class="p">);</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="n">truck</span><span class="p">.</span><span class="n">vibration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// Safe default</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="p">}</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1">// Add to loop()</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span><span class="n">checkSensorHealth</span><span class="p">();</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">  </span><span class="n">updateSensors</span><span class="p">();</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">  </span><span class="n">testFaultConditions</span><span class="p">();</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span><span class="n">updateDisplay</span><span class="p">();</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="check-your-knowledge">Check Your Knowledge<a class="headerlink" href="#check-your-knowledge" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Q1 – I²C Bus Load</p>
+<p>Your system has 3 I²C devices (OLED, GY-521, RTC). What's the maximum you can add?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>I²C supports 127 devices (7-bit addressing), but practical limit is ~10-20 due to capacitance and speed degradation. Each device adds capacitance to SDA/SCL lines.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Q2 – System-Level Fault</p>
+<p>If the master ESP32 crashes, what happens to all subsystems?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Complete system failure – single point of failure. Industrial systems use redundant controllers or watchdog timers that reset the ESP32 on hang.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Q3 – Power Budget</p>
+<p>Calculate total current draw: ESP32 (250mA) + OLED (20mA) + 3 sensors (50mA each) + servo (500mA). Can you power this from USB (500mA)?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Total = 920mA. USB can't supply this safely. Need external 5V power supply (2A minimum) or separate servo power.</p>
+</details>
+</div>
+<hr />
+<h2 id="assessment-4-finalization-payload-load-management">Assessment 4 Finalization: Payload &amp; Load Management<a class="headerlink" href="#assessment-4-finalization-payload-load-management" title="Permanent link">&para;</a></h2>
+<p><strong>Due:</strong> End of Week 9</p>
+<p><strong>Final deliverables:</strong>
+1. Servo motor control code with smooth dump bed operation
+2. Water level sensor integration (if using weight simulation)
+3. <strong>Design evaluation document</strong>:
+   - Servo vs stepper comparison table
+   - Power management strategy for fleet deployment
+   - Scalability analysis (cost per truck, maintenance needs)
+4. Test video showing dump cycle with load monitoring</p>
+<p><strong>Mapping:</strong> ICTIOT503 Element 2 – Evaluate design options and resources, assess scalability.</p>
+<hr />
+<h2 id="assessment-5-finalization-haul-road-environmental-monitor">Assessment 5 Finalization: Haul Road Environmental Monitor<a class="headerlink" href="#assessment-5-finalization-haul-road-environmental-monitor" title="Permanent link">&para;</a></h2>
+<p><strong>Due:</strong> End of Week 9</p>
+<p><strong>Final deliverables:</strong>
+1. Complete roof panel code (rain, light, ultrasonic, buzzer)
+2. <strong>Connectivity test report</strong>:
+   - Tested under simulated dust interference
+   - Vibration testing (shake test)
+   - Power consumption measurements
+   - GPIO usage map showing all pin assignments
+3. Fleet compatibility matrix (can 20 trucks use identical hardware?)
+4. Failure modes and effects analysis (FMEA)</p>
+<p><strong>Mapping:</strong> ICTIOT503 Element 4 – Test connectivity and compatibility.</p>
+<hr />
+<h2 id="next-week-preview-aws-iot-core">Next Week Preview: AWS IoT Core<a class="headerlink" href="#next-week-preview-aws-iot-core" title="Permanent link">&para;</a></h2>
+<p><strong>Week 10</strong> – You'll connect this truck to AWS IoT Core using MQTT:
+- Register truck as IoT Thing
+- Publish sensor data to AWS cloud
+- Implement secure X.509 certificate authentication
+- View real-time data in AWS console</p>
+<p><strong>Homework:</strong> Complete AWS Skill Builder course "Getting Started with AWS IoT" (35 minutes).</p>
+<hr />
+<h2 id="portfolio-checkpoint">Portfolio Checkpoint<a class="headerlink" href="#portfolio-checkpoint" title="Permanent link">&para;</a></h2>
+<p><strong>Save to GitHub:</strong></p>
+<ol>
+<li>Master controller code with all sensor integration</li>
+<li><strong>System integration video</strong> (5-7 minutes):</li>
+<li>Show all panels powered on</li>
+<li>Demonstrate OLED displaying data from all sensors</li>
+<li>Trigger 3+ fault scenarios with visible/audio alerts</li>
+<li>Show system recovery from non-critical fault</li>
+<li><strong>Wiring documentation</strong>: Complete system diagram (Fritzing or hand-drawn)</li>
+<li><strong>Power budget spreadsheet</strong>: Calculate current draw for each component</li>
+<li><strong>Fault test log</strong>: Document results of all 6 test scenarios</li>
+</ol>
+<hr />
+<p><strong>Navigation:</strong> <a href="../08/">← Week 8</a> | <a href="../../overview/">Course Overview</a> | <a href="../../aws/10/">Week 10 (AWS) →</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
