@@ -1,0 +1,12 @@
+/* Banner image styling in header */
+.md-header-banner {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.md-header-banner.hidden {
+    height: 0 !important;
+    opacity: 0;
+    margin-top: 0 !important;
+}
+

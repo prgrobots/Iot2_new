@@ -13,6 +13,13 @@ theme:
     - navigation.sections
     - toc.integrate
     - search.suggest
+  custom_dir: docs/overrides
+
+extra_css:
+  - css/custom.css
+
+extra_javascript:
+  - js/custom.js
 
 nav:
   - Home: index.md
@@ -100,3 +107,9 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
+extra_css:
+  - css/custom.css
+
+extra_javascript:
+  - js/custom.js
