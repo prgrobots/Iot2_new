@@ -50,6 +50,8 @@
       
     
     
+      <link rel="stylesheet" href="../../css/custom.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -84,6 +86,7 @@
     </div>
     
     
+  
       
 
 <header class="md-header" data-md-component="header">
@@ -167,6 +170,9 @@
   
 </header>
     
+  
+  
+
     <div class="md-container" data-md-component="container">
       
       
@@ -915,9 +921,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#simulearn-labs-complete-first" class="md-nav__link">
+  <a href="#simulearn-lab-aws-lab-complete-first" class="md-nav__link">
     <span class="md-ellipsis">
-      SimuLearn Labs (Complete First)
+      SimuLearn Lab &amp; AWS Lab (Complete First)
     </span>
   </a>
   
@@ -1369,23 +1375,22 @@
 <strong>Phase:</strong> AWS IoT Integration</p>
 <hr />
 <h2 id="session-introduction">Session Introduction<a class="headerlink" href="#session-introduction" title="Permanent link">&para;</a></h2>
-<p>This week focuses on <strong>edge computing</strong> with AWS Greengrass for local data processing and <strong>industrial protocol conversion</strong>. You'll complete three SimuLearn labs on ETL at the edge, protocol conversion, and contextualizing industrial equipment data – all critical for mining operations with intermittent connectivity.</p>
+<p>This week focuses on <strong>edge computing</strong> with AWS Greengrass for local data processing. You'll complete the SimuLearn lab on ETL at the edge and deploy the AWS IoT Greengrass Components lab – both critical for mining operations with intermittent connectivity.</p>
 <h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this session, you will be able to:</p>
 <ul>
 <li>Deploy AWS IoT Greengrass Core on laptop/Raspberry Pi</li>
 <li>Implement edge-based anomaly detection (local processing)</li>
-<li>Convert industrial protocols (Modbus simulation)</li>
 <li>Process data locally before cloud transmission</li>
 <li>Reduce bandwidth and improve latency</li>
 </ul>
 <hr />
 <h2 id="session-structure">Session Structure<a class="headerlink" href="#session-structure" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>SimuLearn Labs</strong> – ETL, Protocols, Contextualization (3 labs)</li>
+<li><strong>SimuLearn Lab</strong> – ETL at the Edge (1 h)</li>
+<li><strong>AWS Lab</strong> – Deploying IoT Greengrass Components (1 h)</li>
 <li><strong>Greengrass Core Setup</strong> – Edge device configuration</li>
 <li><strong>Local Anomaly Detection</strong> – Process vibration data at edge</li>
-<li><strong>Protocol Simulation</strong> – Modbus to MQTT gateway</li>
 <li><strong>Edge-to-Cloud Architecture</strong> – Hybrid deployment</li>
 </ol>
 <hr />
@@ -1394,8 +1399,7 @@
 <p class="admonition-title">Required Completion</p>
 <ul>
 <li>SimuLearn: "ETL at the Edge"</li>
-<li>SimuLearn: "Converting Industrial Protocols"</li>
-<li>SimuLearn: "Contextualizing Industrial Equipment Data"</li>
+<li>Lab: "Deploying AWS IoT Greengrass Components" (AWS Skill Builder)</li>
 <li>Laptop or Raspberry Pi for Greengrass Core (ESP32 not powerful enough)</li>
 </ul>
 </div>
@@ -1418,23 +1422,18 @@
 - Only anomalies + summary stats sent to cloud
 - Reduces bandwidth by 90%</p>
 <hr />
-<h2 id="simulearn-labs-complete-first">SimuLearn Labs (Complete First)<a class="headerlink" href="#simulearn-labs-complete-first" title="Permanent link">&para;</a></h2>
-<h3 id="lab-1-etl-at-the-edge">Lab 1: ETL at the Edge<a class="headerlink" href="#lab-1-etl-at-the-edge" title="Permanent link">&para;</a></h3>
+<h2 id="simulearn-lab-aws-lab-complete-first">SimuLearn Lab &amp; AWS Lab (Complete First)<a class="headerlink" href="#simulearn-lab-aws-lab-complete-first" title="Permanent link">&para;</a></h2>
+<h3 id="lab-1-etl-at-the-edge-simulearn">Lab 1: ETL at the Edge (SimuLearn)<a class="headerlink" href="#lab-1-etl-at-the-edge-simulearn" title="Permanent link">&para;</a></h3>
 <p><strong>Focus:</strong>
 - Extract sensor data
 - Transform/aggregate locally
 - Load to cloud only when necessary</p>
-<h3 id="lab-2-converting-industrial-protocols">Lab 2: Converting Industrial Protocols<a class="headerlink" href="#lab-2-converting-industrial-protocols" title="Permanent link">&para;</a></h3>
+<h3 id="lab-2-deploying-aws-iot-greengrass-components-aws-skill-builder">Lab 2: Deploying AWS IoT Greengrass Components (AWS Skill Builder)<a class="headerlink" href="#lab-2-deploying-aws-iot-greengrass-components-aws-skill-builder" title="Permanent link">&para;</a></h3>
 <p><strong>Focus:</strong>
-- Modbus TCP/RTU to MQTT
-- OPC-UA integration
-- Protocol gateway patterns</p>
-<h3 id="lab-3-contextualizing-industrial-equipment-data">Lab 3: Contextualizing Industrial Equipment Data<a class="headerlink" href="#lab-3-contextualizing-industrial-equipment-data" title="Permanent link">&para;</a></h3>
-<p><strong>Focus:</strong>
-- Asset hierarchy modeling
-- Enriching raw sensor data with context
-- Time-series data normalization</p>
-<p><strong>Deliverable:</strong> Screenshots of all 3 lab completions.</p>
+- Greengrass Core concepts
+- Component deployment
+- Local processing</p>
+<p><strong>Deliverable:</strong> Screenshots of both lab completions.</p>
 <hr />
 <h2 id="hands-on-tasks">Hands-On Tasks<a class="headerlink" href="#hands-on-tasks" title="Permanent link">&para;</a></h2>
 <h3 id="task-1-install-greengrass-core-laptop">Task 1: Install Greengrass Core (Laptop)<a class="headerlink" href="#task-1-install-greengrass-core-laptop" title="Permanent link">&para;</a></h3>
@@ -1692,6 +1691,8 @@
     
     
       <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../js/custom.js"></script>
       
     
   </body>

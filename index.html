@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="css/custom.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -82,6 +84,7 @@
     </div>
     
     
+  
       
 
 <header class="md-header" data-md-component="header">
@@ -165,6 +168,11 @@
   
 </header>
     
+  
+    <div class="md-header-banner" style="background: url('./images/banner.png') no-repeat center center; background-size: cover; height: 200px; width: 100%; margin-top: -64px; position: relative; z-index: 10;"></div>
+  
+  
+
     <div class="md-container" data-md-component="container">
       
       
@@ -428,9 +436,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#18-week-course-overview" class="md-nav__link">
+  <a href="#quick-navigation" class="md-nav__link">
     <span class="md-ellipsis">
-      18-Week Course Overview
+      Quick Navigation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latest-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Latest Updates
     </span>
   </a>
   
@@ -1285,200 +1302,35 @@
 
 <h1 id="welcome-to-the-iot-course">Welcome to the IoT Course<a class="headerlink" href="#welcome-to-the-iot-course" title="Permanent link">&para;</a></h1>
 <p>Welcome to the IoT Course documentation site. <strong>Physical Computing to Cloud</strong></p>
-<p>Use the navigation menu to access weekly sessions, resources, scenario, and assessments.This comprehensive 18-week course takes you on a journey from basic electronics to cloud-connected IoT systems.</p>
+<p>This comprehensive 18-week course takes you on a journey from basic electronics to cloud-connected IoT systems, building a real-world haul truck monitoring system for mining operations (RockCore scenario).</p>
 <hr />
-<p><strong>Quick Links:</strong>- <strong>Weeks 1-8</strong>: Physical Computing with ESP32</p>
+<h2 id="quick-navigation">Quick Navigation<a class="headerlink" href="#quick-navigation" title="Permanent link">&para;</a></h2>
+<h3 id="course-structure">Course Structure<a class="headerlink" href="#course-structure" title="Permanent link">&para;</a></h3>
 <ul>
-<li>
-<p><a href="overview/">Course Overview</a>- <strong>Weeks 9-12</strong>: Cloud Services and AWS Foundations</p>
-</li>
-<li>
-<p><a href="scenario/">Scenario</a>- <strong>Weeks 13-18</strong>: Advanced IoT Integration and Projects</p>
-</li>
-<li>
-<p><a href="prints/">3D Print Files</a></p>
-</li>
-<li>
-<p><a href="resources/">Resources</a></p>
-</li>
+<li><strong>Weeks 1-9</strong>: Physical Computing with ESP32 (Electronics fundamentals + hardware truck build)</li>
+<li><strong>Weeks 10-14</strong>: AWS IoT Cloud Services (Connectivity, analytics, real-time monitoring)</li>
+<li><strong>Weeks 15-18</strong>: Capstone Integration (Fleet dashboard, pit station, final demo)</li>
+</ul>
+<h3 id="key-resources">Key Resources<a class="headerlink" href="#key-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="overview/">📋 Course Overview &amp; Timeline</a> – Week-by-week sessions and assessments</li>
+<li><a href="scenario/">🎯 Scenario</a> – RockCore mining haul truck context</li>
+<li><a href="assessments/">📊 Assessments</a> – A1-A6 structure, deliverables, rubrics</li>
+<li><a href="prints/">🖨️ 3D Print Files</a> – Physical truck design</li>
+<li><a href="resources/">📚 Resources</a> – AWS and learning links</li>
+<li><a href="resources/aws-foundations/">🔧 AWS Foundations</a> – Skill Builder courses</li>
 </ul>
 <h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><a href="assessments/">Assessments</a></p>
-</li>
-<li>
-<p><a href="resources/aws-foundations/">AWS Foundations Resources</a></p>
-</li>
-</ul>
 <p>Navigate through the course content using the menu above. Each week builds upon previous concepts, so we recommend following the sequence.</p>
 <hr />
-<h3 id="course-structure">Course Structure<a class="headerlink" href="#course-structure" title="Permanent link">&para;</a></h3>
-<h2 id="18-week-course-overview">18-Week Course Overview<a class="headerlink" href="#18-week-course-overview" title="Permanent link">&para;</a></h2>
-<p>This page provides a week-by-week timeline for the entire IoT course, including electronics, AWS, and capstone phases. Use this as your main reference for session topics, hardware focus, and assessment deadlines.</p>
+<h2 id="latest-updates">Latest Updates<a class="headerlink" href="#latest-updates" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>8 December 2025</strong>: AWS course content aligned to authoritative sources; Assessment 5b (QuickSight Dashboard) added</li>
+<li><strong>Week 14</strong>: Now covers Analytics &amp; Visualization with SiteWise + QuickSight dashboard</li>
+<li><strong>Week 13</strong>: Streamlined to ETL at the Edge + Greengrass deployment</li>
+</ul>
 <hr />
-<table>
-<thead>
-<tr>
-<th>Week</th>
-<th>Session Title</th>
-<th>Simulator / Hardware</th>
-<th>Key Content</th>
-<th>Truck Progress</th>
-<th>Assessment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>L1–L3: Voltage, Current, Ohm’s Law</td>
-<td>Tinkercad Circuits</td>
-<td>PhysComp Electronics basics, build series circuit with current measurement</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>2</td>
-<td>L4–L7: Resistors, LEDs, Breadboards</td>
-<td>Wokwi</td>
-<td>LED on, blink, serial, fade, RGB</td>
-<td>Front panel RGB status</td>
-<td>—</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Advanced Output + Buttons</td>
-<td>Wokwi (ESP32)</td>
-<td>Fade PWM, RGB crossfade, buttons, debouncing</td>
-<td>Front panel alerts, chassis assembly begins</td>
-<td>A1 start</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Analog Input + Sensors</td>
-<td>Wokwi → Real ESP32</td>
-<td>DHT11, MQ-2, flame sensor</td>
-<td>Front panel sensors</td>
-<td>A1 complete</td>
-</tr>
-<tr>
-<td>5</td>
-<td>I²C + Actuators</td>
-<td>Real ESP32</td>
-<td>OLED, GY-521, servo sweep</td>
-<td>Base + Back panels</td>
-<td>A3 &amp; A4 start</td>
-</tr>
-<tr>
-<td>6</td>
-<td>RFID, RTC, Touch</td>
-<td>Real ESP32</td>
-<td>PhysComp ESP32 Lesson 6–7 (touch + IoT intro)</td>
-<td>Left panel access system</td>
-<td>A2 complete</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Environmental + Tones</td>
-<td>Real ESP32</td>
-<td>Rain, dust, buzzer tones</td>
-<td>Roof panel</td>
-<td>A5 complete</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Signal Processing &amp; Vibration</td>
-<td>Real ESP32</td>
-<td>PhysComp Signals – filtering, anomaly detection</td>
-<td>Base panel predictive algo</td>
-<td>A3 complete</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Full Truck Assembly &amp; Testing</td>
-<td>Real ESP32</td>
-<td>Inter-panel I²C, fault testing, final debug</td>
-<td>Complete physical truck</td>
-<td>A4 &amp; A5 finalised</td>
-</tr>
-<tr>
-<td>10</td>
-<td>AWS IoT Core &amp; Secure Connection</td>
-<td>Real ESP32</td>
-<td>Foundations: Getting Started + Securely Connecting (1.5 h)</td>
-<td>Register truck → MQTT publish real DHT11/gas</td>
-<td>—</td>
-</tr>
-<tr>
-<td>11</td>
-<td>Device Data, Rules &amp; Shadows</td>
-<td>Real ESP32</td>
-<td>Handling AWS IoT Device Data and States (2 h)</td>
-<td>Device Shadow for engine temp &amp; cabin lock; IoT Rule → SNS</td>
-<td>—</td>
-</tr>
-<tr>
-<td>12</td>
-<td>Fleet Management &amp; OTA</td>
-<td>Real ESP32</td>
-<td>Managing AWS IoT Devices at Scale (3.5 h) + SimuLearn “OTA Updates”</td>
-<td>Thing Groups, OTA firmware to change vibration threshold</td>
-<td>—</td>
-</tr>
-<tr>
-<td>13</td>
-<td>Edge Processing &amp; Industrial</td>
-<td>Real ESP32</td>
-<td>SimuLearn “ETL at the Edge” + “Converting Industrial Protocols” + “Contextualizing Industrial Equipment Data”</td>
-<td>Greengrass core on laptop/ESP32, local anomaly detection</td>
-<td>—</td>
-</tr>
-<tr>
-<td>14</td>
-<td>Analytics &amp; Visualization</td>
-<td>Real ESP32</td>
-<td>Analyzing, Visualizing, and Gaining Insights (45 m) + SimuLearn “Manufacturing and Automotive” (first 3 labs)</td>
-<td>SiteWise asset model “Haul-Truck-01”, QuickSight dashboard</td>
-<td>—</td>
-</tr>
-<tr>
-<td>15</td>
-<td>Capstone: Full Integration</td>
-<td>Real ESP32 + Pit Station</td>
-<td>MQTT → DynamoDB → SiteWise → Lambda alerts</td>
-<td>Pit station LCD shows live fleet data</td>
-<td>—</td>
-</tr>
-<tr>
-<td>16</td>
-<td>Capstone: Advanced Features</td>
-<td>Real ESP32</td>
-<td>CloudWatch alarms, SNS notifications, historical trends</td>
-<td>Predictive maintenance alerts</td>
-<td>—</td>
-</tr>
-<tr>
-<td>17</td>
-<td>Capstone: Testing &amp; Video</td>
-<td>Real ESP32</td>
-<td>Simulate 3+ real faults (gas leak, vibration spike, unauthorized entry)</td>
-<td>Record 5-minute demo</td>
-<td>—</td>
-</tr>
-<tr>
-<td>18</td>
-<td>Capstone: Demo &amp; Final Submission</td>
-<td>Real ESP32</td>
-<td>Live/recorded demo + portfolio mapping to every performance criterion</td>
-<td>Final zip upload</td>
-<td>A6 complete</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<p><em>Return to: <a href="./">Home</a></em></p>
-<p><em>Last updated: November 2025</em>
-Last updated: November 2025</p>
+<p><strong>Last updated:</strong> 8 December 2025</p>
 
 
 
@@ -1531,6 +1383,8 @@ Last updated: November 2025</p>
     
     
       <script src="assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="js/custom.js"></script>
       
     
   </body>
