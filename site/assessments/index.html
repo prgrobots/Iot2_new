@@ -50,6 +50,8 @@
       
     
     
+      <link rel="stylesheet" href="../css/custom.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#assessments-overview" class="md-skip">
+        <a href="#assessments-overviewd" class="md-skip">
           Skip to content
         </a>
       
@@ -84,6 +86,7 @@
     </div>
     
     
+  
       
 
 <header class="md-header" data-md-component="header">
@@ -167,6 +170,9 @@
   
 </header>
     
+  
+  
+
     <div class="md-container" data-md-component="container">
       
       
@@ -1162,6 +1168,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#assessment-5b-quicksight-analytics-dashboard-week-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment 5b: QuickSight Analytics Dashboard (Week 14)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#assessment-6-capstone-fleet-system-week-18" class="md-nav__link">
     <span class="md-ellipsis">
       Assessment 6: Capstone Fleet System (Week 18)
@@ -1362,7 +1377,7 @@
 
 
 
-<h1 id="assessments-overview">Assessments Overview<a class="headerlink" href="#assessments-overview" title="Permanent link">&para;</a></h1>
+<h1 id="assessments-overviewd">Assessments OverviewD<a class="headerlink" href="#assessments-overviewd" title="Permanent link">&para;</a></h1>
 <p>All assessments map to <strong>ICTIOT502</strong> (Develop IoT device solutions) and <strong>ICTIOT503</strong> (Evaluate and test IoT device solutions).</p>
 <h2 id="assessment-schedule">Assessment Schedule<a class="headerlink" href="#assessment-schedule" title="Permanent link">&para;</a></h2>
 <table>
@@ -1393,7 +1408,7 @@
 <tr>
 <td><strong>A3</strong></td>
 <td>502: 2.1, 2.3</td>
-<td>Week 7</td>
+<td>Week 8</td>
 <td>10%</td>
 <td>GY-521 accelerometer integration</td>
 </tr>
@@ -1406,16 +1421,23 @@
 </tr>
 <tr>
 <td><strong>A5</strong></td>
-<td>503: 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3, 2.4</td>
+<td>503: 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3</td>
 <td>Week 14</td>
-<td>20%</td>
+<td>18%</td>
 <td>AWS IoT integration + testing</td>
+</tr>
+<tr>
+<td><strong>A5b</strong></td>
+<td>503: 2.4</td>
+<td>Week 14</td>
+<td>7%</td>
+<td>QuickSight analytics dashboard</td>
 </tr>
 <tr>
 <td><strong>A6</strong></td>
 <td>503: 3.1, 3.2, 3.3</td>
 <td>Week 18</td>
-<td>35%</td>
+<td>30%</td>
 <td>Complete fleet system + demo</td>
 </tr>
 </tbody>
@@ -1480,7 +1502,7 @@
   - Alert scenarios (high temp, unauthorized access, high vibration)</p>
 <hr />
 <h2 id="assessment-5-aws-iot-integration-testing-week-14">Assessment 5: AWS IoT Integration &amp; Testing (Week 14)<a class="headerlink" href="#assessment-5-aws-iot-integration-testing-week-14" title="Permanent link">&para;</a></h2>
-<p><strong>Objective:</strong> Connect device to AWS IoT Core and implement cloud features.</p>
+<p><strong>Objective:</strong> Connect device to AWS IoT Core and implement cloud features with comprehensive testing documentation.</p>
 <p><strong>Requirements:</strong>
 - X.509 certificate authentication
 - MQTT publish to <code>truck/{truckID}/telemetry</code>
@@ -1501,12 +1523,58 @@
   - Live MQTT messages in AWS Test console
   - Shadow updates
   - SNS email/SMS received
-  - CloudWatch alarm triggered</p>
+  - CloudWatch alarm triggered
+  - Offline sync test (disconnect WiFi, reconnect, verify sync)</p>
+<hr />
+<h2 id="assessment-5b-quicksight-analytics-dashboard-week-14">Assessment 5b: QuickSight Analytics Dashboard (Week 14)<a class="headerlink" href="#assessment-5b-quicksight-analytics-dashboard-week-14" title="Permanent link">&para;</a></h2>
+<p><strong>Objective:</strong> Create a real-time analytics dashboard for haul truck monitoring using AWS QuickSight and IoT Analytics.</p>
+<p><strong>Requirements:</strong></p>
+<h4 id="dashboard-design-mandatory">Dashboard Design (Mandatory)<a class="headerlink" href="#dashboard-design-mandatory" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Minimum 3 visualizations:</strong></li>
+<li><strong>Temperature Trend</strong> – Line chart showing engine temperature over last 24 hours</li>
+<li><strong>Vibration Status</strong> – Gauge or card displaying current vibration value vs. alert threshold</li>
+<li><strong>Alerts Summary</strong> – Table showing recent alerts (timestamp, alert type, severity)</li>
+</ul>
+<h4 id="data-integration">Data Integration<a class="headerlink" href="#data-integration" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Connect QuickSight to IoT Core telemetry via <strong>IoT Analytics pipeline</strong> OR <strong>S3/DynamoDB backend</strong></li>
+<li>Demonstrate live/near-real-time data (minimum 1 hour of historical data)</li>
+<li>Data refresh rate: auto-refresh every 5-15 minutes</li>
+</ul>
+<h4 id="sitewise-asset-model-optional-enhancement">SiteWise Asset Model (Optional Enhancement)<a class="headerlink" href="#sitewise-asset-model-optional-enhancement" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Model haul truck as <strong>AWS IoT SiteWise asset</strong></li>
+<li>Configure properties: <code>engine_temperature</code>, <code>vibration_level</code>, <code>cabin_lock_state</code></li>
+<li>Link SiteWise model to QuickSight dashboard for hierarchical visualization</li>
+<li><strong>Bonus:</strong> +2 points for complete SiteWise integration</li>
+</ul>
+<h4 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>One-page architecture document</strong> explaining:</li>
+<li>Data flow: truck MQTT → IoT Core → IoT Analytics → S3/database → QuickSight</li>
+<li>Business value of each visualization</li>
+<li>How mining supervisor uses dashboard for predictive maintenance</li>
+</ul>
+<p><strong>Submission:</strong>
+- [ ] QuickSight dashboard URL (live link) OR full-page screenshot (PDF/PNG)
+- [ ] QuickSight dashboard definition JSON export
+- [ ] IoT Analytics pipeline configuration JSON
+- [ ] One-page architecture document (PDF)
+- [ ] 3-minute video walkthrough showing:
+  - Dashboard loading with live data
+  - Interactive filters/drill-downs (if configured)
+  - Each visualization and what it reveals
+  - How to identify anomalies from trends
+  - (Optional) SiteWise asset model in AWS console</p>
+<p><strong>Submission Format:</strong>
+- Zip file containing all deliverables + links
+- Submit to Blackboard "Week 14 – A5b" folder</p>
 <hr />
 <h2 id="assessment-6-capstone-fleet-system-week-18">Assessment 6: Capstone Fleet System (Week 18)<a class="headerlink" href="#assessment-6-capstone-fleet-system-week-18" title="Permanent link">&para;</a></h2>
 <p><strong>Objective:</strong> Demonstrate complete IoT solution with pit station.</p>
 <p><strong>Requirements:</strong>
-- <strong>Haul truck device</strong> with all A1-A5 features
+- <strong>Haul truck device</strong> with all A1-A5b features (sensors, AWS IoT, analytics)
 - <strong>Pit station ESP32</strong> with LCD dashboard
 - AWS integration (Shadows, Rules, Analytics)
 - Fleet simulation (single device representing 20 trucks via Shadow)
@@ -1575,7 +1643,8 @@
 <h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h2>
 <p><strong>Resubmission Policy:</strong>
 - A1-A4: One resubmission allowed
-- A5-A6: One resubmissions allowed</p>
+- A5-A5b: One resubmission allowed
+- A6: One resubmission allowed</p>
 <hr />
 <p><strong>Related:</strong> <a href="../scenario/">Course Scenario</a></p>
 
@@ -1630,6 +1699,8 @@
     
     
       <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../js/custom.js"></script>
       
     
   </body>

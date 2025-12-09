@@ -1,4 +1,4 @@
-# Assessments Overview
+# Assessments OverviewD
 
 All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT503** (Evaluate and test IoT device solutions).
 
@@ -32,7 +32,6 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
 - Wokwi simulation link OR breadboard photo
 - 2-minute demonstration video
 
-
 ---
 
 ## Assessment 2: Access Control System (Week 6)
@@ -51,7 +50,6 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
 - Breadboard photo with RFID and RTC wired
 - 2-minute demonstration video
 
-
 ---
 
 ## Assessment 3: Vibration Monitoring (Week 7)
@@ -69,7 +67,6 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
 - Breadboard photo
 - CSV data file (60 seconds of readings)
 - 2-minute demonstration video
-
 
 ---
 
@@ -94,7 +91,6 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
   - Servo dump operation
   - OLED displaying data
   - Alert scenarios (high temp, unauthorized access, high vibration)
-
 
 ---
 
@@ -125,7 +121,6 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
   - SNS email/SMS received
   - CloudWatch alarm triggered
   - Offline sync test (disconnect WiFi, reconnect, verify sync)
-
 
 ---
 
@@ -173,7 +168,6 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
 **Submission Format:**
 - Zip file containing all deliverables + links
 - Submit to Blackboard "Week 14 – A5b" folder
-
 
 ---
 
@@ -225,7 +219,6 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
 - [ ] Portfolio PDF uploaded to Blackboard
 - [ ] Peer evaluation form completed
 - [ ] Self-assessment against 503 performance criteria
-
 
 ---
 

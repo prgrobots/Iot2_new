@@ -28,6 +28,8 @@ Pit supervisors cannot see real-time truck health from the control station. They
 
 You'll build a proof-of-concept system demonstrating how IoT and AWS can solve these problems:
 
+<div class="parallax-section" style="background-image: url('../images/banner.png'); height: 300px; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; margin: 2rem -2rem; width: calc(100% + 4rem);"></div>
+
 ### Haul Truck (Device 1)
 
 Physical computing system with:
