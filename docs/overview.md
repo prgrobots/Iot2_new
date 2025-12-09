@@ -1,6 +1,8 @@
 # Course Overview
 
-This page provides a week-by-week timeline for the entire IoT course, including electronics, AWS, and capstone phases. Use this as your main reference for session topics, hardware focus, and assessment deadlines.
+Th| 12 | Fleet Management & OTA | Real ESP32 | Managing AWS IoT Devices at Scale (3.5 h) + SimuLearn "OTA Updates" | Thing Groups, OTA firmware to change vibration threshold | — |
+| 13 | Edge Processing & Industrial | Real ESP32 | SimuLearn "ETL at the Edge" + Lab – Deploying AWS IoT Greengrass Components | Greengrass core on laptop/ESP32, local anomaly detection | — |
+| 14 | Analytics & Visualization | Real ESP32 | Analyzing, Visualizing, and Gaining Insights (45 m) + Connecting Systems and Machines to AWS for Industrial Manufacturing | SiteWise asset model "Haul-Truck-01", QuickSight dashboard | **A5 & A5b** |page provides a week-by-week timeline for the entire IoT course, including electronics, AWS, and capstone phases. Use this as your main reference for session topics, hardware focus, and assessment deadlines.
 
 ---
 

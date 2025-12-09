@@ -1,69 +1,37 @@
 # Welcome to the IoT Course
 
-
-
 Welcome to the IoT Course documentation site. **Physical Computing to Cloud**
 
-
-
-Use the navigation menu to access weekly sessions, resources, scenario, and assessments.This comprehensive 18-week course takes you on a journey from basic electronics to cloud-connected IoT systems.
+This comprehensive 18-week course takes you on a journey from basic electronics to cloud-connected IoT systems, building a real-world haul truck monitoring system for mining operations (RockCore scenario).
 
 ---
 
-**Quick Links:**- **Weeks 1-8**: Physical Computing with ESP32
+## Quick Navigation
 
-- [Course Overview](overview.md)- **Weeks 9-12**: Cloud Services and AWS Foundations
+### Course Structure
+- **Weeks 1-9**: Physical Computing with ESP32 (Electronics fundamentals + hardware truck build)
+- **Weeks 10-14**: AWS IoT Cloud Services (Connectivity, analytics, real-time monitoring)
+- **Weeks 15-18**: Capstone Integration (Fleet dashboard, pit station, final demo)
 
-- [Scenario](scenario.md)- **Weeks 13-18**: Advanced IoT Integration and Projects
-
-- [3D Print Files](prints.md)
-
-- [Resources](resources.md)
+### Key Resources
+- [📋 Course Overview & Timeline](overview.md) – Week-by-week sessions and assessments
+- [🎯 Scenario](scenario.md) – RockCore mining haul truck context
+- [📊 Assessments](assessments/index.md) – A1-A6 structure, deliverables, rubrics
+- [🖨️ 3D Print Files](prints.md) – Physical truck design
+- [📚 Resources](resources.md) – AWS and learning links
+- [🔧 AWS Foundations](resources/aws-foundations.md) – Skill Builder courses
 
 ### Getting Started
-
-- [Assessments](assessments/index.md)
-
-- [AWS Foundations Resources](resources/aws-foundations.md)
-
 Navigate through the course content using the menu above. Each week builds upon previous concepts, so we recommend following the sequence.
 
-
-
-
 ---
-### Course Structure
 
-## 18-Week Course Overview
+## Latest Updates
 
-This page provides a week-by-week timeline for the entire IoT course, including electronics, AWS, and capstone phases. Use this as your main reference for session topics, hardware focus, and assessment deadlines.
+- **8 December 2025**: AWS course content aligned to authoritative sources; Assessment 5b (QuickSight Dashboard) added
+- **Week 14**: Now covers Analytics & Visualization with SiteWise + QuickSight dashboard
+- **Week 13**: Streamlined to ETL at the Edge + Greengrass deployment
 
 ---
 
-| Week | Session Title | Simulator / Hardware | Key Content | Truck Progress | Assessment |
-|------|---------------|----------------------|-------------|----------------|------------|
-| 1 | L1–L3: Voltage, Current, Ohm’s Law | Tinkercad Circuits | PhysComp Electronics basics, build series circuit with current measurement | — | — |
-| 2 | L4–L7: Resistors, LEDs, Breadboards | Wokwi | LED on, blink, serial, fade, RGB | Front panel RGB status | — |
-| 3 | Advanced Output + Buttons | Wokwi (ESP32) | Fade PWM, RGB crossfade, buttons, debouncing | Front panel alerts, chassis assembly begins | A1 start |
-| 4 | Analog Input + Sensors | Wokwi → Real ESP32 | DHT11, MQ-2, flame sensor | Front panel sensors | A1 complete |
-| 5 | I²C + Actuators | Real ESP32 | OLED, GY-521, servo sweep | Base + Back panels | A3 & A4 start |
-| 6 | RFID, RTC, Touch | Real ESP32 | PhysComp ESP32 Lesson 6–7 (touch + IoT intro) | Left panel access system | A2 complete |
-| 7 | Environmental + Tones | Real ESP32 | Rain, dust, buzzer tones | Roof panel | A5 complete |
-| 8 | Signal Processing & Vibration | Real ESP32 | PhysComp Signals – filtering, anomaly detection | Base panel predictive algo | A3 complete |
-| 9 | Full Truck Assembly & Testing | Real ESP32 | Inter-panel I²C, fault testing, final debug | Complete physical truck | A4 & A5 finalised |
-| 10 | AWS IoT Core & Secure Connection | Real ESP32 | Foundations: Getting Started + Securely Connecting (1.5 h) | Register truck → MQTT publish real DHT11/gas | — |
-| 11 | Device Data, Rules & Shadows | Real ESP32 | Handling AWS IoT Device Data and States (2 h) | Device Shadow for engine temp & cabin lock; IoT Rule → SNS | — |
-| 12 | Fleet Management & OTA | Real ESP32 | Managing AWS IoT Devices at Scale (3.5 h) + SimuLearn “OTA Updates” | Thing Groups, OTA firmware to change vibration threshold | — |
-| 13 | Edge Processing & Industrial | Real ESP32 | SimuLearn “ETL at the Edge” + “Converting Industrial Protocols” + “Contextualizing Industrial Equipment Data” | Greengrass core on laptop/ESP32, local anomaly detection | — |
-| 14 | Analytics & Visualization | Real ESP32 | Analyzing, Visualizing, and Gaining Insights (45 m) + SimuLearn “Manufacturing and Automotive” (first 3 labs) | SiteWise asset model “Haul-Truck-01”, QuickSight dashboard | — |
-| 15 | Capstone: Full Integration | Real ESP32 + Pit Station | MQTT → DynamoDB → SiteWise → Lambda alerts | Pit station LCD shows live fleet data | — |
-| 16 | Capstone: Advanced Features | Real ESP32 | CloudWatch alarms, SNS notifications, historical trends | Predictive maintenance alerts | — |
-| 17 | Capstone: Testing & Video | Real ESP32 | Simulate 3+ real faults (gas leak, vibration spike, unauthorized entry) | Record 5-minute demo | — |
-| 18 | Capstone: Demo & Final Submission | Real ESP32 | Live/recorded demo + portfolio mapping to every performance criterion | Final zip upload | A6 complete |
-
----
-
-*Return to: [Home](index.md)*
-
-*Last updated: November 2025*
-Last updated: November 2025
+**Last updated:** 8 December 2025
