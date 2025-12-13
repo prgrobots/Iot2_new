@@ -13,40 +13,24 @@ All theory content is delivered through this excellent open-source resource from
 - [Signal Processing](https://makeabilitylab.github.io/physcomp/signals/)
 - [Communication Protocols](https://makeabilitylab.github.io/physcomp/communication/)
 
-## AWS Skill Builder
+## AWS Resources
 
-**Account Setup:** [AWS Skill Builder](https://explore.skillbuilder.aws/)
+⚠️ **AUTHORITATIVE SOURCE:** See [AWS Foundations Resources](resources/aws-foundations.md) for complete week-by-week AWS course content, enrollment instructions, and NMTAFE sandbox setup.
 
-**Required Courses (by week):**
+**Quick Links:**
+- [AWS Skill Builder](https://explore.skillbuilder.aws/) – Free Foundations courses for Weeks 10-14
+- [AWS IoT Core Documentation](https://docs.aws.amazon.com/iot-core/) – Reference material
+- [AWS IoT SiteWise](https://docs.aws.amazon.com/iot-sitewise/) – Asset modeling (Week 14)
+- [AWS IoT TwinMaker](https://docs.aws.amazon.com/iot-twinmaker/) – Digital twins (Weeks 15-17)
 
-**Week 10:**
-- Getting Started with AWS IoT (35 min)
-- Securely Connecting AWS IoT Devices (45 min)
+**AWS Courses Delivered via NMTAFE Sandbox (no student cost):**
+- OTA Updates in Edge Devices (Week 12)
+- ETL at the Edge (Week 13)
+- AWS Industry Quest: Manufacturing and Automotive (Weeks 15-17)
 
-**Week 11:**
-- Handling AWS IoT Device Data & States (2 hours)
-
-**Week 12:**
-- Managing AWS IoT Devices at Scale (3.5 hours)
-
-**Week 14:**
-- Analyzing, Visualizing, and Gaining Insights (45 min)
-
-## SimuLearn Labs
-
-Access via course Blackboard shell.
-
-**Week 12:** OTA Updates lab
-
-**Week 13:**
-- ETL at the Edge
-- Converting Industrial Protocols
-- Contextualizing Industrial Equipment Data
-
-**Week 14:**
-- Manufacturing Data Ingestion
-- Automotive Telemetry Processing
-- Equipment Health Dashboards
+**AWS Troubleshooting:**
+- [AWS IoT FAQs](https://aws.amazon.com/iot-core/faqs/)
+- [AWS re:Post Community](https://repost.aws/)
 
 ## Wokwi Simulator
 

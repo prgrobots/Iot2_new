@@ -173,20 +173,96 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
 
 ## Assessment 6: Capstone Fleet System (Week 18)
 
-**Objective:** Demonstrate complete IoT solution with pit station.
+**Objective:** Demonstrate complete IoT solution integrating electronics, AWS cloud, and digital twins for pit station fleet monitoring.
 
 **Requirements:**
-- **Haul truck device** with all A1-A5b features (sensors, AWS IoT, analytics)
-- **Pit station ESP32** with LCD dashboard
-- AWS integration (Shadows, Rules, Analytics)
-- Fleet simulation (single device representing 20 trucks via Shadow)
-- **Four test scenarios** from Week 17:
-  1. Engine overheat cascade
-  2. Unauthorized access
-  3. Vibration anomaly
-  4. Multi-fault scenario
-- **Offline resilience test** (disconnect WiFi, reconnect, verify Shadow sync)
-- **Performance metrics** (message latency, Shadow sync time)
+
+#### Hardware & Sensors
+- **Haul truck device** with all A1-A5b features (sensors, AWS IoT, analytics, testing)
+- **Real ESP32** publishing continuous MQTT telemetry to AWS IoT Core
+- Functional sensors: temperature (DHT11), vibration (GY-521), gas (MQ-2), cabin lock (touch sensor)
+
+#### AWS Cloud Integration
+- **IoT Core:** Thing registration, X.509 certificates, secure MQTT
+- **Device Shadow:** Stores desired + reported state, enables offline sync
+- **IoT Rules Engine:** Routes messages to DynamoDB, SiteWise, SNS, Lambda
+- **SiteWise:** Asset model "RockCore-Truck-01" with 6+ properties
+- **DynamoDB:** Time-series storage of telemetry
+- **SNS:** Alert notifications for anomalies
+
+#### Analytics & Visualization  
+- **QuickSight Dashboard** (from A5b) with live data from real truck
+  - 5+ visualizations: temperature trend, vibration status, gas levels, alerts, KPIs
+  - Real-time updates reflecting live sensor data
+- **Pit Station Web Interface:** Fleet status dashboard showing truck health grid
+
+#### Digital Twins & Industry Quest
+- **AWS IoT TwinMaker:** 
+  - Digital twin scene with 6 truck models (1 real + 5 simulated)
+  - Real truck telemetry bound to digital model
+  - Anomalies trigger visual changes (color, overlays)
+  - Demonstrates understanding of AWS Industry Quest labs (Weeks 15-17)
+- **Predictive Maintenance:** Anomaly detection rules with visual feedback on digital twins
+
+#### Testing & Scenarios
+- **Real-world test scenarios** (demonstrate all working):
+  1. Normal operation: All systems green, data flowing smoothly
+  2. Sensor anomaly: Trigger vibration spike, watch QuickSight + TwinMaker respond
+  3. Offline resilience: Disconnect WiFi, device queues data, reconnects and syncs
+  4. Multi-truck simulation: Dashboard shows real truck + 5 simulated trucks with mixed health states
+- **Performance metrics:** Message latency, Shadow sync time, anomaly detection response time
+
+#### Documentation
+- **GitHub repository** with all code organized:
+  - `/arduino` – ESP32 haul truck firmware
+  - `/aws` – CloudFormation/Lambda/Rules configurations
+  - `/dashboard` – Pit station web interface (HTML/CSS/JS)
+  - `/docs` – Architecture diagrams, setup guides
+  - `README.md` with complete deployment instructions
+  
+- **Architecture Document** (2-3 pages):
+  - Block diagram showing truck → IoT Core → Analytics → TwinMaker → Pit Station
+  - Scaling plan: How to extend to 20+ trucks in production
+  - Cost estimate for AWS services
+
+- **Unit Mapping Document:** Table aligning each system component to ICTIOT503 performance criteria
+  - Examples: "X.509 certs" → 1.3, "Device Shadow offline sync" → 1.5, "Digital Twin" → 2.4, etc.
+
+**Deliverables:**
+1. **GitHub Repository:**
+   - [ ] All code files with clear structure
+   - [ ] README.md with setup & run instructions
+   - [ ] Architecture diagram (PNG/PDF)
+   - [ ] Unit mapping document
+
+2. **Demonstration Video (5 minutes):**
+   - Introduction: RockCore mining scenario and system overview
+   - Hardware demo: Show real truck, sensors working, MQTT messages
+   - Cloud integration: AWS console walkthrough (IoT Core, SiteWise, DynamoDB)
+   - Analytics: QuickSight dashboard with live data, trigger anomaly
+   - Digital twins: TwinMaker fleet scene responding to real truck anomaly
+   - Pit station: Web dashboard showing fleet status, drill-down to truck details
+   - Conclusion: Business value (safety, ROI, maintenance efficiency)
+
+3. **Portfolio Document (PDF, 20-30 pages):**
+   - **Executive Summary** (1 page): Problem statement and solution overview
+   - **System Architecture** (2-3 pages): Full diagrams and component descriptions
+   - **Hardware Implementation** (3-4 pages): Truck design, sensor integration, photos
+   - **Software Architecture** (4-5 pages): Arduino firmware, AWS services, data flow
+   - **Cloud Integration** (4-5 pages): IoT Core, Shadows, Rules, SiteWise, DynamoDB
+   - **Analytics & Visualization** (2-3 pages): QuickSight dashboard, TwinMaker digital twins
+   - **Testing & Results** (4-5 pages): Test scenarios run, results, performance metrics
+   - **Industry Quest Integration** (1-2 pages): How AWS Industry Quest (Weeks 15-17) enhanced learning
+   - **Reflection & Learning** (1-2 pages): Challenges, lessons learned, future improvements
+   - **Appendices:** Code snippets, datasheets, screenshots, compliance evidence
+
+**Submission Checklist:**
+- [ ] GitHub repository URL (public or instructor access)
+- [ ] Demonstration video (MP4, 5 minutes max)
+- [ ] Portfolio PDF (20-30 pages)
+- [ ] Architecture diagram (PNG/PDF)
+- [ ] Unit mapping document (showing alignment to ICTIOT503)
+- [ ] All files submitted to Blackboard "Week 18 – A6" folder by due date
 
 **Deliverables:**
 1. **GitHub Repository:**
