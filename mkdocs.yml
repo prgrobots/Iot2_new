@@ -35,12 +35,15 @@ nav:
       - Week 07 - Environmental Sensors: electronics/07.md
       - Week 08 - Signal Processing: electronics/08.md
       - Week 09 - Full Truck Assembly: electronics/09.md
-  - AWS IoT (Weeks 10-14):
+  - AWS IoT (Weeks 10-17):
       - Week 10 - IoT Core & Secure Connection: aws/10.md
       - Week 11 - Data & Shadows: aws/11.md
       - Week 12 - Fleet & OTA: aws/12.md
       - Week 13 - Edge & Industrial: aws/13.md
       - Week 14 - Analytics & Dashboard: aws/14.md
+      - Week 15 - Manufacturing Quest Intro: aws/15.md
+      - Week 16 - Manufacturing & Automotive: aws/16.md
+      - Week 17 - Advanced Industry Applications: aws/17.md
   - Capstone (Weeks 15-18):
       - Integration Guide: capstone/integration.md
       - Pit Station Build: capstone/pit-station.md
@@ -52,7 +55,7 @@ nav:
       - Main Resources: resources.md
       - 3D Print Files: prints.md
       - AWS Foundations: resources/aws-foundations.md
-      - SimuLearn List: resources/simulearn-list.md
+      - Glossary: glossary.md
   
 plugins:
   - search
