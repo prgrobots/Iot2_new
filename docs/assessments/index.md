@@ -16,6 +16,45 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
 
 ---
 
+## Submission Process
+
+### **Your GitHub Portfolio is Primary**
+
+Your portfolio repository on GitHub is your **single source of truth** for all code, documentation, and evidence. Blackboard submission is for timestamping and institutional audit purposes only.
+
+### **How to Submit Each Assessment**
+
+1. **Complete your work** and commit to GitHub in the assessment folder
+2. **Fill out the submission template** (located in each assessment folder)
+3. **Copy the completed form** to the Blackboard submission box for that assessment
+4. Blackboard records the timestamp automatically
+
+### **Submission Templates by Assessment**
+
+Each assessment folder in your portfolio template contains a pre-filled submission template:
+
+| Assessment | Template File | Folder |
+|-----------|---------------|--------|
+| **A1** | `A1_SUBMISSION_TEMPLATE.md` | `A1-Electronics-Fundamentals/` |
+| **A2** | `A2_SUBMISSION_TEMPLATE.md` | `A2-RFID-Access-Control/` |
+| **A3** | `A3_SUBMISSION_TEMPLATE.md` | `A3-Vibration-Monitoring/` |
+| **A4** | `A4_SUBMISSION_TEMPLATE.md` | `A4-Haul-Truck-Integration/` |
+| **A5** | `A5_SUBMISSION_TEMPLATE.md` | `A5-AWS-IoT-Integration/` |
+| **A5b** | `A5b_SUBMISSION_TEMPLATE.md` | `A5-AWS-IoT-Integration/` |
+| **A6** | `A6_SUBMISSION_TEMPLATE.md` | `A6-Capstone-Fleet-Demo/` |
+
+**Each template includes:**
+- Assessment-specific requirements checklist
+- GitHub repository link field
+- Brief description field (2-3 sentences)
+- Evidence requirements (screenshots, videos, documents)
+- Academic integrity declaration
+- Space for assessor feedback
+
+**No code duplication:** Your code remains on GitHub only. The submission form provides proof of submission without duplicating work.
+
+---
+
 ## Assessment 1: Sensor Integration (Week 4)
 
 **Objective:** Build IoT device with environmental monitoring.
@@ -262,9 +301,83 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
 - [ ] Portfolio PDF (20-30 pages)
 - [ ] Architecture diagram (PNG/PDF)
 - [ ] Unit mapping document (showing alignment to ICTIOT503)
+- [ ] **A6 submission template completed** (A6_SUBMISSION_TEMPLATE.md)
+- [ ] **Complete portfolio repository ZIP file** (see below)
 - [ ] All files submitted to Blackboard "Week 18 – A6" folder by due date
 
+**Submission Steps:**
+
+1. **Fill out A6_SUBMISSION_TEMPLATE.md** (located in `/A6-Capstone-Fleet-Demo/`)
+   - Include GitHub link, brief description, video link, portfolio PDF location
+   - Copy completed form to Blackboard for timestamping
+
+2. **Create complete portfolio ZIP file** (see structure below)
+   - This is your final course deliverable/evidence
+   - Upload to Blackboard as supporting documentation
+
 **Deliverables:**
+
+**FINAL SUBMISSION: A6 Submission Template + Complete Portfolio ZIP**
+
+**Part 1: A6 Submission Template** (required submission form)
+- Fill out `A6-Capstone-Fleet-Demo/A6_SUBMISSION_TEMPLATE.md`
+- Paste completed form into Blackboard submission box
+- This creates your timestamped submission record
+
+**Part 2: Complete Portfolio ZIP** (final evidence of work)
+
+Submit a ZIP file of your entire portfolio repository. This should contain:
+```
+iot-portfolio.zip
+├── README.md (with your name, student ID, cohort)
+├── A1-Electronics-Fundamentals/
+│   ├── code/esp32-arduino/
+│   ├── A1_SUBMISSION_TEMPLATE.md
+│   └── README.md
+├── A2-RFID-Access-Control/
+│   ├── code/esp32-arduino/
+│   ├── A2_SUBMISSION_TEMPLATE.md
+│   └── README.md
+├── A3-Vibration-Monitoring/
+│   ├── code/esp32-arduino/
+│   ├── A3_SUBMISSION_TEMPLATE.md
+│   └── README.md
+├── A4-Haul-Truck-Integration/
+│   ├── code/esp32-arduino/
+│   ├── A4_SUBMISSION_TEMPLATE.md
+│   └── README.md
+├── A5-AWS-IoT-Integration/
+│   ├── code/esp32-arduino/
+│   ├── aws-setup/
+│   ├── dashboards/
+│   ├── A5_SUBMISSION_TEMPLATE.md
+│   ├── A5b_SUBMISSION_TEMPLATE.md
+│   └── README.md
+└── A6-Capstone-Fleet-Demo/
+    ├── truck/
+    ├── pit-station/
+    ├── aws/
+    ├── docs/
+    ├── portfolio/
+    │   ├── Portfolio.pdf (20-30 pages)
+    │   ├── architecture-diagram.png
+    │   ├── unit-mapping.pdf
+    │   └── evidence/
+    ├── video/
+    │   └── demo-video-link.txt
+    ├── A6_SUBMISSION_TEMPLATE.md
+    └── README.md
+```
+
+This ZIP file represents your **complete portfolio for the course**. It demonstrates:
+- All 6 assessments (A1-A6) completed with submission templates
+- All code organized and documented
+- Complete AWS integration
+- Final capstone project with digital twins
+- Portfolio documentation and evidence
+
+Upload this ZIP to Blackboard as supporting evidence with your A6 submission template.
+
 1. **GitHub Repository:**
    - `/truck` folder: ESP32 code for truck
    - `/pit-station` folder: ESP32 code for pit station
@@ -289,12 +402,18 @@ All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT
    - **6. Reflection** (1-2 pages): Challenges, lessons learned
    - **7. Appendices**: Code snippets, datasheets, screenshots
 
-**Submission Checklist:**
-- [ ] GitHub repository URL (public or instructor access)
-- [ ] Video uploaded (YouTube/Vimeo/OneDrive)
-- [ ] Portfolio PDF uploaded to Blackboard
-- [ ] Peer evaluation form completed
-- [ ] Self-assessment against 503 performance criteria
+**Final Submission Checklist:**
+- [ ] A6_SUBMISSION_TEMPLATE.md completed and pasted to Blackboard
+- [ ] Complete portfolio ZIP created with all assessments (A1-A6)
+- [ ] ZIP includes all submission templates (A1_SUBMISSION_TEMPLATE.md through A6_SUBMISSION_TEMPLATE.md)
+- [ ] GitHub repository URL included in ZIP
+- [ ] Demonstration video link included (in `/A6-Capstone-Fleet-Demo/video/demo-video-link.txt`)
+- [ ] Portfolio PDF included (in `/A6-Capstone-Fleet-Demo/portfolio/Portfolio.pdf`)
+- [ ] Architecture diagram included (in `/A6-Capstone-Fleet-Demo/docs/`)
+- [ ] Unit mapping document included
+- [ ] Evidence photos/screenshots in portfolio folder
+- [ ] A6 submission template uploaded to Blackboard (timestamped submission)
+- [ ] ZIP file uploaded to Blackboard as supporting evidence
 
 ---
 

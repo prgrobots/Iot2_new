@@ -2,6 +2,17 @@
 
 This page provides a week-by-week timeline for the entire IoT course, including electronics, AWS, and capstone phases. Use this as your main reference for session topics, hardware focus, and assessment deadlines.
 
+## Portfolio Setup
+
+**Before Week 1:** Create your portfolio using the [IoT Portfolio Template](https://github.com/your-institution/iot-portfolio-template). Click "Use this template" to create your own independent copy. This is where you'll commit all code for A1–A6.
+
+Each assessment folder contains a pre-filled submission template. When submitting each assessment:
+1. Complete your code and push to GitHub
+2. Fill out the assessment submission template (located in the assessment folder)
+3. Copy completed form to Blackboard for timestamping
+
+See [Assessment Submission Process](assessments/index.md) for details.
+
 ---
 
 ## 18-Week Timeline
