@@ -7,6 +7,7 @@
 All theory content is delivered through this excellent open-source resource from University of Washington.
 
 **Key Sections:**
+
 - [Arduino Basics](https://makeabilitylab.github.io/physcomp/arduino/)
 - [ESP32 Specific](https://makeabilitylab.github.io/physcomp/esp32/)
 - [Electronics Fundamentals](https://makeabilitylab.github.io/physcomp/electronics/)
@@ -15,20 +16,23 @@ All theory content is delivered through this excellent open-source resource from
 
 ## AWS Resources
 
-⚠️ **AUTHORITATIVE SOURCE:** See [AWS Foundations Resources](resources/aws-foundations.md) for complete week-by-week AWS course content, enrollment instructions, and NMTAFE sandbox setup.
+⚠️ **AUTHORITATIVE SOURCE:** See [AWS Training Resources](resources/aws-training.md) for complete week-by-week AWS course content, enrollment instructions, and NMTAFE sandbox setup.
 
 **Quick Links:**
+
 - [AWS Skill Builder](https://explore.skillbuilder.aws/) – Free Foundations courses for Weeks 10-14
 - [AWS IoT Core Documentation](https://docs.aws.amazon.com/iot-core/) – Reference material
 - [AWS IoT SiteWise](https://docs.aws.amazon.com/iot-sitewise/) – Asset modeling (Week 14)
 - [AWS IoT TwinMaker](https://docs.aws.amazon.com/iot-twinmaker/) – Digital twins (Weeks 15-17)
 
 **AWS Courses Delivered via NMTAFE Sandbox (no student cost):**
+
 - OTA Updates in Edge Devices (Week 12)
 - ETL at the Edge (Week 13)
 - AWS Industry Quest: Manufacturing and Automotive (Weeks 15-17)
 
 **AWS Troubleshooting:**
+
 - [AWS IoT FAQs](https://aws.amazon.com/iot-core/faqs/)
 - [AWS re:Post Community](https://repost.aws/)
 
@@ -39,35 +43,11 @@ All theory content is delivered through this excellent open-source resource from
 Free Arduino/ESP32 simulator used in Weeks 2-4 before transitioning to real hardware.
 
 **Features:**
+
 - ESP32, Arduino Uno, Pi Pico boards
 - Extensive sensor library
 - Serial monitor
 - Share projects via URL
-
-## Hardware Kit
-
-**Keyestudio ESP32 IoT Starter Kit** (provided Week 5)
-
-**Includes:**
-- ESP32-WROOM-32 development board (2×)
-- Breadboards
-- DHT11 temp/humidity sensor
-- MQ-2 gas sensor
-- Flame sensor
-- PIR motion sensor
-- RFID-RC522 module + cards
-- GY-521 (MPU6050) accelerometer
-- Rain sensor
-- Photoresistor
-- HC-SR04 ultrasonic sensor
-- SG90 servo motor
-- OLED display (SSD1306)
-- RGB LEDs, resistors, buttons, jumper wires
-
-**Not Included (purchase separately or improvise):**
-- 20×4 LCD I²C display (for pit station)
-- Second ESP32 (for pit station) – may be provided Week 16
-- Piezo buzzer
 
 ## Software Tools
 
@@ -75,19 +55,6 @@ Free Arduino/ESP32 simulator used in Weeks 2-4 before transitioning to real hard
 
 **Download:** [arduino.cc/software](https://www.arduino.cc/software)
 
-**Required Libraries:**
-- DHT sensor library (Adafruit)
-- MFRC522 (RFID)
-- MPU6050 (Electronic Cats)
-- Adafruit SSD1306
-- Adafruit GFX
-- PubSubClient (MQTT)
-- ArduinoJson
-- RTClib
-- ESP32Servo
-- LiquidCrystal_I2C
-
-**Install via:** Tools → Manage Libraries
 
 ### VS Code + PlatformIO (Alternative)
 

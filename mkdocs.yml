@@ -54,7 +54,7 @@ nav:
   - Resources:
       - Main Resources: resources.md
       - 3D Print Files: prints.md
-      - AWS Foundations: resources/aws-foundations.md
+      - AWS Training: resources/aws-training.md
       - Glossary: glossary.md
   
 plugins:

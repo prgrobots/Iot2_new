@@ -9,17 +9,19 @@ This comprehensive 18-week course takes you on a journey from basic electronics 
 ## Quick Navigation
 
 ### Course Structure
+
 - **Weeks 1-9**: Physical Computing with ESP32 (Electronics fundamentals + hardware truck build)
 - **Weeks 10-14**: AWS IoT Cloud Services (Connectivity, analytics, real-time monitoring)
 - **Weeks 15-18**: Capstone Integration (Fleet dashboard, pit station, final demo)
 
 ### Key Resources
+
 - [ Course Overview & Timeline](overview.md) – Week-by-week sessions and assessments
 - [ Scenario](scenario.md) – RockCore mining haul truck context
 - [ Assessments](assessments/index.md) – A1-A6 structure, deliverables
 - [ 3D Print Files](prints.md) – Physical truck design
-- [ Resources](resources.md) – AWS and learning links
-- [ AWS Foundations](resources/aws-foundations.md) – Skill Builder courses
+- [ Resources](resources.md) – Various resources and learning links
+- [ AWS Training](resources/aws-training.md) – Skill Builder courses
 
 ### Getting Started
 

@@ -297,7 +297,7 @@ Quick reference for terminology used throughout the IoT course, particularly AWS
 
 ## Related Pages
 
-- [AWS Foundations Resources](resources/aws-foundations.md) – Complete AWS course listing and enrollment instructions
+- [AWS Training Resources](resources/aws-training.md) – Complete AWS course listing and enrollment instructions
 - [Course Overview](overview.md) – 18-week timeline and session structure
 - [RockCore Mining Scenario](scenario.md) – Business context and system requirements
 - [Assessments](assessments/index.md) – Grading rubrics and deliverables

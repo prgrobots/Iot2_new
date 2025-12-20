@@ -1393,12 +1393,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/aws-foundations/" class="md-nav__link">
+      <a href="../resources/aws-training/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    AWS Foundations
+    AWS Training
     
   </span>
   
@@ -1464,7 +1464,6 @@
 <th>Assessment</th>
 <th>Unit Elements</th>
 <th>Due Date</th>
-<th>Weight</th>
 <th>Deliverable</th>
 </tr>
 </thead>
@@ -1473,49 +1472,42 @@
 <td><strong>A1</strong></td>
 <td>502: 1.1, 1.2, 1.3, 1.4, 2.4, 3.2</td>
 <td>Week 4</td>
-<td>10%</td>
 <td>ESP32 + temp/gas/flame sensors</td>
 </tr>
 <tr>
 <td><strong>A2</strong></td>
 <td>502: 2.2, 3.1, 3.3</td>
 <td>Week 6</td>
-<td>10%</td>
 <td>RFID access control + RTC logging</td>
 </tr>
 <tr>
 <td><strong>A3</strong></td>
 <td>502: 2.1, 2.3</td>
 <td>Week 8</td>
-<td>10%</td>
 <td>GY-521 accelerometer integration</td>
 </tr>
 <tr>
 <td><strong>A4</strong></td>
 <td>502: 3.4, 4.1</td>
 <td>Week 9</td>
-<td>15%</td>
 <td>Full haul truck system</td>
 </tr>
 <tr>
 <td><strong>A5</strong></td>
 <td>503: 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3</td>
 <td>Week 14</td>
-<td>18%</td>
 <td>AWS IoT integration + testing</td>
 </tr>
 <tr>
 <td><strong>A5b</strong></td>
 <td>503: 2.4</td>
 <td>Week 14</td>
-<td>7%</td>
 <td>QuickSight analytics dashboard</td>
 </tr>
 <tr>
 <td><strong>A6</strong></td>
 <td>503: 3.1, 3.2, 3.3</td>
 <td>Week 18</td>
-<td>30%</td>
 <td>Complete fleet system + demo</td>
 </tr>
 </tbody>
@@ -1647,292 +1639,134 @@
   - Alert scenarios (high temp, unauthorized access, high vibration)</p>
 <hr />
 <h2 id="assessment-5-aws-iot-integration-testing-week-14">Assessment 5: AWS IoT Integration &amp; Testing (Week 14)<a class="headerlink" href="#assessment-5-aws-iot-integration-testing-week-14" title="Permanent link">&para;</a></h2>
-<p><strong>Objective:</strong> Connect device to AWS IoT Core and implement cloud features with comprehensive testing documentation.</p>
-<p><strong>Requirements:</strong>
-- X.509 certificate authentication
-- MQTT publish to <code>truck/{truckID}/telemetry</code>
-- Device Shadow for offline resilience
-- IoT Rules sending SNS alerts
-- CloudWatch metrics and alarms
-- <strong>Testing documentation</strong> per 503 elements:
-  - Test plan (unit, integration, system tests)
-  - Test cases with expected vs actual results
-  - Bug log and resolutions
-  - Performance testing (message latency, offline sync)</p>
+<p><strong>Objective:</strong> Connect device to AWS IoT Core with secure communication and cloud event handling.</p>
+<p><strong>Core Requirements:</strong>
+- X.509 certificate authentication (no API keys)
+- MQTT publish to <code>truck/{truckID}/telemetry</code> (DHT11, GY-521, MQ-2, lock state)
+- Device Shadow for offline state management (desired vs. reported state)
+- IoT Rules Engine routing to SNS (alerts), DynamoDB (storage)
+- CloudWatch metrics for message volume and latency
+- Testing: Offline/online sync, message latency, alert response</p>
 <p><strong>Submission:</strong>
-- Arduino <code>.ino</code> file with MQTT code
-- AWS console screenshots (IoT Core, SNS, CloudWatch)
-- Testing report (PDF, 5-10 pages)
-- GitHub repository
-- 5-minute demonstration video showing:
-  - Live MQTT messages in AWS Test console
-  - Shadow updates
-  - SNS email/SMS received
-  - CloudWatch alarm triggered
-  - Offline sync test (disconnect WiFi, reconnect, verify sync)</p>
+- Arduino <code>.ino</code> file (with clear MQTT code structure)
+- AWS configuration screenshots (IoT Core Thing, Shadows, Rules)
+- Testing document (200-300 words): test cases run, results, performance data
+- GitHub repository with README
+- 5-minute video: MQTT messages in AWS, Shadow sync offline/online, SNS alert received, CloudWatch metrics visible</p>
 <hr />
 <h2 id="assessment-5b-quicksight-analytics-dashboard-week-14">Assessment 5b: QuickSight Analytics Dashboard (Week 14)<a class="headerlink" href="#assessment-5b-quicksight-analytics-dashboard-week-14" title="Permanent link">&para;</a></h2>
-<p><strong>Objective:</strong> Create a real-time analytics dashboard for haul truck monitoring using AWS QuickSight and IoT Analytics.</p>
-<p><strong>Requirements:</strong></p>
-<h4 id="dashboard-design-mandatory">Dashboard Design (Mandatory)<a class="headerlink" href="#dashboard-design-mandatory" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Minimum 3 visualizations:</strong></li>
-<li><strong>Temperature Trend</strong> – Line chart showing engine temperature over last 24 hours</li>
-<li><strong>Vibration Status</strong> – Gauge or card displaying current vibration value vs. alert threshold</li>
-<li><strong>Alerts Summary</strong> – Table showing recent alerts (timestamp, alert type, severity)</li>
-</ul>
-<h4 id="data-integration">Data Integration<a class="headerlink" href="#data-integration" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Connect QuickSight to IoT Core telemetry via <strong>IoT Analytics pipeline</strong> OR <strong>S3/DynamoDB backend</strong></li>
-<li>Demonstrate live/near-real-time data (minimum 1 hour of historical data)</li>
-<li>Data refresh rate: auto-refresh every 5-15 minutes</li>
-</ul>
-<h4 id="sitewise-asset-model-optional-enhancement">SiteWise Asset Model (Optional Enhancement)<a class="headerlink" href="#sitewise-asset-model-optional-enhancement" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Model haul truck as <strong>AWS IoT SiteWise asset</strong></li>
-<li>Configure properties: <code>engine_temperature</code>, <code>vibration_level</code>, <code>cabin_lock_state</code></li>
-<li>Link SiteWise model to QuickSight dashboard for hierarchical visualization</li>
-<li><strong>Bonus:</strong> +2 points for complete SiteWise integration</li>
-</ul>
-<h4 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>One-page architecture document</strong> explaining:</li>
-<li>Data flow: truck MQTT → IoT Core → IoT Analytics → S3/database → QuickSight</li>
-<li>Business value of each visualization</li>
-<li>How mining supervisor uses dashboard for predictive maintenance</li>
-</ul>
+<p><strong>Objective:</strong> Create real-time analytics dashboard for haul truck monitoring.</p>
+<p><strong>Core Requirements:</strong>
+- <strong>3+ visualizations:</strong> Temperature trend (line chart), vibration status (gauge), alerts summary (table)
+- <strong>Data source:</strong> IoT Core → IoT Analytics OR S3/DynamoDB backend
+- <strong>Live data:</strong> Minimum 1 hour of historical data, auto-refresh every 5-15 minutes
+- <strong>SiteWise asset model:</strong> Create "RockCore-Truck-01" with properties (engine_temperature, vibration_level, cabin_lock_state)
+- <strong>Integration:</strong> Link SiteWise to QuickSight for hierarchical visualization</p>
 <p><strong>Submission:</strong>
-- [ ] QuickSight dashboard URL (live link) OR full-page screenshot (PDF/PNG)
-- [ ] QuickSight dashboard definition JSON export
-- [ ] IoT Analytics pipeline configuration JSON
-- [ ] One-page architecture document (PDF)
-- [ ] 3-minute video walkthrough showing:
-  - Dashboard loading with live data
-  - Interactive filters/drill-downs (if configured)
-  - Each visualization and what it reveals
-  - How to identify anomalies from trends
-  - (Optional) SiteWise asset model in AWS console</p>
-<p><strong>Submission Format:</strong>
-- Zip file containing all deliverables + links
-- Submit to Blackboard "Week 14 – A5b" folder</p>
+- QuickSight dashboard URL or full-page screenshot (PDF/PNG)
+- IoT Analytics pipeline configuration JSON
+- One-page architecture document (justified paragraph, 200-300 words): data flow truck→IoT Core→Analytics→QuickSight, business value of each visualization
+- GitHub repository with AWS setup scripts
+- 3-minute video: Dashboard loading, interactive filters, each visualization explained, how to spot anomalies</p>
 <hr />
 <h2 id="assessment-6-capstone-fleet-system-week-18">Assessment 6: Capstone Fleet System (Week 18)<a class="headerlink" href="#assessment-6-capstone-fleet-system-week-18" title="Permanent link">&para;</a></h2>
-<p><strong>Objective:</strong> Demonstrate complete IoT solution integrating electronics, AWS cloud, and digital twins for pit station fleet monitoring.</p>
-<p><strong>Requirements:</strong></p>
-<h4 id="hardware-sensors">Hardware &amp; Sensors<a class="headerlink" href="#hardware-sensors" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Haul truck device</strong> with all A1-A5b features (sensors, AWS IoT, analytics, testing)</li>
-<li><strong>Real ESP32</strong> publishing continuous MQTT telemetry to AWS IoT Core</li>
-<li>Functional sensors: temperature (DHT11), vibration (GY-521), gas (MQ-2), cabin lock (touch sensor)</li>
-</ul>
-<h4 id="aws-cloud-integration">AWS Cloud Integration<a class="headerlink" href="#aws-cloud-integration" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>IoT Core:</strong> Thing registration, X.509 certificates, secure MQTT</li>
-<li><strong>Device Shadow:</strong> Stores desired + reported state, enables offline sync</li>
-<li><strong>IoT Rules Engine:</strong> Routes messages to DynamoDB, SiteWise, SNS, Lambda</li>
-<li><strong>SiteWise:</strong> Asset model "RockCore-Truck-01" with 6+ properties</li>
-<li><strong>DynamoDB:</strong> Time-series storage of telemetry</li>
-<li><strong>SNS:</strong> Alert notifications for anomalies</li>
-</ul>
-<h4 id="analytics-visualization">Analytics &amp; Visualization<a class="headerlink" href="#analytics-visualization" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>QuickSight Dashboard</strong> (from A5b) with live data from real truck</li>
-<li>5+ visualizations: temperature trend, vibration status, gas levels, alerts, KPIs</li>
-<li>Real-time updates reflecting live sensor data</li>
-<li><strong>Pit Station Web Interface:</strong> Fleet status dashboard showing truck health grid</li>
-</ul>
-<h4 id="digital-twins-industry-quest">Digital Twins &amp; Industry Quest<a class="headerlink" href="#digital-twins-industry-quest" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>AWS IoT TwinMaker:</strong> </li>
-<li>Digital twin scene with 6 truck models (1 real + 5 simulated)</li>
-<li>Real truck telemetry bound to digital model</li>
-<li>Anomalies trigger visual changes (color, overlays)</li>
-<li>Demonstrates understanding of AWS Industry Quest labs (Weeks 15-17)</li>
-<li><strong>Predictive Maintenance:</strong> Anomaly detection rules with visual feedback on digital twins</li>
-</ul>
-<h4 id="testing-scenarios">Testing &amp; Scenarios<a class="headerlink" href="#testing-scenarios" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Real-world test scenarios</strong> (demonstrate all working):</li>
-<li>Normal operation: All systems green, data flowing smoothly</li>
-<li>Sensor anomaly: Trigger vibration spike, watch QuickSight + TwinMaker respond</li>
-<li>Offline resilience: Disconnect WiFi, device queues data, reconnects and syncs</li>
-<li>Multi-truck simulation: Dashboard shows real truck + 5 simulated trucks with mixed health states</li>
-<li><strong>Performance metrics:</strong> Message latency, Shadow sync time, anomaly detection response time</li>
-</ul>
-<h4 id="documentation_1">Documentation<a class="headerlink" href="#documentation_1" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>GitHub repository</strong> with all code organized:</li>
-<li><code>/arduino</code> – ESP32 haul truck firmware</li>
-<li><code>/aws</code> – CloudFormation/Lambda/Rules configurations</li>
-<li><code>/dashboard</code> – Pit station web interface (HTML/CSS/JS)</li>
-<li><code>/docs</code> – Architecture diagrams, setup guides</li>
-<li>
-<p><code>README.md</code> with complete deployment instructions</p>
-</li>
-<li>
-<p><strong>Architecture Document</strong> (2-3 pages):</p>
-</li>
-<li>Block diagram showing truck → IoT Core → Analytics → TwinMaker → Pit Station</li>
-<li>Scaling plan: How to extend to 20+ trucks in production</li>
-<li>
-<p>Cost estimate for AWS services</p>
-</li>
-<li>
-<p><strong>Unit Mapping Document:</strong> Table aligning each system component to ICTIOT503 performance criteria</p>
-</li>
-<li>Examples: "X.509 certs" → 1.3, "Device Shadow offline sync" → 1.5, "Digital Twin" → 2.4, etc.</li>
-</ul>
-<p><strong>Deliverables:</strong>
-1. <strong>GitHub Repository:</strong>
-   - [ ] All code files with clear structure
-   - [ ] README.md with setup &amp; run instructions
-   - [ ] Architecture diagram (PNG/PDF)
-   - [ ] Unit mapping document</p>
+<p><strong>Objective:</strong> Demonstrate complete IoT solution integrating electronics, AWS cloud, and digital twins for fleet monitoring.</p>
+<p><strong>Core Requirements:</strong></p>
+<p><strong>Hardware &amp; Sensors</strong>
+- Real ESP32 with all A1-A5b sensors functional (DHT11, GY-521, MQ-2, touch sensor)
+- Continuous MQTT telemetry to AWS IoT Core
+- Pit station: Simple 3-LED status indicator (red=error, orange=warning, green=normal)</p>
+<p><strong>AWS Cloud Integration</strong>
+- IoT Core with X.509 certificate authentication
+- Device Shadow for offline state management
+- IoT Rules Engine routing to SiteWise, DynamoDB, SNS
+- <strong>SiteWise:</strong> Asset model "RockCore-Truck-01" with properties (temperature, vibration, gas, lock_state)
+- QuickSight dashboard from A5b displaying real truck data
+- SNS alerts for anomalies</p>
+<p><strong>Digital Twins (AWS IoT TwinMaker)</strong>
+- Scene with 6 truck models (1 real truck + 5 simulated)
+- Real truck telemetry bound to digital representation
+- Visual feedback: anomalies change model color/state
+- Demonstrates Industry Quest labs (Weeks 15-17)</p>
+<p><strong>Deliverables:</strong></p>
 <ol>
-<li><strong>Demonstration Video (5 minutes):</strong></li>
-<li>Introduction: RockCore mining scenario and system overview</li>
-<li>Hardware demo: Show real truck, sensors working, MQTT messages</li>
-<li>Cloud integration: AWS console walkthrough (IoT Core, SiteWise, DynamoDB)</li>
-<li>Analytics: QuickSight dashboard with live data, trigger anomaly</li>
-<li>Digital twins: TwinMaker fleet scene responding to real truck anomaly</li>
-<li>Pit station: Web dashboard showing fleet status, drill-down to truck details</li>
 <li>
-<p>Conclusion: Business value (safety, ROI, maintenance efficiency)</p>
+<p><strong>GitHub Repository</strong> – Clean structure:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/truck     – ESP32 firmware with all sensors + MQTT
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>/pit-station – 3-LED status code
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>/aws       – IaC scripts (CloudFormation/CDK)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>/docs      – Architecture diagram, setup guide
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>README.md  – Deployment instructions
+</span></code></pre></div></p>
 </li>
 <li>
-<p><strong>Portfolio Document (PDF, 20-30 pages):</strong></p>
+<p><strong>Demonstration Video (5 minutes)</strong></p>
 </li>
-<li><strong>Executive Summary</strong> (1 page): Problem statement and solution overview</li>
-<li><strong>System Architecture</strong> (2-3 pages): Full diagrams and component descriptions</li>
-<li><strong>Hardware Implementation</strong> (3-4 pages): Truck design, sensor integration, photos</li>
-<li><strong>Software Architecture</strong> (4-5 pages): Arduino firmware, AWS services, data flow</li>
-<li><strong>Cloud Integration</strong> (4-5 pages): IoT Core, Shadows, Rules, SiteWise, DynamoDB</li>
-<li><strong>Analytics &amp; Visualization</strong> (2-3 pages): QuickSight dashboard, TwinMaker digital twins</li>
-<li><strong>Testing &amp; Results</strong> (4-5 pages): Test scenarios run, results, performance metrics</li>
-<li><strong>Industry Quest Integration</strong> (1-2 pages): How AWS Industry Quest (Weeks 15-17) enhanced learning</li>
-<li><strong>Reflection &amp; Learning</strong> (1-2 pages): Challenges, lessons learned, future improvements</li>
-<li><strong>Appendices:</strong> Code snippets, datasheets, screenshots, compliance evidence</li>
+<li>Truck in action: sensors working, MQTT messages flowing</li>
+<li>AWS console: IoT Core, SiteWise asset model, DynamoDB data</li>
+<li>QuickSight dashboard: live data with anomaly trigger</li>
+<li>TwinMaker: digital twins responding to real truck state change</li>
+<li>Pit station: 3 LEDs reflecting truck health status</li>
+<li>
+<p>Business value: safety, maintenance prediction, efficiency</p>
+</li>
+<li>
+<p><strong>Portfolio Document (Justified paragraphs, ~15-20 pages)</strong></p>
+</li>
+<li><strong>System Overview</strong> (250-300 words): Problem statement, RockCore scenario, how solution delivers value</li>
+<li><strong>Architecture</strong> (250-300 words): Truck → IoT Core → Analytics → TwinMaker, with diagram</li>
+<li><strong>Hardware</strong> (200-250 words): Sensor integration, wiring, photos</li>
+<li><strong>AWS Integration</strong> (300-350 words): IoT Core setup, Shadows, Rules, SiteWise configuration, DynamoDB schema</li>
+<li><strong>Analytics &amp; Digital Twins</strong> (250-300 words): QuickSight queries, TwinMaker scene binding, anomaly detection</li>
+<li><strong>Pit Station</strong> (150-200 words): 3-LED status logic, how it reflects truck state</li>
+<li><strong>Testing &amp; Validation</strong> (200-250 words): Data flow verification, offline sync test, anomaly response timing</li>
+<li><strong>Industry Quest Integration</strong> (150-200 words): Key learnings from Weeks 15-17, application to capstone</li>
+<li><strong>Reflection</strong> (150-200 words): Challenges, solutions, future improvements (scaling, multi-truck coordination)</li>
+<li><strong>Appendices:</strong> Architecture diagram (PNG), code snippets (key functions only), datasheets, unit mapping table</li>
 </ol>
 <p><strong>Submission Checklist:</strong>
-- [ ] GitHub repository URL (public or instructor access)
-- [ ] Demonstration video (MP4, 5 minutes max)
-- [ ] Portfolio PDF (20-30 pages)
+- [ ] GitHub repository link
+- [ ] 5-minute demonstration video (MP4)
+- [ ] Portfolio PDF (15-20 pages, justified paragraphs)
 - [ ] Architecture diagram (PNG/PDF)
-- [ ] Unit mapping document (showing alignment to ICTIOT503)
-- [ ] <strong>A6 submission template completed</strong> (A6_SUBMISSION_TEMPLATE.md)
-- [ ] <strong>Complete portfolio repository ZIP file</strong> (see below)
-- [ ] All files submitted to Blackboard "Week 18 – A6" folder by due date</p>
-<p><strong>Submission Steps:</strong></p>
-<ol>
-<li><strong>Fill out A6_SUBMISSION_TEMPLATE.md</strong> (located in <code>/A6-Capstone-Fleet-Demo/</code>)</li>
-<li>Include GitHub link, brief description, video link, portfolio PDF location</li>
-<li>
-<p>Copy completed form to Blackboard for timestamping</p>
-</li>
-<li>
-<p><strong>Create complete portfolio ZIP file</strong> (see structure below)</p>
-</li>
-<li>This is your final course deliverable/evidence</li>
-<li>Upload to Blackboard as supporting documentation</li>
-</ol>
-<p><strong>Deliverables:</strong></p>
-<p><strong>FINAL SUBMISSION: A6 Submission Template + Complete Portfolio ZIP</strong></p>
-<p><strong>Part 1: A6 Submission Template</strong> (required submission form)
-- Fill out <code>A6-Capstone-Fleet-Demo/A6_SUBMISSION_TEMPLATE.md</code>
-- Paste completed form into Blackboard submission box
-- This creates your timestamped submission record</p>
-<p><strong>Part 2: Complete Portfolio ZIP</strong> (final evidence of work)</p>
-<p>Submit a ZIP file of your entire portfolio repository. This should contain:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>iot-portfolio.zip
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── README.md (with your name, student ID, cohort)
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── A1-Electronics-Fundamentals/
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── code/esp32-arduino/
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ├── A1_SUBMISSION_TEMPLATE.md
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   └── README.md
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── A2-RFID-Access-Control/
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   ├── code/esp32-arduino/
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── A2_SUBMISSION_TEMPLATE.md
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   └── README.md
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>├── A3-Vibration-Monitoring/
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   ├── code/esp32-arduino/
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   ├── A3_SUBMISSION_TEMPLATE.md
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   └── README.md
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>├── A4-Haul-Truck-Integration/
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   ├── code/esp32-arduino/
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   ├── A4_SUBMISSION_TEMPLATE.md
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│   └── README.md
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>├── A5-AWS-IoT-Integration/
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│   ├── code/esp32-arduino/
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│   ├── aws-setup/
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│   ├── dashboards/
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│   ├── A5_SUBMISSION_TEMPLATE.md
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>│   ├── A5b_SUBMISSION_TEMPLATE.md
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>│   └── README.md
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>└── A6-Capstone-Fleet-Demo/
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    ├── truck/
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    ├── pit-station/
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    ├── aws/
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    ├── docs/
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    ├── portfolio/
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    │   ├── Portfolio.pdf (20-30 pages)
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    │   ├── architecture-diagram.png
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    │   ├── unit-mapping.pdf
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    │   └── evidence/
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    ├── video/
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    │   └── demo-video-link.txt
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    ├── A6_SUBMISSION_TEMPLATE.md
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    └── README.md
+- [ ] Unit mapping table (ICTIOT503 alignment)
+- [ ] A6_SUBMISSION_TEMPLATE.md completed
+- [ ] Complete portfolio ZIP (A1-A6) with all submission templates</p>
+<hr />
+<p><strong>Final Portfolio ZIP Structure:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>iot-portfolio.zip
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── A1-Electronics-Fundamentals/
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── code/esp32-arduino/
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── A1_SUBMISSION_TEMPLATE.md
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   └── README.md
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>├── A2-RFID-Access-Control/
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   ├── code/esp32-arduino/
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   ├── A2_SUBMISSION_TEMPLATE.md
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   └── README.md
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>├── A3-Vibration-Monitoring/
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│   ├── code/esp32-arduino/
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│   ├── A3_SUBMISSION_TEMPLATE.md
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   └── README.md
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>├── A4-Haul-Truck-Integration/
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│   ├── code/esp32-arduino/
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   ├── A4_SUBMISSION_TEMPLATE.md
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│   └── README.md
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>├── A5-AWS-IoT-Integration/
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│   ├── code/esp32-arduino/
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│   ├── aws-setup/
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│   ├── A5_SUBMISSION_TEMPLATE.md
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>│   ├── A5b_SUBMISSION_TEMPLATE.md
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>│   └── README.md
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>└── A6-Capstone-Fleet-Demo/
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    ├── truck/ – ESP32 firmware
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>    ├── pit-station/ – 3-LED status code
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    ├── aws/ – CloudFormation/CDK scripts
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    ├── docs/ – Architecture diagram, setup guide
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    ├── portfolio/ – Portfolio.pdf + unit-mapping.pdf
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    ├── video/ – demo-video-link.txt
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    ├── A6_SUBMISSION_TEMPLATE.md
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    └── README.md
 </span></code></pre></div></p>
-<p>This ZIP file represents your <strong>complete portfolio for the course</strong>. It demonstrates:
-- All 6 assessments (A1-A6) completed with submission templates
-- All code organized and documented
-- Complete AWS integration
-- Final capstone project with digital twins
-- Portfolio documentation and evidence</p>
-<p>Upload this ZIP to Blackboard as supporting evidence with your A6 submission template.</p>
-<ol>
-<li><strong>GitHub Repository:</strong></li>
-<li><code>/truck</code> folder: ESP32 code for truck</li>
-<li><code>/pit-station</code> folder: ESP32 code for pit station</li>
-<li><code>/aws</code> folder: CloudFormation/CDK/CLI scripts</li>
-<li><code>/docs</code> folder: Architecture diagram, setup guide</li>
-<li>
-<p><code>README.md</code> with deployment instructions</p>
-</li>
-<li>
-<p><strong>Demonstration Video (5-7 minutes):</strong></p>
-</li>
-<li>Opening: Introduce RockCore scenario</li>
-<li>Section 1: Normal operation (truck sending data, pit station displaying)</li>
-<li>Section 2: Test Scenario 1 (engine overheat)</li>
-<li>Section 3: Test Scenario 2 (unauthorized access)</li>
-<li>Section 4: Offline resilience (disconnect WiFi, show Shadow sync)</li>
-<li>
-<p>Closing: Explain business value (ROI, safety benefits)</p>
-</li>
-<li>
-<p><strong>Portfolio Document (PDF, 15-25 pages):</strong></p>
-</li>
-<li><strong>1. Executive Summary</strong> (1 page): Business problem and solution</li>
-<li><strong>2. Architecture</strong> (2-3 pages): Diagrams, component descriptions</li>
-<li><strong>3. Device Implementation</strong> (4-6 pages): Hardware, code structure</li>
-<li><strong>4. AWS Integration</strong> (3-4 pages): IoT Core, Shadows, Rules, Analytics</li>
-<li><strong>5. Testing Results</strong> (4-6 pages): Test scenarios, performance data</li>
-<li><strong>6. Reflection</strong> (1-2 pages): Challenges, lessons learned</li>
-<li><strong>7. Appendices</strong>: Code snippets, datasheets, screenshots</li>
-</ol>
-<p><strong>Final Submission Checklist:</strong>
-- [ ] A6_SUBMISSION_TEMPLATE.md completed and pasted to Blackboard
-- [ ] Complete portfolio ZIP created with all assessments (A1-A6)
-- [ ] ZIP includes all submission templates (A1_SUBMISSION_TEMPLATE.md through A6_SUBMISSION_TEMPLATE.md)
-- [ ] GitHub repository URL included in ZIP
-- [ ] Demonstration video link included (in <code>/A6-Capstone-Fleet-Demo/video/demo-video-link.txt</code>)
-- [ ] Portfolio PDF included (in <code>/A6-Capstone-Fleet-Demo/portfolio/Portfolio.pdf</code>)
-- [ ] Architecture diagram included (in <code>/A6-Capstone-Fleet-Demo/docs/</code>)
-- [ ] Unit mapping document included
-- [ ] Evidence photos/screenshots in portfolio folder
-- [ ] A6 submission template uploaded to Blackboard (timestamped submission)
-- [ ] ZIP file uploaded to Blackboard as supporting evidence</p>
 <hr />
 <h2 id="general-submission-guidelines">General Submission Guidelines<a class="headerlink" href="#general-submission-guidelines" title="Permanent link">&para;</a></h2>
 <p><strong>All Assessments:</strong>

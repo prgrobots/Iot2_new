@@ -15,6 +15,29 @@ See [Assessment Submission Process](assessments/index.md) for details.
 
 ---
 
+## AWS Courses – Student Checklist (Weeks 10–17)
+
+**Complete these courses in order. All are FREE via your student sandbox account.**
+
+| Week | Course Name | Duration | How to Access |
+|------|-------------|----------|---------------|
+| 10 | Getting Started with AWS IoT | 35 min | AWS Skill Builder (free) |
+| 10 | Securely Connecting AWS IoT Devices to the Cloud | 1 h | AWS Skill Builder (free) |
+| 11 | Handling AWS IoT Device Data and States | 2 h | AWS Skill Builder (free) |
+| 12 | Managing AWS IoT Devices at Scale | 3 h 30 m | AWS Skill Builder (free) |
+| 12 | OTA Updates in Edge Devices | 1 h | NMTAFE Sandbox (instructor adds you) |
+| 13 | ETL at the Edge | 1 h | NMTAFE Sandbox (instructor adds you) |
+| 13 | Lab – Deploying AWS IoT Greengrass Components | 1 h | AWS Free Lab (free) |
+| 14 | Analyzing, Visualizing, and Gaining Insights from IoT Devices | 45 min | AWS Skill Builder (free) |
+| 14 | Connecting Systems and Machines to AWS for Industrial Manufacturing | 45 min | AWS Skill Builder (free) |
+| 15–17 | AWS Industry Quest: Manufacturing and Automotive | 13 h | NMTAFE Sandbox (instructor adds you) |
+
+**Total: ~27 hours of AWS training (Weeks 10–17)**
+
+📌 **Note:** See [AWS Training Resources](resources/aws-training.md) for detailed course descriptions and enrollment links.
+
+---
+
 ## 18-Week Timeline
 
 | Week | Session Title | Simulator / Hardware | Key Content | Truck Progress | Assessment |
