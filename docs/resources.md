@@ -67,6 +67,21 @@ For advanced users: [platformio.org](https://platformio.org/)
 Needed for OTA updates and Greengrass deployment (Weeks 12-13).
 
 ## Documentation & Datasheets
+[## Arduino & Raspberry Pi Pico Example Code]
+
+### Arduino Standard Examples
+
+- **Local Folder:** [Arduino Examples](arduino-examples/)
+- **Upstream Source:** [github.com/arduino/arduino-examples](https://github.com/arduino/arduino-examples)
+
+These are the official example sketches from the Arduino IDE. Use them for reference, practice, or as a starting point for your own projects.
+
+### Raspberry Pi Pico Arduino C Examples
+
+- **Local Folder:** [Pico Examples](pico-examples/)
+- **Upstream Source:** [github.com/earlephilhower/arduino-pico/tree/master/libraries](https://github.com/earlephilhower/arduino-pico/tree/master/libraries)
+
+These are example codes for the Raspberry Pi Pico using the Arduino framework (C/C++), provided by the Earle Philhower core. Useful for Pico-specific peripherals and advanced features.
 
 **ESP32:**
 - [Official Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)
