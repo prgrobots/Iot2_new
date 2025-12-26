@@ -18,12 +18,15 @@ All theory content is delivered through this excellent open-source resource from
 
 ⚠️ **AUTHORITATIVE SOURCE:** See [AWS Training Resources](resources/aws-training.md) for complete week-by-week AWS course content, enrollment instructions, and NMTAFE sandbox setup.
 
+
 **Quick Links:**
 
 - [AWS Skill Builder](https://explore.skillbuilder.aws/) – Free Foundations courses for Weeks 10-14
 - [AWS IoT Core Documentation](https://docs.aws.amazon.com/iot-core/) – Reference material
 - [AWS IoT SiteWise](https://docs.aws.amazon.com/iot-sitewise/) – Asset modeling (Week 14)
 - [AWS IoT TwinMaker](https://docs.aws.amazon.com/iot-twinmaker/) – Digital twins (Weeks 15-17)
+- [ESP32 AWS IoT Example Repo (Arduino)](https://github.com/aws-samples/aws-iot-esp32-arduino-examples) – Direct example for connecting ESP32 to AWS IoT Core (can be adapted for Raspberry Pi Pico in C)
+- [AWS IoT Quick Connect Tutorial](https://docs.aws.amazon.com/iot/latest/developerguide/iot-quick-start.html) – Official AWS quick start for connecting devices
 
 **AWS Courses Delivered via NMTAFE Sandbox (no student cost):**
 
@@ -67,21 +70,38 @@ For advanced users: [platformio.org](https://platformio.org/)
 Needed for OTA updates and Greengrass deployment (Weeks 12-13).
 
 ## Documentation & Datasheets
-[## Arduino & Raspberry Pi Pico Example Code]
+
+## Arduino & Raspberry Pi Pico Example Code
 
 ### Arduino Standard Examples
 
-- **Local Folder:** [Arduino Examples](arduino-examples/)
-- **Upstream Source:** [github.com/arduino/arduino-examples](https://github.com/arduino/arduino-examples)
+This section contains the standard Arduino example sketches as found in the Arduino IDE and official repository.
 
-These are the official example sketches from the Arduino IDE. Use them for reference, practice, or as a starting point for your own projects.
+- Source: https://github.com/arduino/arduino-examples
+- For reference and educational use.
+
+To download the latest examples, visit the link above or clone the repository:
+
+```sh
+git clone https://github.com/arduino/arduino-examples.git
+```
+
+You can copy relevant examples into this folder as needed for your course or documentation.
 
 ### Raspberry Pi Pico Arduino C Examples
 
-- **Local Folder:** [Pico Examples](pico-examples/)
-- **Upstream Source:** [github.com/earlephilhower/arduino-pico/tree/master/libraries](https://github.com/earlephilhower/arduino-pico/tree/master/libraries)
+This section is for example code specific to the Raspberry Pi Pico using the Arduino framework (C/C++), as provided by the Earle Philhower core.
 
-These are example codes for the Raspberry Pi Pico using the Arduino framework (C/C++), provided by the Earle Philhower core. Useful for Pico-specific peripherals and advanced features.
+- Source: https://github.com/earlephilhower/arduino-pico/tree/master/libraries
+- For reference and educational use.
+
+To download the latest examples, visit the link above or clone the repository:
+
+```sh
+git clone https://github.com/earlephilhower/arduino-pico.git
+```
+
+You can copy relevant library examples into this folder as needed for your course or documentation.
 
 **ESP32:**
 - [Official Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)
@@ -95,7 +115,10 @@ These are example codes for the Raspberry Pi Pico using the Arduino framework (C
 
 ## GitHub Resources
 
+
 **Course Examples:** [Link TBD - Your GitHub repo]
+
+**ESP32 AWS IoT Example Repo:** [aws-iot-esp32-arduino-examples](https://github.com/aws-samples/aws-iot-esp32-arduino-examples) – Step-by-step for connecting ESP32 to AWS IoT Core. Also useful for adapting to Raspberry Pi Pico (C/C++).
 
 **Recommended Arduino Libraries:**
 - [Adafruit Learning System](https://learn.adafruit.com/)
