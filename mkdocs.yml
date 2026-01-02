@@ -52,9 +52,19 @@ nav:
   - Assessments:
       - Overview: assessments/index.md
   - Resources:
-      - Main Resources: resources.md
+      - Overview: resources.md
+      - PhysComp Website: resources/physcomp-website.md
+      - AWS Training & Courses: resources/aws-training.md
+      - AWS Resources: resources/aws-resources.md
+      - Wokwi Simulator: resources/wokwi-simulator.md
+      - Software Tools: resources/software-tools.md
+      - Documentation & Datasheets: resources/documentation-datasheets.md
+      - GitHub Resources: resources/github-resources.md
+      - AWS Documentation: resources/aws-documentation.md
+      - Troubleshooting Resources: resources/troubleshooting-resources.md
+      - Community & Forums: resources/community-forums.md
+      - Optional Advanced Reading: resources/advanced-reading.md
       - 3D Print Files: prints.md
-      - AWS Training: resources/aws-training.md
       - Glossary: glossary.md
   
 plugins:
