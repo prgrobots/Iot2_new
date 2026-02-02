@@ -1,51 +1,87 @@
-# Welcome to the IoT Course
+# IoT Course: Physical Computing to Cloud
 
-Welcome to the IoT Course documentation site. **Physical Computing to Cloud**
+Welcome to the **IoT Course** documentation site covering physical computing fundamentals through cloud-connected IoT systems.
 
-This comprehensive 18-week course takes you on a journey from basic electronics to cloud-connected IoT systems, building a real-world haul truck monitoring system for mining operations (RockCore scenario).
+<section style="border: 1px #bf5406 solid; margin: 1rem; width: 40rem; min-width: 40rem; max-width: 40rem; padding: 0;"><header style="width: 100%; background: #bf5406; color: white; margin-top: 0; padding: 0rem;">
+<h4 style="padding: 1rem; margin: 0; font-size: 1.6rem; width: 100%;">Welcome to Country</h4>
+<img style="height: auto;" height="177" width="790" alt="" src="./images/Acknowledgement.jpg" /></header>
+<div style="padding: 1rem; color: #000000;">North Metropolitan TAFE recognises Australian Aboriginal and Torres Strait Islander People's unique cultural and spiritual relationships to the land, waters, and seas and their rich contribution to our society.</div>
+<div style="padding: 1rem; color: #000000;">We acknowledge the Mooro Boodjar and Whadjuk Noongar People, the traditional custodians of the lands on which our campuses are located, and pay our respects to ancestors and Elders, past and present.</div>
+</section>
 
----
+## Course Overview - LAP
+
+**Duration:** 18 weeks (integrated delivery)  
+**Focus:** Physical computing fundamentals through cloud-connected IoT systems  
+**Scenario:** RockCore mining haul truck monitoring system  
+**Platform:** Wokwi & Tinkercad simulations with real ESP32 hardware  
+**Assessment:** Portfolio-based with 6 practical assessment components (A1–A6)
+
+## Learning & Assessment Plan - Complete Details
+
+For the complete 18-week course schedule with detailed learning activities, assessment points, and hourly breakdowns, see the [Course Overview - LAP](course-overview/learning-assessment-plan.md).
 
 ## Quick Navigation
 
-### Course Structure
+### Course Information
+- **[Course Overview - LAP](course-overview/learning-assessment-plan.md)** - Complete 18-week course schedule
+- **[Scenario](scenario.md)** - RockCore mining haul truck context
+- **[Glossary](glossary.md)** - Key terms and definitions
 
-- **Weeks 1-9**: Physical Computing with ESP32 (Electronics fundamentals + hardware truck build)
-- **Weeks 10-14**: AWS IoT Cloud Services (Connectivity, analytics, real-time monitoring)
-- **Weeks 15-18**: Capstone Integration (Fleet dashboard, pit station, final demo)
+### Weekly Sessions
 
-### Key Resources
+=== "Weeks 1-9: Physical Computing"
+    
+    **Electronics fundamentals and hardware truck build**
+    
+    - [Week 1-2](electronics/01.md): Electronics Foundations
+    - [Week 3](electronics/03.md): Advanced Output + Buttons
+    - [Week 4](electronics/04.md): Analog Input + Sensors
+    - [Week 5](electronics/05.md): I²C + Actuators
+    - [Week 6](electronics/06.md): RFID, RTC, Touch
+    - [Week 7](electronics/07.md): Environmental + Tones
+    - [Week 8](electronics/08.md): Signal Processing & Vibration
+    - [Week 9](electronics/09.md): Full Truck Assembly & Testing
 
-- [ Course Overview & Timeline](overview.md) – Week-by-week sessions and assessments
-- [ Scenario](scenario.md) – RockCore mining haul truck context
-- [ Assessments](assessments/index.md) – A1-A6 structure, deliverables
-- [ 3D Print Files](prints.md) – Physical truck design
-- [ Resources](resources.md) – Various resources and learning links
-- [ AWS Training](resources/aws-training.md) – Skill Builder courses
+=== "Weeks 10-14: AWS Cloud Services"
+    
+    **Connectivity, analytics, and real-time monitoring**
+    
+    - [Week 10](aws/10.md): AWS IoT Core Basics
+    - [Week 11](aws/11.md): Device Data & Shadows
+    - [Week 12](aws/12.md): Fleet Management & OTA
+    - [Week 13](aws/13.md): Edge Processing & Industrial
+    - [Week 14](aws/14.md): Analytics & Visualization
 
-### Getting Started
+=== "Weeks 15-18: Capstone Integration"
+    
+    **Fleet dashboard, pit station, and final demonstration**
+    
+    - [Week 15](capstone/testing.md): AWS Industry Quest (1/3)
+    - [Week 16](capstone/integration.md): AWS Industry Quest (2/3)
+    - [Week 17](capstone/pit-station.md): AWS Industry Quest (3/3)
+    - [Week 18](capstone/demo.md): Final Demo & Portfolio Review
 
-1. **Set up your portfolio:** Use the [IoT Portfolio Template](https://github.com/your-institution/iot-portfolio-template) – click "Use this template" to create your own repo
-2. **Navigate course content** using the menu above – each week builds on previous concepts
-3. **Submit assessments** using the submission templates in each assessment folder (see [Assessment Submission Process](assessments/index.md))
+## Assessment Portfolio
+
+Your competency will be demonstrated through six portfolio components:
+
+- **A1-A5:** Physical Computing & Cloud Integration (Electronics, hardware, sensors, and AWS)
+- **A6:** Capstone Integration (Complete system demonstration)
+
+Each assessment includes both theoretical understanding and practical implementation tasks.
+
+## Current Week Navigation
+
+!!! note "Quick Week Access"
+    Jump directly to any week:
+    
+    **Electronics:** [Week 1-2](electronics/01.md) | [Week 3](electronics/03.md) | [Week 4](electronics/04.md) | [Week 5](electronics/05.md) | [Week 6](electronics/06.md) | [Week 7](electronics/07.md) | [Week 8](electronics/08.md) | [Week 9](electronics/09.md)
+    
+    **AWS:** [Week 10](aws/10.md) | [Week 11](aws/11.md) | [Week 12](aws/12.md) | [Week 13](aws/13.md) | [Week 14](aws/14.md)
+    
+    **Capstone:** [Week 15](capstone/testing.md) | [Week 16](capstone/integration.md) | [Week 17](capstone/pit-station.md) | [Week 18](capstone/demo.md)
 
 ---
 
-## Portfolio & Submission
-
-**Your GitHub portfolio is your primary submission method.** Each assessment has a pre-filled submission template in its folder. Fill out the template and submit to Blackboard for timestamping. Your code stays on GitHub only – no duplication.
-
-See [Assessments](assessments/index.md) for full submission details and template locations.
-
----
-
-## Latest Updates
-
-- **14 December 2025**: Submission templates added to portfolio template – one for each assessment (A1-A6) with institutional formatting
-- **8 December 2025**: AWS course content aligned to authoritative sources; Assessment 5b (QuickSight Dashboard) added
-- **Week 14**: Now covers Analytics & Visualization with SiteWise + QuickSight dashboard
-- **Week 13**: Streamlined to ETL at the Edge + Greengrass deployment
-
----
-
-**Last updated:** 8 December 2025
+*Ready to begin? Start with the [Learning & Assessment Plan](course-overview/learning-assessment-plan.md) or jump directly to [Week 1](electronics/01.md).*

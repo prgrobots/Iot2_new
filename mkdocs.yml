@@ -23,7 +23,7 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - Course Overview: overview.md
+  - Course Overview - LAP: course-overview/learning-assessment-plan.md
   - RockCore Mining Scenario: scenario.md
   - Electronics (Weeks 1-9):
       - Week 01 - Electronics Basics: electronics/01.md
