@@ -18,6 +18,9 @@
 
 ## Learning and Assessment Schedule
 
+!!! note "Week 1-2 Structure"
+    The combined Week 1-2 session (8 hours) covers Voltage, Current, and Ohm's Law fundamentals. Navigation references `electronics/01.md`. Note: A separate `electronics/02.md` file exists with LEDs & Breadboards content but is not yet integrated into the course structure—this should be consolidated with Week 3 (Advanced Output + Buttons) or clarified as a separate week depending on course redesign.
+
 ### Phase 1: Electronics Fundamentals (Weeks 1–9)
 
 | Week | Session Title | Simulator / Hardware | Key Content | Learning Resources* | Out-of-Class Activities* | Truck Progress | Hours |
@@ -74,6 +77,9 @@
 ---
 
 ### Phase 3: Capstone Integration (Weeks 15–18)
+
+!!! note "Capstone Content Structure"
+    Weeks 15-17 are part of the **AWS Industry Quest: Manufacturing** capstone experience. Primary content is located in the `capstone/` directory. Supplementary AWS training materials are available in the `aws/` directory as optional reference reading.
 
 | Week | Session Title | Hardware | Key Content | Learning Resources* | Out-of-Class Activities* | System Progress | Hours |
 |------|---------------|----------|-------------|-------------------|-------------------------|-----------------|-------|
