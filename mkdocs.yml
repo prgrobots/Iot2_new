@@ -41,10 +41,10 @@ nav:
       - Week 13 - Edge Processing & Industrial: aws/13.md
       - Week 14 - Analytics & Visualization: aws/14.md
   - Capstone (Weeks 15-18):
-      - Week 15 - AWS Industry Quest: Manufacturing (1/3): capstone/testing.md
-      - Week 16 - AWS Industry Quest: Manufacturing (2/3): capstone/integration.md
-      - Week 17 - AWS Industry Quest: Manufacturing (3/3): capstone/pit-station.md
-      - Week 18 - Capstone: Demo & Final Submission: capstone/demo.md
+      - "Week 15 - AWS Industry Quest: Manufacturing (1/3)": capstone/testing.md
+      - "Week 16 - AWS Industry Quest: Manufacturing (2/3)": capstone/integration.md
+      - "Week 17 - AWS Industry Quest: Manufacturing (3/3)": capstone/pit-station.md
+      - "Week 18 - Capstone: Demo & Final Submission": capstone/demo.md
   - Assessments:
       - Overview: assessments/index.md
   - Resources:
