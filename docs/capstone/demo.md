@@ -194,19 +194,6 @@ rockcore-iot-fleet/
 
 ---
 
-## Grading Rubric Overview
-
-| Criterion | Weight | HD (85-100%) | D (75-84%) | C (65-74%) | P (50-64%) | F (<50%) |
-|-----------|--------|--------------|------------|------------|------------|----------|
-| Device 1 Programming | 20% | All sensors integrated, robust error handling | Most sensors working, minor bugs | Basic functionality, some faults | Incomplete integration | Non-functional |
-| Device 2 Programming | 15% | Pit station fully functional, real-time updates | Works but limited features | Basic MQTT subscribe only | Incomplete | Non-functional |
-| AWS Integration | 25% | Shadows, Rules, CloudWatch, dashboard | Shadows + Rules working | Basic MQTT to IoT Core | Connects but no rules | No AWS |
-| Testing & Documentation | 20% | Comprehensive testing, 3+ scenarios, detailed docs | Good testing, complete docs | Basic testing, minimal docs | Incomplete testing | No testing evidence |
-| Performance Criteria Mapping | 10% | All criteria clearly mapped with evidence | Most criteria mapped | Some criteria mapped | Minimal mapping | No mapping |
-| System Design & Reflection | 10% | Excellent architecture, insightful reflection | Good design, reflection present | Basic design, brief reflection | Minimal design docs | No reflection |
-
----
-
 ## Final Checklist
 
 Before submission, verify:

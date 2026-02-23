@@ -26,24 +26,23 @@ nav:
   - Course Overview - LAP: course-overview/learning-assessment-plan.md
   - RockCore Mining Scenario: scenario.md
   - Electronics (Weeks 1-9):
-      - Week 01 - Electronics Basics: electronics/01.md
-      - Week 02 - LEDs & Breadboards: electronics/02.md
-      - Week 03 - Advanced Output & Buttons: electronics/03.md
-      - Week 04 - Analog Sensors: electronics/04.md
-      - Week 05 - I²C & Actuators: electronics/05.md
-      - Week 06 - RFID & Touch: electronics/06.md
-      - Week 07 - Environmental Sensors: electronics/07.md
-      - Week 08 - Signal Processing: electronics/08.md
-      - Week 09 - Full Truck Assembly: electronics/09.md
+      - Week 1-2 - Voltage, Current, Ohm's Law: electronics/01.md
+      - Week 03 - Advanced Output + Buttons: electronics/03.md
+      - Week 04 - Analog Input + Sensors: electronics/04.md
+      - Week 05 - I²C + Actuators: electronics/05.md
+      - Week 06 - RFID, RTC, Touch: electronics/06.md
+      - Week 07 - Environmental + Tones: electronics/07.md
+      - Week 08 - Signal Processing & Vibration: electronics/08.md
+      - Week 09 - Full Truck Assembly & Testing: electronics/09.md
   - AWS IoT (Weeks 10-17):
-      - Week 10 - IoT Core & Secure Connection: aws/10.md
-      - Week 11 - Data & Shadows: aws/11.md
-      - Week 12 - Fleet & OTA: aws/12.md
-      - Week 13 - Edge & Industrial: aws/13.md
-      - Week 14 - Analytics & Dashboard: aws/14.md
-      - Week 15 - Manufacturing Quest Intro: aws/15.md
-      - Week 16 - Manufacturing & Automotive: aws/16.md
-      - Week 17 - Advanced Industry Applications: aws/17.md
+      - Week 10 - AWS IoT Core & Secure Connection: aws/10.md
+      - Week 11 - Device Data, Rules & Shadows: aws/11.md
+      - Week 12 - Fleet Management & OTA: aws/12.md
+      - Week 13 - Edge Processing & Industrial: aws/13.md
+      - Week 14 - Analytics & Visualization: aws/14.md
+      - Week 15 - AWS Industry Quest: Manufacturing (1/3): aws/15.md
+      - Week 16 - AWS Industry Quest: Manufacturing (2/3): aws/16.md
+      - Week 17 - AWS Industry Quest: Manufacturing (3/3): aws/17.md
   - Capstone (Weeks 15-18):
       - Integration Guide: capstone/integration.md
       - Pit Station Build: capstone/pit-station.md

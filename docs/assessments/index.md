@@ -1,6 +1,6 @@
-# Assessments OverviewD
+# Assessments Overview
 
-All assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT503** (Evaluate and test IoT device solutions).
+This course uses **competency-based assessment** where students demonstrate mastery of specific IoT skills and knowledge. Assessments map to **ICTIOT502** (Develop IoT device solutions) and **ICTIOT503** (Evaluate and test IoT device solutions) and are designed to evaluate competency demonstrated through practical application, not percentage-based grades.
 
 ## Assessment Schedule
 
@@ -283,8 +283,8 @@ iot-portfolio.zip
 
 **All Assessments:**
 - Submit via Blackboard by 11:59 PM on due date
-- Late penalties: 10% per day (max 3 days, then 0%)
 - Extensions require medical/special consideration evidence
+- Late submissions may affect timely feedback on competency development
 
 **Video Requirements:**
 - MP4 format, max 500 MB

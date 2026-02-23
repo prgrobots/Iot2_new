@@ -4,6 +4,8 @@
 
 ---
 
+
+
 ## Course Overview
 
 **Duration:** 18 weeks (integrated delivery)  
@@ -33,19 +35,16 @@
     **[A1: Engine Compartment Monitor](../assessments/index.md)** (Due Week 4)
     - Sensor integration and real-time monitoring
     - Maps to ICTIOT502 Device 1 Condition 1
-    - **Weighting:** 15% of portfolio
 
 !!! warning "Assessment Point 2: A2 Complete"
     **[A2: Operator Cabin Safety System](../assessments/index.md)** (Due Week 6)
     - Access control and safety mechanisms
     - Maps to ICTIOT502 Device 1 Condition 2
-    - **Weighting:** 15% of portfolio
 
 !!! warning "Assessment Point 3: A3 Complete"
     **[A3: Tire & Suspension Health Monitor](../assessments/index.md)** (Due Week 8)
     - Sensor fusion and predictive analytics
     - Maps to ICTIOT503 Device 1
-    - **Weighting:** 15% of portfolio
 
 !!! warning "Assessment Point 4: A4-A5 Complete"
     **[A4: Payload & Load Management](../assessments/index.md)** (Due Week 9)
@@ -54,7 +53,6 @@
     - **[A5: Haul Road Environmental Monitor](../assessments/index.md)** (Due Week 9)
     - Complete sensor suite and environmental data
     - Maps to Integration Requirements
-    - **Weighting:** 20% of portfolio (combined A3-A5)
 
 ---
 
@@ -72,7 +70,6 @@
     **[A5b: Cloud Analytics & Visualization](../assessments/index.md)** (Due Week 14)
     - AWS platform integration and dashboard development
     - Integrates all prior electronics assessments (A1-A4) with cloud data
-    - **Weighting:** 15% of portfolio
 
 ---
 
@@ -91,20 +88,19 @@
     - Maps to all performance criteria for both ICTIOT502 and ICTIOT503
     - Includes 5-minute system video and digital twin integration
     - Demonstrates competency across all eight units of competency
-    - **Weighting:** 20% of portfolio
 
 ---
 
 ## Assessment Summary
 
-| Assessment | Focus Area | Due Week | Unit Coverage | Weighting | Status |
-|-----------|-----------|----------|---------------|-----------|--------|
-| **A1** | Engine Compartment Monitor | 4 | ICTIOT502 Device 1 Cond 1 | 15% | Physical Computing |
-| **A2** | Operator Cabin Safety System | 6 | ICTIOT502 Device 1 Cond 2 | 15% | Physical Computing |
-| **A3** | Tire & Suspension Health Monitor | 8 | ICTIOT503 Device 1 | 15% | Physical Computing |
-| **A4** | Payload & Load Management | 9 | ICTIOT503 Device 2 | Integration | Physical Computing |
-| **A5** | Environmental Monitor + Cloud Analytics | 14 | Integration + Cloud | 15% | Cloud Integration |
-| **A6** | Capstone Fleet System | 18 | All Units | 25% | Full Integration |
+| Assessment | Focus Area | Due Week | Unit Coverage | Status |
+|-----------|-----------|----------|---------------|--------|
+| **A1** | Engine Compartment Monitor | 4 | ICTIOT502 Device 1 Cond 1 | Physical Computing |
+| **A2** | Operator Cabin Safety System | 6 | ICTIOT502 Device 1 Cond 2 | Physical Computing |
+| **A3** | Tire & Suspension Health Monitor | 8 | ICTIOT503 Device 1 | Physical Computing |
+| **A4** | Payload & Load Management | 9 | ICTIOT503 Device 2 | Physical Computing |
+| **A5** | Environmental Monitor + Cloud Analytics | 14 | Integration + Cloud | Cloud Integration |
+| **A6** | Capstone Fleet System | 18 | All Units | Full Integration |
 
 ---
 
