@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#session-04-analog-sensors" class="md-skip">
+        <a href="#session-04-analog-sensors-rgb-status-display" class="md-skip">
           Skip to content
         </a>
       
@@ -697,10 +697,54 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sensors-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensors &amp; Components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiring Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-logic-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Logic Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#hands-on-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       
         Hands-On Tasks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-flowcharts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Flowcharts
       
     </span>
   </a>
@@ -1810,7 +1854,7 @@
 
 
 
-<h1 id="session-04-analog-sensors">Session 04: Analog Sensors<a class="headerlink" href="#session-04-analog-sensors" title="Permanent link">&para;</a></h1>
+<h1 id="session-04-analog-sensors-rgb-status-display">Session 04: Analog Sensors &amp; RGB Status Display<a class="headerlink" href="#session-04-analog-sensors-rgb-status-display" title="Permanent link">&para;</a></h1>
 <p><strong>Week:</strong> 4<br />
 <strong>Element:</strong> ICTIOT502 Element 2: Program IoT device<br />
 <strong>Duration:</strong> 3.5 hours<br />
@@ -1821,23 +1865,24 @@
 </blockquote>
 <hr />
 <h2 id="session-introduction">Session Introduction<a class="headerlink" href="#session-introduction" title="Permanent link">&para;</a></h2>
-<p>This week you transition from Wokwi simulation to <strong>real ESP32 hardware</strong> for the first time. You'll build the Engine Compartment Monitor using DHT11 (temperature/humidity), MQ-2 (gas), and flame sensors. This session completes <strong>Assessment 1</strong>, where you'll implement threshold-based alerting and test sensor calibration – critical skills for predictive maintenance at RockCore Mining.</p>
+<p>This week you transition from Wokwi simulation to <strong>real ESP32 hardware</strong> for the first time. You'll build the Engine Compartment Monitor using DHT11 (temperature/humidity), a photocell/LDR (ambient light), and an RGB LED for status display. This session completes <strong>Assessment 1</strong>, where you'll implement responsive color and brightness logic with automatic LED activation in darkness – critical skills for predictive maintenance and safety at RockCore Mining's dark engine bays.</p>
 <h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this session, you will be able to:</p>
 <ul>
 <li>Interface DHT11 temperature/humidity sensor with ESP32</li>
-<li>Read analog values from MQ-2 gas sensor</li>
-<li>Implement digital flame detection</li>
-<li>Set and test threshold-based alerts</li>
+<li>Read analog values from a photocell (LDR) to detect ambient light levels</li>
+<li>Control RGB LED brightness and color using PWM</li>
+<li>Map sensor data to visual status indicators (color = temperature, brightness = light level)</li>
+<li>Implement auto-on logic (activate LED when light falls below threshold)</li>
 <li>Complete <strong>Assessment 1</strong> with fault rectification documentation</li>
 </ul>
 <hr />
 <h2 id="session-structure">Session Structure<a class="headerlink" href="#session-structure" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Sensor Theory Review</strong> – Analog vs digital sensors</li>
-<li><strong>Wokwi Simulation</strong> – Test DHT11 + MQ-2 code</li>
-<li><strong>Real ESP32 Build</strong> – Physical wiring and testing</li>
-<li><strong>Threshold Alerts</strong> – Implement warning/fault logic</li>
+<li><strong>Sensor Theory Review</strong> – Analog vs digital sensors; photocell behavior</li>
+<li><strong>Wokwi Simulation</strong> – Test DHT11 + RGB LED code with simulated light levels</li>
+<li><strong>Real ESP32 Build</strong> – Physical wiring and component integration</li>
+<li><strong>Color &amp; Brightness Logic</strong> – Map temperature to color, light level to brightness</li>
 <li><strong>Assessment 1 Submission</strong> – Portfolio evidence</li>
 </ol>
 <hr />
@@ -1847,7 +1892,7 @@
 <ul>
 <li>PhysComp → <a href="https://makeabilitylab.github.io/physcomp/arduino/analog-input.html">Analog Input</a></li>
 <li>DHT11 datasheet (see Resources page)</li>
-<li>MQ-2 sensor calibration guide</li>
+<li>Photocell (LDR) behavior &amp; calibration guide</li>
 </ul>
 </div>
 <div class="admonition tip">
@@ -1856,195 +1901,461 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Keyestudio ESP32 kit collected (from instructor)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Wokwi project ready for pre-testing</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Install DHT library in Arduino IDE: <code>DHT sensor library by Adafruit</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> RGB LED and photocell sourced</li>
 </ul>
 </div>
 <hr />
 <h2 id="rockcore-mining-context">RockCore Mining Context<a class="headerlink" href="#rockcore-mining-context" title="Permanent link">&para;</a></h2>
-<p>Engine compartment fires are a leading cause of heavy equipment loss in mining. Your <strong>Engine Compartment Monitor</strong> must detect:</p>
+<p>Engine compartment fires are a leading cause of heavy equipment loss in mining. Your <strong>Engine Compartment Monitor</strong> must visually indicate the engine's thermal state and respond to darkness by automatically enabling status lights. The system combines:</p>
 <ul>
-<li><strong>Temperature &gt; 60°C</strong>: Warning (amber LED)</li>
-<li><strong>Temperature &gt; 80°C</strong>: Fault (red LED + buzzer)</li>
-<li><strong>Gas detected (MQ-2 &gt; 300)</strong>: Potential fuel leak</li>
-<li><strong>Flame detected</strong>: Immediate shutdown signal</li>
+<li><strong>Temperature Status (via RGB color):</strong></li>
+<li>Green: Normal (&lt; 60°C)</li>
+<li>Yellow: Warning (60–80°C)</li>
+<li>
+<p>Red: Critical (&gt; 80°C)</p>
+</li>
+<li>
+<p><strong>Ambient Light Response (via RGB brightness):</strong></p>
+</li>
+<li>In darkness (photocell &lt; 500): LED automatically activates at full brightness</li>
+<li>In dim light (500–1500): LED at medium brightness</li>
+<li>In normal/bright light (&gt; 1500): LED brightness scales with available light</li>
 </ul>
-<p>Today you'll build this system and test it with simulated faults (e.g., holding a lighter near sensors).</p>
+<p>This design mimics a truck cabin where dark tunnels and night operations require automatic lighting that reflects both engine status and available light.</p>
+<hr />
+<h2 id="sensors-components">Sensors &amp; Components<a class="headerlink" href="#sensors-components" title="Permanent link">&para;</a></h2>
+<h3 id="dht11-temperaturehumidity-sensor">DHT11 Temperature/Humidity Sensor<a class="headerlink" href="#dht11-temperaturehumidity-sensor" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Output:</strong> I²C digital (single wire protocol)</li>
+<li><strong>Reading:</strong> Temperature (°C), Humidity (%)</li>
+<li><strong>Range:</strong> Temp 0–50°C (±2°C accuracy), Humidity 20–90% RH</li>
+<li><strong>Common Issue:</strong> Returns <code>NaN</code> on faulty reading (poor connection, timing issue)</li>
+<li><strong>GPIO:</strong> 4 (configurable)</li>
+</ul>
+<h3 id="photocell-ldr-light-dependent-resistor">Photocell (LDR – Light Dependent Resistor)<a class="headerlink" href="#photocell-ldr-light-dependent-resistor" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Output:</strong> Analog (0–4095 on ESP32 10-bit ADC)</li>
+<li><strong>Behavior:</strong> Resistance decreases in light, increases in darkness</li>
+<li><strong>Readings:</strong></li>
+<li>Bright sunlight: &gt; 3000</li>
+<li>Indoor light: 1500–2500</li>
+<li>Dim/twilight: 500–1500</li>
+<li>Darkness/night: &lt; 500</li>
+<li><strong>GPIO:</strong> 34 (ADC input, analog-only pin)</li>
+</ul>
+<h3 id="rgb-led-common-cathode">RGB LED (Common Cathode)<a class="headerlink" href="#rgb-led-common-cathode" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pins:</strong> R (GPIO 25), G (GPIO 26), B (GPIO 27) – all PWM-capable</li>
+<li><strong>Control:</strong> <code>analogWrite(pin, 0–255)</code> for brightness per channel</li>
+<li><strong>Resistors:</strong> 220Ω per channel (limit current)</li>
+</ul>
+<hr />
+<h2 id="wiring-diagram">Wiring Diagram<a class="headerlink" href="#wiring-diagram" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ESP32 Pin Layout for Engine Compartment Monitor
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>================================================
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>DHT11 Sensor:
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  VCC → 3.3V
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  GND → GND
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  DATA → GPIO 4
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Photocell (LDR with 10kΩ pull-down resistor):
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  One leg → 3.3V
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  Other leg → GPIO 34 (ADC)
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  GPIO 34 → GND via 10kΩ resistor
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>RGB LED (Common Cathode):
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>  Red cathode   → 220Ω resistor → GPIO 25
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>  Green cathode → 220Ω resistor → GPIO 26
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>  Blue cathode  → 220Ω resistor → GPIO 27
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>  Common anode  → 5V (or 3.3V with current limiting)
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>Breadboard Layout:
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>  Top rail: 5V (from USB or external PSU)
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>  Second rail: 3.3V (from ESP32)
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>  Bottom rail: GND
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>Components positioned:
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>  - DHT11 on left side (I²C pull-ups if needed)
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>  - Photocell + 10k resistor in center (forms voltage divider)
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>  - RGB LED on right side (resistors in series)
+</span></code></pre></div>
+<hr />
+<h2 id="system-logic-overview">System Logic Overview<a class="headerlink" href="#system-logic-overview" title="Permanent link">&para;</a></h2>
+<p>The Engine Compartment Monitor performs these steps every 1000ms:</p>
+<ol>
+<li><strong>Read temperature</strong> from DHT11 (handle errors gracefully)</li>
+<li><strong>Read light level</strong> from photocell ADC (0–4095)</li>
+<li><strong>Determine color</strong> based on temperature:</li>
+<li>&lt; 60°C → green</li>
+<li>60–80°C → yellow</li>
+<li>≥ 80°C → red</li>
+<li><strong>Calculate brightness</strong> from light level:</li>
+<li>If photocell &lt; 500: force full brightness (255)</li>
+<li>Else: scale brightness proportionally (photocell / 16)</li>
+<li><strong>Set RGB LED</strong> to (color, brightness)</li>
+<li><strong>Output debug info</strong> to serial (for troubleshooting)</li>
+</ol>
+<p>This ensures the LED always displays the engine's thermal state while adjusting visibility based on ambient light.</p>
 <hr />
 <h2 id="hands-on-tasks">Hands-On Tasks<a class="headerlink" href="#hands-on-tasks" title="Permanent link">&para;</a></h2>
-<h3 id="task-1-dht11-temperature-humidity-wokwi">Task 1: DHT11 Temperature &amp; Humidity (Wokwi)<a class="headerlink" href="#task-1-dht11-temperature-humidity-wokwi" title="Permanent link">&para;</a></h3>
+<h3 id="task-1-dht11-temperature-humidity-reading-wokwi">Task 1: DHT11 Temperature &amp; Humidity Reading (Wokwi)<a class="headerlink" href="#task-1-dht11-temperature-humidity-reading-wokwi" title="Permanent link">&para;</a></h3>
 <p><strong>Wokwi:</strong> Add DHT22 sensor (DHT11 not available in Wokwi, but code is identical).</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Week 4 Task 1 - DHT11 Temperature Sensor</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;DHT.h&gt;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#define DHTPIN 4</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cp">#define DHTTYPE DHT11</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">DHT</span><span class="w"> </span><span class="nf">dht</span><span class="p">(</span><span class="n">DHTPIN</span><span class="p">,</span><span class="w"> </span><span class="n">DHTTYPE</span><span class="p">);</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="n">dht</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RockCore Engine Monitor: Starting...&quot;</span><span class="p">);</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">humidity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readHumidity</span><span class="p">();</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isnan</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">isnan</span><span class="p">(</span><span class="n">humidity</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;ERROR: DHT sensor read failed&quot;</span><span class="p">);</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Temp: &quot;</span><span class="p">);</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;°C | Humidity: &quot;</span><span class="p">);</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">humidity</span><span class="p">);</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;%&quot;</span><span class="p">);</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="task-2-mq-2-gas-sensor-analog-read">Task 2: MQ-2 Gas Sensor (Analog Read)<a class="headerlink" href="#task-2-mq-2-gas-sensor-analog-read" title="Permanent link">&para;</a></h3>
-<p><strong>Wokwi:</strong> Add potentiometer to simulate MQ-2 (or use real MQ-2 on ESP32).</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Week 4 Task 2 - MQ-2 Gas Detection</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MQ2_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">34</span><span class="p">;</span><span class="w">  </span><span class="c1">// ESP32 ADC pin</span>
+<p><strong>Objective:</strong> Read temperature and humidity, handle sensor errors (NaN).</p>
+<p><strong>Pseudocode:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>PSEUDOCODE: DHT11 Temperature Reading
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>=====================================
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">MQ2_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>1. SETUP:
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>   - Initialize DHT library with GPIO 4
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>   - Start serial communication (115200 baud)
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>   - Print welcome message
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">gasLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">MQ2_PIN</span><span class="p">);</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Gas Level: &quot;</span><span class="p">);</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gasLevel</span><span class="p">);</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gasLevel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">300</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; - WARNING: Gas detected!&quot;</span><span class="p">);</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; - Normal&quot;</span><span class="p">);</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="task-3-integrated-engine-monitor-with-alerts-real-esp32">Task 3: Integrated Engine Monitor with Alerts (Real ESP32)<a class="headerlink" href="#task-3-integrated-engine-monitor-with-alerts-real-esp32" title="Permanent link">&para;</a></h3>
-<p><strong>Wiring:</strong>
-- DHT11: GPIO 4
-- MQ-2: GPIO 34
-- Flame sensor: GPIO 35
-- Red LED: GPIO 25 (+ 220Ω resistor)
-- Buzzer: GPIO 26</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Week 4 Task 3 - Complete Engine Compartment Monitor (Assessment 1)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;DHT.h&gt;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cp">#define DHTPIN 4</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cp">#define MQ2_PIN 34</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cp">#define FLAME_PIN 35</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="cp">#define RED_LED 25</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="cp">#define BUZZER 26</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="cp">#define TEMP_WARNING 60</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="cp">#define TEMP_FAULT 80</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="cp">#define GAS_THRESHOLD 300</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">DHT</span><span class="w"> </span><span class="nf">dht</span><span class="p">(</span><span class="n">DHTPIN</span><span class="p">,</span><span class="w"> </span><span class="n">DHT11</span><span class="p">);</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="n">dht</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">MQ2_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">FLAME_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">RED_LED</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">BUZZER</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
-</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;=== RockCore Engine Monitor Active ===&quot;</span><span class="p">);</span>
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="p">}</span>
-</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
-</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span>
-</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">gasLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">MQ2_PIN</span><span class="p">);</span>
-</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">flameDetected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digitalRead</span><span class="p">(</span><span class="n">FLAME_PIN</span><span class="p">);</span>
-</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
-</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">  </span><span class="c1">// Check for sensor faults</span>
-</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isnan</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;FAULT: DHT11 sensor failure - check wiring&quot;</span><span class="p">);</span>
-</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
-</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>
-</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">  </span><span class="c1">// Temperature thresholds</span>
-</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TEMP_FAULT</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">RED_LED</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">    </span><span class="n">tone</span><span class="p">(</span><span class="n">BUZZER</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
-</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;CRITICAL: Temperature fault - shutdown required&quot;</span><span class="p">);</span>
-</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TEMP_WARNING</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">RED_LED</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">    </span><span class="n">noTone</span><span class="p">(</span><span class="n">BUZZER</span><span class="p">);</span>
-</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;WARNING: High temperature detected&quot;</span><span class="p">);</span>
-</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">RED_LED</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">    </span><span class="n">noTone</span><span class="p">(</span><span class="n">BUZZER</span><span class="p">);</span>
-</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>
-</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">  </span><span class="c1">// Gas detection</span>
-</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gasLevel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">GAS_THRESHOLD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;WARNING: Gas leak detected&quot;</span><span class="p">);</span>
-</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a>
-</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="w">  </span><span class="c1">// Flame detection</span>
-</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">flameDetected</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LOW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// Most flame sensors are active-LOW</span>
-</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">RED_LED</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="w">    </span><span class="n">tone</span><span class="p">(</span><span class="n">BUZZER</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">);</span>
-</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;CRITICAL: FLAME DETECTED - EMERGENCY STOP&quot;</span><span class="p">);</span>
-</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>
-</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">  </span><span class="c1">// Data logging</span>
-</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Temp: %.1f°C | Gas: %d | Flame: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
-</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">                </span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="n">gasLevel</span><span class="p">,</span><span class="w"> </span><span class="n">flameDetected</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;No&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;YES&quot;</span><span class="p">);</span>
-</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a>
-</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
-</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="p">}</span>
-</span></code></pre></div>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>2. LOOP (every 2 seconds):
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>   a. READ temperature using dht.readTemperature()
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>   b. READ humidity using dht.readHumidity()
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>   c. CHECK if either value is NaN (sensor error):
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>      - IF NaN: print error message, skip processing, continue
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>      - IF valid: proceed to next step
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>   d. PRINT temp and humidity to serial
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>   e. DELAY 2000ms
+</span></code></pre></div></p>
+<p><strong>Implementation Hint (Sketch):</strong>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;DHT.h&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cp">#define DHTPIN 4</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cp">#define DHTTYPE DHT11</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">DHT</span><span class="w"> </span><span class="nf">dht</span><span class="p">(</span><span class="n">DHTPIN</span><span class="p">,</span><span class="w"> </span><span class="n">DHTTYPE</span><span class="p">);</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="n">dht</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Engine Monitor: Starting...&quot;</span><span class="p">);</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">}</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">humidity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readHumidity</span><span class="p">();</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isnan</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">isnan</span><span class="p">(</span><span class="n">humidity</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;ERROR: DHT sensor read failed&quot;</span><span class="p">);</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Temp: &quot;</span><span class="p">);</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;°C | Humidity: &quot;</span><span class="p">);</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">humidity</span><span class="p">);</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;%&quot;</span><span class="p">);</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="p">}</span>
+</span></code></pre></div></p>
 <hr />
+<h3 id="task-2-photocell-analog-reading-thresholding">Task 2: Photocell Analog Reading &amp; Thresholding<a class="headerlink" href="#task-2-photocell-analog-reading-thresholding" title="Permanent link">&para;</a></h3>
+<p><strong>Wokwi:</strong> Add potentiometer to simulate photocell light levels (0–4095).</p>
+<p><strong>Objective:</strong> Read analog light levels, determine brightness category.</p>
+<p><strong>Pseudocode:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>PSEUDOCODE: Photocell Light Level Detection
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>=============================================
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>1. SETUP:
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>   - Configure GPIO 34 as analog input
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   - Start serial
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>2. LOOP (every 1000ms):
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>   a. READ analog value from GPIO 34
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>      - Result: 0–4095 (10-bit ADC on ESP32)
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>   b. CLASSIFY light level:
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>      - IF value &gt; 2500: &quot;Bright&quot;
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>      - ELSE IF value &gt; 1500: &quot;Normal&quot;
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>      - ELSE IF value &gt; 500: &quot;Dim&quot;
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>      - ELSE: &quot;Dark&quot;
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>   c. PRINT light reading and classification
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>   d. DELAY 1000ms
+</span></code></pre></div></p>
+<p><strong>Implementation Hint:</strong>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">PHOTOCELL_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">34</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">PHOTOCELL_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">lightLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">PHOTOCELL_PIN</span><span class="p">);</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Light Level: &quot;</span><span class="p">);</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">lightLevel</span><span class="p">);</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; - &quot;</span><span class="p">);</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lightLevel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2500</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Bright&quot;</span><span class="p">);</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lightLevel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1500</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Normal&quot;</span><span class="p">);</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lightLevel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Dim&quot;</span><span class="p">);</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Dark&quot;</span><span class="p">);</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<hr />
+<h3 id="task-3-rgb-led-pwm-control-color-brightness">Task 3: RGB LED PWM Control – Color &amp; Brightness<a class="headerlink" href="#task-3-rgb-led-pwm-control-color-brightness" title="Permanent link">&para;</a></h3>
+<p><strong>Objective:</strong> Control RGB LED color and brightness using PWM.</p>
+<p><strong>Pseudocode:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>PSEUDOCODE: RGB LED PWM Control
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>================================
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>1. SETUP:
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>   - Configure GPIO 25, 26, 27 as PWM outputs
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>   - Set PWM frequency (default OK)
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>2. LOOP:
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>   a. SET LED to a color:
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>      - GREEN: R=0, G=255, B=0
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>      - YELLOW: R=255, G=255, B=0
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>      - RED: R=255, G=0, B=0
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>   b. ADJUST brightness (0–255):
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>      - multiply each RGB value by (brightness / 255)
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>   c. WRITE to GPIO pins using analogWrite()
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>   d. DELAY to see color change
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>Example: Fade through colors
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>   - For each brightness level 0→255:
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>     - Set color to RED
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>     - Write R=brightness, G=0, B=0
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>     - Delay 10ms
+</span></code></pre></div></p>
+<p><strong>Implementation Hint:</strong>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">#define RGB_R 25</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="cp">#define RGB_G 26</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="cp">#define RGB_B 27</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">RGB_R</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">RGB_G</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">RGB_B</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">}</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setRGB</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">red</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">green</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">blue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">RGB_R</span><span class="p">,</span><span class="w"> </span><span class="n">red</span><span class="p">);</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">RGB_G</span><span class="p">,</span><span class="w"> </span><span class="n">green</span><span class="p">);</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">RGB_B</span><span class="p">,</span><span class="w"> </span><span class="n">blue</span><span class="p">);</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">}</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">  </span><span class="c1">// Green at full brightness</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">  </span><span class="n">setRGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">  </span><span class="c1">// Yellow at full brightness</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">  </span><span class="n">setRGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">  </span><span class="c1">// Red at full brightness</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">  </span><span class="n">setRGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">  </span><span class="c1">// Red at half brightness</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">  </span><span class="n">setRGB</span><span class="p">(</span><span class="mi">127</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<hr />
+<h3 id="task-4-temperature-color-mapping">Task 4: Temperature → Color Mapping<a class="headerlink" href="#task-4-temperature-color-mapping" title="Permanent link">&para;</a></h3>
+<p><strong>Objective:</strong> Read temperature, map to RGB color (green/yellow/red).</p>
+<p><strong>Pseudocode:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>PSEUDOCODE: Temperature Color Determination
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>===========================================
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>1. READ temperature from DHT11
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>   - Handle NaN errors
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>2. DETERMINE color based on temp:
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>   - IF temp &lt; 60°C:
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>       color = GREEN (R=0, G=255, B=0)
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>   - ELSE IF temp &lt; 80°C:
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>       color = YELLOW (R=255, G=255, B=0)
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>   - ELSE:
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>       color = RED (R=255, G=0, B=0)
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>3. WRITE color to RGB LED
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>   - setRGB(R_value, G_value, B_value)
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>4. PRINT temp and color to serial
+</span></code></pre></div></p>
+<p><strong>Implementation Hint:</strong>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">getColorFromTemp</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">   </span><span class="c1">// Green</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Yellow</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">   </span><span class="c1">// Red</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">}</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="c1">// In loop:</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="kt">float</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isnan</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">  </span><span class="n">getColorFromTemp</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">  </span><span class="n">setRGB</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<hr />
+<h3 id="task-5-photocell-brightness-mapping-auto-on-logic">Task 5: Photocell → Brightness Mapping &amp; Auto-On Logic<a class="headerlink" href="#task-5-photocell-brightness-mapping-auto-on-logic" title="Permanent link">&para;</a></h3>
+<p><strong>Objective:</strong> Map photocell reading to LED brightness; auto-activate in darkness.</p>
+<p><strong>Pseudocode:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>PSEUDOCODE: Brightness Calculation &amp; Auto-On
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>==============================================
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>1. READ photocell value (0–4095)
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>2. CALCULATE brightness:
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>   a. MAP photocell to brightness range:
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>      - brightness = (photocell_reading / 4095) × 255
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>      - Result: 0–255
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>   b. CHECK auto-on threshold:
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>      - IF photocell &lt; 500 (dark):
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>          force_brightness = 255 (always on)
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>      - ELSE:
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>          use_brightness = calculated brightness
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>3. APPLY brightness to RGB color:
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>   - Scale color values: R&#39; = R × (brightness/255)
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>   - Scale G&#39; = G × (brightness/255)
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>   - Scale B&#39; = B × (brightness/255)
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>   - setRGB(R&#39;, G&#39;, B&#39;)
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>4. PRINT light level and brightness to serial
+</span></code></pre></div></p>
+<p><strong>Implementation Hint:</strong>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">calculateBrightness</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">photocellReading</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">photocellReading</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4095</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">photocellReading</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="n">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span><span class="w">  </span><span class="c1">// Force full brightness in darkness</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">brightness</span><span class="p">;</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="p">}</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1">// In loop:</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="kt">int</span><span class="w"> </span><span class="n">lightLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">PHOTOCELL_PIN</span><span class="p">);</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="kt">int</span><span class="w"> </span><span class="n">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculateBrightness</span><span class="p">(</span><span class="n">lightLevel</span><span class="p">);</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="c1">// Scale color by brightness</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="kt">int</span><span class="w"> </span><span class="n">r_scaled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">brightness</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="kt">int</span><span class="w"> </span><span class="n">g_scaled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">brightness</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="kt">int</span><span class="w"> </span><span class="n">b_scaled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">brightness</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="n">setRGB</span><span class="p">(</span><span class="n">r_scaled</span><span class="p">,</span><span class="w"> </span><span class="n">g_scaled</span><span class="p">,</span><span class="w"> </span><span class="n">b_scaled</span><span class="p">);</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">brightness</span><span class="p">);</span>
+</span></code></pre></div></p>
+<hr />
+<h2 id="system-flowcharts">System Flowcharts<a class="headerlink" href="#system-flowcharts" title="Permanent link">&para;</a></h2>
+<p>The following Mermaid diagrams illustrate the control logic for the Engine Compartment Monitor. Study these carefully before implementing code.</p>
+<h3 id="flowchart-1-main-program-loop">Flowchart 1: Main Program Loop<a class="headerlink" href="#flowchart-1-main-program-loop" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A["START"] --&gt; B["Initialize:&lt;br/&gt;DHT11 (GPIO 4)&lt;br/&gt;Photocell (GPIO 34)&lt;br/&gt;RGB pins 25,26,27"]
+    B --&gt; C["LOOP Start (1000ms)"]
+    C --&gt; D["Read DHT11&lt;br/&gt;temp &amp; humidity"]
+    D --&gt; E{Sensor&lt;br/&gt;Error?}
+    E --&gt;|Yes NaN| F["Use previous&lt;br/&gt;valid reading"]
+    E --&gt;|No| G["Read Photocell&lt;br/&gt;ADC 0-4095"]
+    F --&gt; G
+    G --&gt; H["Determine Color&lt;br/&gt;from Temperature"]
+    H --&gt; I["Calculate Brightness&lt;br/&gt;from Light Level"]
+    I --&gt; J{Photocell&lt;br/&gt;&lt; 500?}
+    J --&gt;|Yes Dark| K["Force&lt;br/&gt;brightness = 255"]
+    J --&gt;|No| L["Scale brightness&lt;br/&gt;= reading / 16"]
+    K --&gt; M["Apply brightness&lt;br/&gt;to RGB color"]
+    L --&gt; M
+    M --&gt; N["Write RGB values&lt;br/&gt;to GPIO 25,26,27&lt;br/&gt;analogWrite"]
+    N --&gt; O["Serial debug&lt;br/&gt;output"]
+    O --&gt; P["DELAY 1000ms"]
+    P --&gt; C</code></pre>
+<h3 id="flowchart-2-temperature-state-determination">Flowchart 2: Temperature State Determination<a class="headerlink" href="#flowchart-2-temperature-state-determination" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A["Read Temperature&lt;br/&gt;from DHT11"] --&gt; B{temp &lt; 60°C?}
+    B --&gt;|YES| C["Color = GREEN&lt;br/&gt;R=0, G=255, B=0&lt;br/&gt;Normal State"]
+    B --&gt;|NO| D{temp &lt; 80°C?}
+    D --&gt;|YES| E["Color = YELLOW&lt;br/&gt;R=255, G=255, B=0&lt;br/&gt;Warning State"]
+    D --&gt;|NO| F["Color = RED&lt;br/&gt;R=255, G=0, B=0&lt;br/&gt;Critical State"]
+    C --&gt; G["Return (R,G,B)&lt;br/&gt;to main loop"]
+    E --&gt; G
+    F --&gt; G</code></pre>
+<h3 id="flowchart-3-photocell-to-brightness-mapping">Flowchart 3: Photocell to Brightness Mapping<a class="headerlink" href="#flowchart-3-photocell-to-brightness-mapping" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A["Read Photocell&lt;br/&gt;ADC 0-4095"] --&gt; B["Map to brightness:&lt;br/&gt;brightness = value / 16&lt;br/&gt;Result: 0-255"]
+    B --&gt; C{photocell &lt; 500?}
+    C --&gt;|YES| D["Force Full Brightness&lt;br/&gt;brightness = 255&lt;br/&gt;Auto-on active"]
+    C --&gt;|NO| E["Use Mapped Value&lt;br/&gt;brightness = ADC/16"]
+    D --&gt; F["Return brightness&lt;br/&gt;to main loop"]
+    E --&gt; F</code></pre>
+<h3 id="flowchart-4-rgb-led-update-with-color-brightness">Flowchart 4: RGB LED Update with Color &amp; Brightness<a class="headerlink" href="#flowchart-4-rgb-led-update-with-color-brightness" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A["Color from Temp&lt;br/&gt;Brightness from Light"] --&gt; B{Color?}
+    B --&gt;|GREEN| C["R=0&lt;br/&gt;G=255&lt;br/&gt;B=0"]
+    B --&gt;|YELLOW| D["R=255&lt;br/&gt;G=255&lt;br/&gt;B=0"]
+    B --&gt;|RED| E["R=255&lt;br/&gt;G=0&lt;br/&gt;B=0"]
+    C --&gt; F["Scale each channel&lt;br/&gt;R' = R × brightness/255&lt;br/&gt;G' = G × brightness/255&lt;br/&gt;B' = B × brightness/255"]
+    D --&gt; F
+    E --&gt; F
+    F --&gt; G["analogWrite GPIO_25, R'&lt;br/&gt;analogWrite GPIO_26, G'&lt;br/&gt;analogWrite GPIO_27, B'"]
+    G --&gt; H["RGB LED displays&lt;br/&gt;Color + Brightness"]</code></pre>
 <h2 id="check-your-knowledge">Check Your Knowledge<a class="headerlink" href="#check-your-knowledge" title="Permanent link">&para;</a></h2>
 <div class="admonition question">
-<p class="admonition-title">Q1 – Sensor Calibration</p>
-<p>Why might your MQ-2 sensor give different readings than your classmate's with the same gas source?</p>
+<p class="admonition-title">Q1 – Photocell Calibration</p>
+<p>Why might your photocell sensor give different readings in a classroom vs. outdoors in sunlight?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>MQ-2 sensors require warm-up time (24-48 hours for stable baseline) and may have manufacturing variance. Calibration using known gas concentrations is essential for accurate readings.</p>
+<p>Photocells respond to total light intensity. Indoor fluorescent/LED lights typically produce 300–500 lux, while outdoor direct sunlight produces 100,000+ lux. The sensor's resistance changes logarithmically with light, so the ADC reading varies significantly. Calibration thresholds (500, 1500, 2500) are environment-dependent and may need tuning for different locations.</p>
 </details>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Q2 – Analog vs Digital</p>
-<p>Why is the flame sensor digital (HIGH/LOW) while MQ-2 is analog (0-4095)?</p>
+<p class="admonition-title">Q2 – PWM for RGB Control</p>
+<p>Why use PWM (analogWrite) to control RGB LED brightness instead of reducing the 5V supply voltage?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>Flame sensors use a comparator circuit with preset threshold (flame/no flame). MQ-2 provides continuous resistance change proportional to gas concentration, read as analog voltage.</p>
+<p>PWM rapidly switches the LED on/off at a high frequency (typically 1000 Hz), and the human eye perceives it as continuous with perceived brightness proportional to duty cycle. Reducing supply voltage would reduce brightness but also reduce color intensity unpredictably. PWM is more precise, efficient, and allows independent control of each RGB channel.</p>
 </details>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Q3 – Fault Rectification</p>
-<p>If your DHT11 returns <code>nan</code> (not a number), what are three possible causes?</p>
+<p class="admonition-title">Q3 – Auto-On Logic in Dark Environments</p>
+<p>In a mining truck's dark engine bay, why is the photocell's auto-on threshold (&lt; 500) important?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>1) Incorrect wiring (VCC/GND swapped), 2) Wrong GPIO pin in code, 3) Faulty sensor or poor connections on breadboard.</p>
+<p>In darkness (tunnels, night), a technician needs the RGB status LED visible without manually enabling it. The auto-on threshold ensures the LED always displays the engine's thermal state (color) at maximum brightness when ambient light is insufficient, providing critical safety feedback even in total darkness.</p>
 </details>
 </div>
 <hr />
 <h2 id="assessment-1-submission-due-end-of-week-4">Assessment 1 Submission (Due End of Week 4)<a class="headerlink" href="#assessment-1-submission-due-end-of-week-4" title="Permanent link">&para;</a></h2>
 <p><strong>Submit to GitHub + Blackboard:</strong></p>
 <ol>
-<li><strong>Code:</strong> Complete <code>engine_monitor.ino</code> with comments</li>
-<li><strong>Wiring diagram:</strong> Fritzing or hand-drawn schematic</li>
-<li><strong>Test video</strong> (2-3 minutes): Show normal operation, then trigger each fault:</li>
-<li>Heat DHT11 with hair dryer (temp warning/fault)</li>
-<li>Simulate gas leak</li>
-<li>Trigger flame sensor</li>
-<li><strong>Fault rectification log:</strong> Document at least one bug/issue you fixed (e.g., sensor calibration, wiring error, threshold tuning)</li>
-<li><strong>Reflection paragraph:</strong> How does this monitor prevent equipment loss at RockCore?</li>
+<li><strong>Pseudocode Sketch:</strong> <code>engine_bay_monitor.ino</code> with pseudocode structure and comments (NO complete working code)</li>
+<li><strong>Wiring Diagram:</strong> Fritzing export or hand-drawn schematic showing DHT11, photocell, and RGB LED connections</li>
+<li><strong>System Flowcharts:</strong> Mermaid diagrams (or hand-drawn) showing:</li>
+<li>Main loop logic (read sensors → determine color → calculate brightness → update RGB)</li>
+<li>Temperature state determination (&lt; 60°C = green, 60–80°C = yellow, ≥ 80°C = red)</li>
+<li>Photocell to brightness mapping (auto-on below threshold)</li>
+<li><strong>Test Video</strong> (2–3 minutes): Demonstrate:</li>
+<li>Normal operation (temp reading + RGB color display)</li>
+<li>Low-light auto-on test (cover photocell to trigger darkness, RGB activates)</li>
+<li>Temperature range tests (heat DHT11, show color transitions: green → yellow → red)</li>
+<li>Fault rectification (document at least one bug/issue you fixed, e.g., NaN handling, threshold tuning)</li>
+<li><strong>Reflection Paragraph:</strong> How will the photocell sensing capability extend to control OLED brightness and truck lights in future weeks?</li>
 </ol>
-<p><strong>Mapping:</strong> ICTIOT502 Element 2 – Program IoT device, test and rectify faults.</p>
+<p><strong>Submission Details:</strong>
+- Submit via GitHub in <code>A1-Electronics-Fundamentals/code/esp32-arduino/</code>
+- Include link in Blackboard submission form
+- Mapping: ICTIOT502 Element 2 – Program IoT device, test and rectify faults</p>
 <hr />
 <p><strong>Navigation:</strong> <a href="../03/">← Week 3</a> | <a href="../../">Course Overview</a> | <a href="../05/">Week 5 →</a></p>
 

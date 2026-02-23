@@ -55,21 +55,35 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 ---
 
-## Assessment 1: Sensor Integration (Week 4)
+## Assessment 1: Engine Compartment Monitor (Week 4)
 
-**Objective:** Build IoT device with environmental monitoring.
+**Objective:** Build IoT device with thermal and light-responsive status display.
+
+**Scenario:** RockCore Mining needs engine bay monitoring in dark tunnels. Your system must display engine temperature via LED color and respond to low-light conditions by auto-activating the display.
+
+**Components:**
+- DHT11 temperature/humidity sensor
+- Photocell (LDR) for ambient light sensing
+- RGB LED for color-coded status + brightness control
 
 **Requirements:**
-- DHT11 temperature/humidity sensor
-- MQ-2 gas sensor
-- Flame sensor
-- Serial output with sensor readings
-- Threshold detection logic (e.g., temp > 50°C triggers alert)
+- Read DHT11 temperature and handle NaN (sensor error) gracefully
+- Read photocell analog values (0–4095) and classify light levels
+- Map temperature to LED color: Green (< 60°C) → Yellow (60–80°C) → Red (≥ 80°C)
+- Scale LED brightness based on ambient light; auto-activate at full brightness when dark (< 500)
+- Pseudocode structure and flowcharts provided (NO complete working code in submission)
+
+**Deliverables:**
+1. **Pseudocode Sketch** – `engine_bay_monitor.ino` with structure and comments (structure only, no implementation)
+2. **Wiring Diagram** – Fritzing or hand-drawn schematic
+3. **System Flowcharts** – Mermaid diagrams: main loop, temp→color mapping, light→brightness mapping, auto-on logic
+4. **Demo Video** (2–3 min) – Normal op, low-light auto-on test, temp color transitions, fault rectification
+5. **Reflection** – How will photocell control OLED brightness and truck lights in future weeks?
 
 **Submission:**
-- Arduino `.ino` file
-- Wokwi simulation link OR breadboard photo
-- 2-minute demonstration video
+- GitHub: `A1-Electronics-Fundamentals/code/esp32-arduino/`
+- Blackboard: Link + submission form
+- **Competency:** ICTIOT502 Element 2 (Program IoT device, test and rectify faults)
 
 ---
 

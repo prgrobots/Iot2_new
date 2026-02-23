@@ -1261,10 +1261,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assessment-1-sensor-integration-week-4" class="md-nav__link">
+  <a href="#assessment-1-engine-compartment-monitor-week-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Assessment 1: Sensor Integration (Week 4)
+        Assessment 1: Engine Compartment Monitor (Week 4)
       
     </span>
   </a>
@@ -1968,18 +1968,29 @@
 - Space for assessor feedback</p>
 <p><strong>No code duplication:</strong> Your code remains on GitHub only. The submission form provides proof of submission without duplicating work.</p>
 <hr />
-<h2 id="assessment-1-sensor-integration-week-4">Assessment 1: Sensor Integration (Week 4)<a class="headerlink" href="#assessment-1-sensor-integration-week-4" title="Permanent link">&para;</a></h2>
-<p><strong>Objective:</strong> Build IoT device with environmental monitoring.</p>
-<p><strong>Requirements:</strong>
+<h2 id="assessment-1-engine-compartment-monitor-week-4">Assessment 1: Engine Compartment Monitor (Week 4)<a class="headerlink" href="#assessment-1-engine-compartment-monitor-week-4" title="Permanent link">&para;</a></h2>
+<p><strong>Objective:</strong> Build IoT device with thermal and light-responsive status display.</p>
+<p><strong>Scenario:</strong> RockCore Mining needs engine bay monitoring in dark tunnels. Your system must display engine temperature via LED color and respond to low-light conditions by auto-activating the display.</p>
+<p><strong>Components:</strong>
 - DHT11 temperature/humidity sensor
-- MQ-2 gas sensor
-- Flame sensor
-- Serial output with sensor readings
-- Threshold detection logic (e.g., temp &gt; 50°C triggers alert)</p>
+- Photocell (LDR) for ambient light sensing
+- RGB LED for color-coded status + brightness control</p>
+<p><strong>Requirements:</strong>
+- Read DHT11 temperature and handle NaN (sensor error) gracefully
+- Read photocell analog values (0–4095) and classify light levels
+- Map temperature to LED color: Green (&lt; 60°C) → Yellow (60–80°C) → Red (≥ 80°C)
+- Scale LED brightness based on ambient light; auto-activate at full brightness when dark (&lt; 500)
+- Pseudocode structure and flowcharts provided (NO complete working code in submission)</p>
+<p><strong>Deliverables:</strong>
+1. <strong>Pseudocode Sketch</strong> – <code>engine_bay_monitor.ino</code> with structure and comments (structure only, no implementation)
+2. <strong>Wiring Diagram</strong> – Fritzing or hand-drawn schematic
+3. <strong>System Flowcharts</strong> – Mermaid diagrams: main loop, temp→color mapping, light→brightness mapping, auto-on logic
+4. <strong>Demo Video</strong> (2–3 min) – Normal op, low-light auto-on test, temp color transitions, fault rectification
+5. <strong>Reflection</strong> – How will photocell control OLED brightness and truck lights in future weeks?</p>
 <p><strong>Submission:</strong>
-- Arduino <code>.ino</code> file
-- Wokwi simulation link OR breadboard photo
-- 2-minute demonstration video</p>
+- GitHub: <code>A1-Electronics-Fundamentals/code/esp32-arduino/</code>
+- Blackboard: Link + submission form
+- <strong>Competency:</strong> ICTIOT502 Element 2 (Program IoT device, test and rectify faults)</p>
 <hr />
 <h2 id="assessment-2-access-control-system-week-6">Assessment 2: Access Control System (Week 6)<a class="headerlink" href="#assessment-2-access-control-system-week-6" title="Permanent link">&para;</a></h2>
 <p><strong>Objective:</strong> Implement RFID authentication with timestamp logging.</p>
