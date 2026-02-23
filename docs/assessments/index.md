@@ -91,7 +91,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 ---
 
-## Assessment 3: Vibration Monitoring (Week 7)
+## Assessment 3: Tire & Suspension Health Monitor (Week 7)
 
 **Objective:** Use accelerometer for predictive maintenance.
 
@@ -109,7 +109,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 ---
 
-## Assessment 4: Complete Haul Truck Device (Week 9)
+## Assessment 4: Payload & Load Management (Week 9)
 
 **Objective:** Integrate all sensors, actuators, and I²C peripherals.
 
@@ -133,7 +133,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 ---
 
-## Assessment 5: AWS IoT Integration & Testing (Week 14)
+## Assessment 5: Environmental Monitor + Cloud Analytics (Week 14)
 
 **Objective:** Connect device to AWS IoT Core with secure communication and cloud event handling.
 

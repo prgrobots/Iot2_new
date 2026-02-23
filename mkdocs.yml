@@ -15,12 +15,6 @@ theme:
     - search.suggest
   custom_dir: docs/overrides
 
-extra_css:
-  - css/custom.css
-
-extra_javascript:
-  - js/custom.js
-
 nav:
   - Home: index.md
   - Course Overview - LAP: course-overview/learning-assessment-plan.md
@@ -75,7 +69,6 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.tabbed
   - abbr
-  - admonition
   - attr_list
   - def_list
   - footnotes
@@ -90,7 +83,6 @@ markdown_extensions:
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
-  - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
