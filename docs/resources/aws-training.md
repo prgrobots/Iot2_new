@@ -11,13 +11,11 @@
 | 11 | Handling AWS IoT Device Data and States (Foundations) | 2 h | AWS Skill Builder (free) |
 | 12 | Managing AWS IoT Devices at Scale (Foundations) | 3 h 30 m | AWS Skill Builder (free) |
 | 12 | OTA Updates in Edge Devices | 1 h | NMTAFE Sandbox (instructor adds you) |
-| 13 | ETL at the Edge | 1 h | NMTAFE Sandbox (instructor adds you) |
-| 13 | Lab – Deploying AWS IoT Greengrass Components | 1 h | NMTAFE Sandbox (instructor adds you) |
+| 13 | AWS IoT Analytics & Real-Time Processing | 2 h | AWS Skill Builder (free) |
 | 14 | Analyzing, Visualizing, and Gaining Insights from IoT Devices (Foundations) | 45 min | AWS Skill Builder (free) |
-| 14 | Connecting Systems and Machines to AWS for Industrial Manufacturing | 45 min | AWS Skill Builder (free) |
 | 15–17 | AWS Industry Quest: Manufacturing and Automotive | 13 h | NMTAFE Sandbox (instructor adds you) |
 
-**Total: ~27 hours of AWS training (Weeks 10–17)**
+**Total: ~25 hours of AWS training (Weeks 10–17)**
 
 ---
 
@@ -46,12 +44,6 @@
 **OTA Updates in Edge Devices** (NMTAFE Sandbox, 1 hour) – [Link](https://skillbuilder.aws/learn/87ZT9986F5/aws-simulearn-ota-updates-in-edge-devices/3FJ8CA6NBD). AWS SimuLearn scenario: manage remote updates for IoT applications across industrial edge devices without manual intervention. Learn to deploy code changes, sensor updates, and firmware patches securely to hundreds of haul trucks in the field using AWS device management services.
 
 **ETL at the Edge** (NMTAFE Sandbox, 1 hour) – [Link](https://skillbuilder.aws/learn/4KEZK2TQMN/aws-simulearn-etl-at-the-edge/JHZ9HGNXDG). AWS SimuLearn scenario-based lab: solve real-world vehicle data collection challenges in areas with poor internet connectivity. Build ETL (extract, transform, load) solutions at the edge to manage data locally, ensure continuity, and synchronize with cloud when connectivity returns; directly applicable to haul trucks in remote mining areas.
-
-**Lab – Deploying AWS IoT Greengrass Components** (NMTAFE Sandbox, 1 hour) – [Link](https://skillbuilder.aws/learn/XPF9AXGEFP/lab--deploying-aws-iot-greengrass-components/3HX169SQDK). Hands-on lab setting up a Greengrass core device, creating and deploying custom components to run edge logic locally. Learn to use Greengrass CLI and AWS IoT console to manage deployments; enables offline-first operation and real-time processing on ESP32 devices.
-
-**Connecting Systems and Machines to AWS for Industrial Manufacturing** (AWS Free Course, 45 min) – [Link](https://skillbuilder.aws/learn/WF2SG8HBXC/connecting-systems-and-machines-to-aws-for-industrial-manufacturing/DC6TKMVC1S). Learn how to bring machine data into the cloud as a prerequisite for advanced data innovation. Topics include data lakes, data collection and normalization, industrial data security, and real-world manufacturing use cases. Uses AWS IoT Core, SiteWise, Greengrass, and other OT/IT integration services.
-
----
 
 **AWS Industry Quest: Manufacturing and Automotive** (NMTAFE Sandbox, 13 hours across Weeks 15–17) – [Link](https://skillbuilder.aws/learn/HDGF522WYJ/aws-industry-quest-manufacturing-and-automotive/EEBTV6FD6Q). 
 Game-based interactive learning covering 13 labs on digital twins, fleet management, predictive maintenance, and vehicle telemetry. Hands-on with AWS IoT TwinMaker, SiteWise, FleetWise, Greengrass, DynamoDB, QuickSight, and other AWS services. Directly applicable to haul truck capstone: build digital twins, manage fleet data, and implement real-world manufacturing solutions.
@@ -96,8 +88,7 @@ After submission, AWS will process your request. You'll receive an email from AW
 
 ### AWS Free Courses (No Signup Required)
 
-- **Connecting Systems and Machines to AWS for Industrial Manufacturing:** [Direct link](https://skillbuilder.aws/learn/WF2SG8HBXC/connecting-systems-and-machines-to-aws-for-industrial-manufacturing/DC6TKMVC1S)
-- **Lab – Deploying AWS IoT Greengrass Components:** Available via NMTAFE Sandbox after activation
+*All AWS training is now available via AWS Skill Builder or NMTAFE Sandbox - no additional free courses required.*
 
 ---
 

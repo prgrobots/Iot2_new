@@ -26,13 +26,11 @@ See [Assessment Submission Process](assessments/index.md) for details.
 | 11 | Handling AWS IoT Device Data and States | 2 h | AWS Skill Builder (free) |
 | 12 | Managing AWS IoT Devices at Scale | 3 h 30 m | AWS Skill Builder (free) |
 | 12 | OTA Updates in Edge Devices | 1 h | NMTAFE Sandbox (instructor adds you) |
-| 13 | ETL at the Edge | 1 h | NMTAFE Sandbox (instructor adds you) |
-| 13 | Lab – Deploying AWS IoT Greengrass Components | 1 h | AWS Free Lab (free) |
+| 13 | AWS IoT Analytics & Real-Time Processing | 2 h | AWS Skill Builder (free) |
 | 14 | Analyzing, Visualizing, and Gaining Insights from IoT Devices | 45 min | AWS Skill Builder (free) |
-| 14 | Connecting Systems and Machines to AWS for Industrial Manufacturing | 45 min | AWS Skill Builder (free) |
 | 15–17 | AWS Industry Quest: Manufacturing and Automotive | 13 h | NMTAFE Sandbox (instructor adds you) |
 
-**Total: ~27 hours of AWS training (Weeks 10–17)**
+**Total: ~25 hours of AWS training (Weeks 10–17)**
 
 📌 **Note:** See [AWS Training Resources](resources/aws-training.md) for detailed course descriptions and enrollment links.
 
@@ -54,8 +52,8 @@ See [Assessment Submission Process](assessments/index.md) for details.
 | 10 | AWS IoT Core & Secure Connection | Real ESP32 | Foundations: Getting Started + Securely Connecting (1.5 h) | Register truck → MQTT publish real DHT11/gas | — |
 | 11 | Device Data, Rules & Shadows | Real ESP32 | Handling AWS IoT Device Data and States (2 h) | Device Shadow for engine temp & cabin lock; IoT Rule → SNS | — |
 | 12 | Fleet Management & OTA | Real ESP32 | Managing AWS IoT Devices at Scale (3.5 h) + OTA Updates in Edge Devices (1 h) | Thing Groups, OTA firmware to change vibration threshold | — |
-| 13 | Edge Processing & Industrial | Real ESP32 | ETL at the Edge (1 h) + Lab – Deploying AWS IoT Greengrass Components (1 h) | Greengrass core on one ESP32, local anomaly detection component | — |
-| 14 | Analytics & Visualization | Real ESP32 | Analyzing, Visualizing, and Gaining Insights from IoT Devices (45 m) + Connecting Systems and Machines to AWS for Industrial Manufacturing (45 m) | SiteWise asset model "RockCore-Truck-01", QuickSight dashboard | **A5 & A5b** |
+| 13 | Cloud Analytics & Real-Time Processing | Real ESP32 | AWS IoT Analytics for real-time data processing, dashboards, and insights | IoT Analytics pipeline, dashboards for cloud-centric monitoring | — |
+| 14 | Analytics & Visualization | Real ESP32 | Analyzing, Visualizing, and Gaining Insights from IoT Devices (45 m) + SiteWise asset modeling | SiteWise asset model "RockCore-Truck-01", QuickSight dashboard | **A5 & A5b** |
 | 15 | AWS Industry Quest: Mfg & Automotive (1/3) | Real ESP32 + Pit Station | AWS Industry Quest: Manufacturing and Automotive — digital twins, edge-to-cloud, predictive maintenance (13 h split over 3 weeks) | Build digital twin of 3D-printed truck in TwinMaker | — |
 | 16 | AWS Industry Quest: Mfg & Automotive (2/3) | Real ESP32 + Pit Station | AWS Industry Quest continued: overlay live sensor data, fleet simulation, vehicle telemetry | Digital twin with live telemetry from truck | — |
 | 17 | AWS Industry Quest: Mfg & Automotive (3/3) | Real ESP32 + Pit Station | AWS Industry Quest continued: complete manufacturing labs, integrate with capstone | Digital twin fully integrated with IoT sensors | — |

@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#session-13-edge-processing-industrial-protocols" class="md-skip">
+        <a href="#session-13-cloud-analytics-real-time-processing" class="md-skip">
           Skip to content
         </a>
       
@@ -1008,10 +1008,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#simulearn-lab-aws-lab-complete-first" class="md-nav__link">
+  <a href="#aws-skill-builder-course-complete-first" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SimuLearn Lab &amp; AWS Lab (Complete First)
+        AWS Skill Builder Course (Complete First)
       
     </span>
   </a>
@@ -1023,6 +1023,17 @@
     <span class="md-ellipsis">
       
         Hands-On Tasks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-pipeline-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Pipeline Architecture
       
     </span>
   </a>
@@ -1821,274 +1832,260 @@
 
 
 
-<h1 id="session-13-edge-processing-industrial-protocols">Session 13: Edge Processing &amp; Industrial Protocols<a class="headerlink" href="#session-13-edge-processing-industrial-protocols" title="Permanent link">&para;</a></h1>
+<h1 id="session-13-cloud-analytics-real-time-processing">Session 13: Cloud Analytics &amp; Real-Time Processing<a class="headerlink" href="#session-13-cloud-analytics-real-time-processing" title="Permanent link">&para;</a></h1>
 <p><strong>Week:</strong> 13<br />
-<strong>Element:</strong> ICTIOT503 Element 1: Scope design options for edge processing<br />
+<strong>Element:</strong> ICTIOT503 Element 1: Scope design options for analytics<br />
 <strong>Duration:</strong> 3.5 hours<br />
 <strong>Phase:</strong> AWS IoT Integration</p>
 <hr />
 <h2 id="session-introduction">Session Introduction<a class="headerlink" href="#session-introduction" title="Permanent link">&para;</a></h2>
-<p>This week focuses on <strong>edge computing</strong> with AWS Greengrass for local data processing. You'll complete the SimuLearn lab on ETL at the edge and deploy the AWS IoT Greengrass Components lab – both critical for mining operations with intermittent connectivity.</p>
+<p>This week focuses on <strong>real-time analytics and data processing</strong> at the cloud layer using <strong>AWS IoT Analytics</strong> for building data pipelines, <strong>SQL queries</strong> for transforming telemetry, and <strong>dashboard creation</strong> for monitoring truck fleet metrics. You'll process raw IoT device data, aggregate it, and prepare it for visualization and insights in the cloud without requiring edge devices to process locally.</p>
 <h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this session, you will be able to:</p>
 <ul>
-<li>Deploy AWS IoT Greengrass Core on laptop/Raspberry Pi</li>
-<li>Implement edge-based anomaly detection (local processing)</li>
-<li>Process data locally before cloud transmission</li>
-<li>Reduce bandwidth and improve latency</li>
+<li>Set up AWS IoT Analytics channels to ingest raw device data</li>
+<li>Create pipelines to transform and aggregate telemetry data</li>
+<li>Write SQL queries for real-time data analysis</li>
+<li>Query historical data for trend analysis</li>
+<li>Prepare datasets for visualization in Week 14</li>
 </ul>
 <hr />
 <h2 id="session-structure">Session Structure<a class="headerlink" href="#session-structure" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>SimuLearn Lab</strong> – ETL at the Edge (1 h)</li>
-<li><strong>AWS Lab</strong> – Deploying IoT Greengrass Components (1 h)</li>
-<li><strong>Greengrass Core Setup</strong> – Edge device configuration</li>
-<li><strong>Local Anomaly Detection</strong> – Process vibration data at edge</li>
-<li><strong>Edge-to-Cloud Architecture</strong> – Hybrid deployment</li>
+<li><strong>AWS Skill Builder</strong> – Analyzing &amp; Visualizing IoT Data (45 min)</li>
+<li><strong>IoT Analytics Setup</strong> – Create channel, pipeline, and data store</li>
+<li><strong>SQL Data Transformation</strong> – Build queries for aggregation and analytics</li>
+<li><strong>Historical Data Analysis</strong> – Query trends over time</li>
+<li><strong>Dashboard Preparation</strong> – Prepare datasets for QuickSight visualization</li>
 </ol>
 <hr />
 <h2 id="pre-session-preparation">Pre-Session Preparation<a class="headerlink" href="#pre-session-preparation" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Required Completion</p>
 <ul>
-<li>SimuLearn: "ETL at the Edge"</li>
-<li>Lab: "Deploying AWS IoT Greengrass Components" (AWS Skill Builder)</li>
-<li>Laptop or Raspberry Pi for Greengrass Core (ESP32 not powerful enough)</li>
+<li>AWS Skill Builder: <a href="https://explore.skillbuilder.aws/">Analyzing, Visualizing, and Gaining Insights from IoT Devices</a> (45 min)</li>
+<li>Truck successfully publishing telemetry to AWS IoT Core (from Weeks 10-12)</li>
+<li>Basic SQL knowledge (SELECT, WHERE, GROUP BY, aggregate functions)</li>
 </ul>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Setup Check</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> AWS Greengrass Core software installed</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 3.8+ for Lambda functions</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Truck ESP32 functional from previous weeks</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> AWS IoT Analytics enabled in your region</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> IoT Core device still publishing data</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> AWS console access for IoT Analytics and Timestream</li>
 </ul>
 </div>
 <hr />
 <h2 id="rockcore-mining-context">RockCore Mining Context<a class="headerlink" href="#rockcore-mining-context" title="Permanent link">&para;</a></h2>
-<p><strong>Problem:</strong> Underground pit zones have no cellular/WiFi coverage. Trucks collect data for 2-hour shifts, but:
-- Can't wait 2 hours to detect engine failures
-- Bandwidth limited when trucks surface (20 trucks × 5KB/sec = 100KB/sec)
-- Critical alerts must trigger immediately</p>
-<p><strong>Solution:</strong> AWS Greengrass Core on truck's onboard computer (simulated with laptop) processes data locally:
-- Vibration anomaly detection runs at edge
-- Only anomalies + summary stats sent to cloud
-- Reduces bandwidth by 90%</p>
+<p><strong>Pit Station Requirement:</strong> Supervisors need real-time insights from the fleet:
+- <strong>Live Dashboard:</strong> Current temperature, vibration, fuel levels across all trucks
+- <strong>Trends:</strong> Which trucks show increasing vibration (early maintenance warning)?
+- <strong>Efficiency Metrics:</strong> Average data latency, message counts, data volume by truck
+- <strong>Predictive Insights:</strong> Historical patterns to identify at-risk equipment</p>
+<p>This week you'll build the cloud-based analytics foundation that powers these insights, processing all data centrally for consistency and scalability across the entire fleet.</p>
 <hr />
-<h2 id="simulearn-lab-aws-lab-complete-first">SimuLearn Lab &amp; AWS Lab (Complete First)<a class="headerlink" href="#simulearn-lab-aws-lab-complete-first" title="Permanent link">&para;</a></h2>
-<h3 id="lab-1-etl-at-the-edge-simulearn">Lab 1: ETL at the Edge (SimuLearn)<a class="headerlink" href="#lab-1-etl-at-the-edge-simulearn" title="Permanent link">&para;</a></h3>
-<p><strong>Focus:</strong>
-- Extract sensor data
-- Transform/aggregate locally
-- Load to cloud only when necessary</p>
-<h3 id="lab-2-deploying-aws-iot-greengrass-components-aws-skill-builder">Lab 2: Deploying AWS IoT Greengrass Components (AWS Skill Builder)<a class="headerlink" href="#lab-2-deploying-aws-iot-greengrass-components-aws-skill-builder" title="Permanent link">&para;</a></h3>
-<p><strong>Focus:</strong>
-- Greengrass Core concepts
-- Component deployment
-- Local processing</p>
-<p><strong>Deliverable:</strong> Screenshots of both lab completions.</p>
+<h2 id="aws-skill-builder-course-complete-first">AWS Skill Builder Course (Complete First)<a class="headerlink" href="#aws-skill-builder-course-complete-first" title="Permanent link">&para;</a></h2>
+<h3 id="course-analyzing-visualizing-and-gaining-insights-from-iot-devices-45-min">Course: Analyzing, Visualizing, and Gaining Insights from IoT Devices (45 min)<a class="headerlink" href="#course-analyzing-visualizing-and-gaining-insights-from-iot-devices-45-min" title="Permanent link">&para;</a></h3>
+<p><strong>Topics:</strong>
+- IoT Analytics concepts and architecture
+- Time-series data processing best practices
+- Real-time vs. batch analytics
+- Data aggregation and transformation
+- Dashboard design principles</p>
+<p><strong>Deliverable:</strong> Screenshot of course completion.</p>
 <hr />
 <h2 id="hands-on-tasks">Hands-On Tasks<a class="headerlink" href="#hands-on-tasks" title="Permanent link">&para;</a></h2>
-<h3 id="task-1-install-greengrass-core-laptop">Task 1: Install Greengrass Core (Laptop)<a class="headerlink" href="#task-1-install-greengrass-core-laptop" title="Permanent link">&para;</a></h3>
-<p><strong>AWS Console → IoT Core → Greengrass → Core devices:</strong></p>
-<ol>
-<li>Create Core device: <code>rockcore-edge-gateway</code></li>
-<li>Download Greengrass Core software</li>
-<li>
-<p>Install on laptop:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>./GreengrassInstaller<span class="w"> </span>-r<span class="w"> </span>&lt;region&gt;<span class="w"> </span>-t<span class="w"> </span>&lt;thing-name&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;cert-path&gt;
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Verify deployment:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>greengrass
-</span></code></pre></div></p>
-</li>
-</ol>
-<h3 id="task-2-deploy-lambda-function-for-local-anomaly-detection">Task 2: Deploy Lambda Function for Local Anomaly Detection<a class="headerlink" href="#task-2-deploy-lambda-function-for-local-anomaly-detection" title="Permanent link">&para;</a></h3>
-<p><strong>Lambda function (Python) runs on Greengrass Core:</strong></p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># anomaly_detector.py - Runs locally on edge device</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">json</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span> <span class="nn">greengrasssdk</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">client</span> <span class="o">=</span> <span class="n">greengrasssdk</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;iot-data&#39;</span><span class="p">)</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">THRESHOLD</span> <span class="o">=</span> <span class="mf">2.2</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">anomaly_count</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="k">global</span> <span class="n">anomaly_count</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="c1"># Receives vibration data from ESP32 via local MQTT</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">vibration</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;vibration&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="n">truck_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;truck&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">)</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="c1"># Local processing - no cloud needed</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="k">if</span> <span class="n">vibration</span> <span class="o">&gt;</span> <span class="n">THRESHOLD</span><span class="p">:</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        <span class="n">anomaly_count</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="c1"># Only send anomalies to cloud</span>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>        <span class="n">alert</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>            <span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="n">truck_id</span><span class="p">,</span>
-</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>            <span class="s1">&#39;vibration&#39;</span><span class="p">:</span> <span class="n">vibration</span><span class="p">,</span>
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>            <span class="s1">&#39;anomaly_count&#39;</span><span class="p">:</span> <span class="n">anomaly_count</span><span class="p">,</span>
-</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>            <span class="s1">&#39;severity&#39;</span><span class="p">:</span> <span class="s1">&#39;CRITICAL&#39;</span> <span class="k">if</span> <span class="n">vibration</span> <span class="o">&gt;</span> <span class="mf">3.0</span> <span class="k">else</span> <span class="s1">&#39;WARNING&#39;</span>
-</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="p">}</span>
-</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
-</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="c1"># Publish to cloud (when connected)</span>
-</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>        <span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span>
-</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>            <span class="n">topic</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;rockcore/alerts/</span><span class="si">{</span><span class="n">truck_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>            <span class="n">payload</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">alert</span><span class="p">)</span>
-</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>        <span class="p">)</span>
-</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
-</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anomaly detected: </span><span class="si">{</span><span class="n">vibration</span><span class="si">}</span><span class="s2">g - Alert sent to cloud&quot;</span><span class="p">)</span>
-</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>
-</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>    <span class="c1"># Always return to local ESP32 for immediate feedback</span>
-</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>    <span class="k">return</span> <span class="p">{</span>
-</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>        <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>        <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
-</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>            <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;ALERT&#39;</span> <span class="k">if</span> <span class="n">vibration</span> <span class="o">&gt;</span> <span class="n">THRESHOLD</span> <span class="k">else</span> <span class="s1">&#39;NORMAL&#39;</span><span class="p">,</span>
-</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>            <span class="s1">&#39;anomaly_count&#39;</span><span class="p">:</span> <span class="n">anomaly_count</span>
-</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>        <span class="p">})</span>
-</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>    <span class="p">}</span>
+<h3 id="task-1-create-iot-analytics-channel">Task 1: Create IoT Analytics Channel<a class="headerlink" href="#task-1-create-iot-analytics-channel" title="Permanent link">&para;</a></h3>
+<p><strong>AWS Console → IoT Analytics:</strong></p>
+<p><strong>Step 1: Create Channel</strong>
+- Name: <code>rockcore_telemetry_channel</code>
+- Retention: 30 days (adjustable based on storage needs)
+- Source: Accept messages from IoT Core</p>
+<p><strong>Step 2: Create IoT Rule to Route Data</strong></p>
+<p>In IoT Core → Message routing → Rules, create a rule:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;ruleName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rockcore_to_analytics&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;topicRulePayload&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;ruleDisabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;sql&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SELECT * FROM &#39;rockcore/trucks/+/telemetry&#39;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="nt">&quot;iotAnalytics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="nt">&quot;channelArn&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:iotanalytics:region:account:channel/rockcore_telemetry_channel&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nt">&quot;channelName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rockcore_telemetry_channel&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="nt">&quot;roleArn&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:iam::account:role/IoTAnalyticsRole&quot;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}]</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">}</span>
 </span></code></pre></div>
-<p><strong>Deploy to Greengrass:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>aws<span class="w"> </span>greengrass<span class="w"> </span>create-function-definition<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--name<span class="w"> </span>rockcore-anomaly-detector<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--initial-version<span class="w"> </span>file://function-config.json
-</span></code></pre></div></p>
-<h3 id="task-3-esp32-to-greengrass-local-mqtt">Task 3: ESP32 to Greengrass Local MQTT<a class="headerlink" href="#task-3-esp32-to-greengrass-local-mqtt" title="Permanent link">&para;</a></h3>
-<p><strong>ESP32 publishes to local Greengrass Core instead of AWS Cloud:</strong></p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Week 13 Task 3 - Local MQTT to Greengrass</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;WiFi.h&gt;</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;PubSubClient.h&gt;</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">// Greengrass Core local endpoint</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">mqtt_server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;192.168.1.100&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Laptop IP</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mqtt_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8883</span><span class="p">;</span><span class="w">  </span><span class="c1">// Greengrass local MQTT</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">WiFiClient</span><span class="w"> </span><span class="n">espClient</span><span class="p">;</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">PubSubClient</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">espClient</span><span class="p">);</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="kt">void</span><span class="w"> </span><span class="nf">publishToEdge</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">vibration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">payload</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="n">snprintf</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">truck</span><span class="se">\&quot;</span><span class="s">:</span><span class="se">\&quot;</span><span class="s">HC01</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">vibration</span><span class="se">\&quot;</span><span class="s">:%.2f}&quot;</span><span class="p">,</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="n">vibration</span><span class="p">);</span>
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span><span class="c1">// Publish to local Greengrass Core</span>
-</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="n">client</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="s">&quot;greengrass/rockcore/HC01/vibration&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">);</span>
-</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Data sent to edge gateway&quot;</span><span class="p">);</span>
-</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="p">}</span>
-</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
-</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="kt">void</span><span class="w"> </span><span class="nf">subscribeToEdgeResponse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">  </span><span class="c1">// Greengrass Lambda responds with local decision</span>
-</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">  </span><span class="n">client</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s">&quot;greengrass/rockcore/HC01/response&quot;</span><span class="p">);</span>
-</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="p">}</span>
-</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>
-</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="kt">void</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="o">*</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">  </span><span class="c1">// Immediate response from edge (no cloud latency)</span>
-</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Edge response received in &quot;</span><span class="p">);</span>
-</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">millis</span><span class="p">());</span>
-</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;ms&quot;</span><span class="p">);</span>
-</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>
-</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">  </span><span class="c1">// Parse response and trigger local alert if needed</span>
-</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="p">}</span>
-</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>
-</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">  </span><span class="n">client</span><span class="p">.</span><span class="n">setServer</span><span class="p">(</span><span class="n">mqtt_server</span><span class="p">,</span><span class="w"> </span><span class="n">mqtt_port</span><span class="p">);</span>
-</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">  </span><span class="n">client</span><span class="p">.</span><span class="n">setCallback</span><span class="p">(</span><span class="n">callback</span><span class="p">);</span>
-</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">  </span><span class="n">subscribeToEdgeResponse</span><span class="p">();</span>
-</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="p">}</span>
+<p><strong>Verify:</strong> Publish test message and check channel metrics in IoT Analytics console.</p>
+<hr />
+<h3 id="task-2-create-pipeline-for-data-transformation">Task 2: Create Pipeline for Data Transformation<a class="headerlink" href="#task-2-create-pipeline-for-data-transformation" title="Permanent link">&para;</a></h3>
+<p><strong>Pipeline Purpose:</strong> Clean, validate, and aggregate raw telemetry into a structured dataset.</p>
+<p><strong>Step 1: Create Data Store</strong>
+- Name: <code>rockcore_data_store</code>
+- Retention: 90 days (raw processed data)</p>
+<p><strong>Step 2: Create Pipeline</strong></p>
+<p>In IoT Analytics → Pipelines, create pipeline:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rockcore_telemetry_pipeline</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">Source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rockcore_telemetry_channel</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">Activities</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Channel</span><span class="p">:</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngestFromChannel</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Datastore</span><span class="p">:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StoreProcessedData</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">      </span><span class="nt">datastoreName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rockcore_data_store</span>
 </span></code></pre></div>
-<h3 id="task-4-modbus-simulation-industrial-protocol">Task 4: Modbus Simulation (Industrial Protocol)<a class="headerlink" href="#task-4-modbus-simulation-industrial-protocol" title="Permanent link">&para;</a></h3>
-<p><strong>Simulate Modbus sensor using Python (laptop):</strong></p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># modbus_simulator.py - Simulates industrial sensor</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span> <span class="nn">pymodbus.server.sync</span> <span class="kn">import</span> <span class="n">StartTcpServer</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">from</span> <span class="nn">pymodbus.datastore</span> <span class="kn">import</span> <span class="n">ModbusSlaveContext</span><span class="p">,</span> <span class="n">ModbusServerContext</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kn">import</span> <span class="nn">random</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">def</span> <span class="nf">update_sensor_data</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="c1"># Simulate temperature sensor on Modbus register 0</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">temp</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">context</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">temp</span><span class="p">])</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="c1"># Simulate vibration on register 1</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">vibe</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># 1.0g to 3.0g (×10)</span>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">context</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setValues</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">vibe</span><span class="p">])</span>
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># Start Modbus TCP server on port 502</span>
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">StartTcpServer</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">502</span><span class="p">))</span>
+<p><strong>Step 3: Add Data Validation (Optional)</strong></p>
+<p>Use attribute filter to validate data:
+- Temperature: 0-120°C
+- Vibration: 0-10g
+- Fuel: 0-100%</p>
+<hr />
+<h3 id="task-3-build-sql-query-for-real-time-analytics">Task 3: Build SQL Query for Real-Time Analytics<a class="headerlink" href="#task-3-build-sql-query-for-real-time-analytics" title="Permanent link">&para;</a></h3>
+<p><strong>AWS IoT Analytics → Datasets</strong></p>
+<p>Create a dataset that processes data in real-time using SQL:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- Real-time truck telemetry aggregation (5-minute buckets)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">SELECT</span><span class="w"> </span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="n">truck_id</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">&#39;minute&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">from_unixtime</span><span class="p">(</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">time_bucket</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">temperature</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_temperature</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="k">MAX</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">max_temperature</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="k">MIN</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">min_temperature</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">vibration</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_vibration</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="k">MAX</span><span class="p">(</span><span class="n">vibration</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">max_vibration</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sample_count</span><span class="p">,</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="k">MAX</span><span class="p">(</span><span class="n">fuel_level</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fuel_level_latest</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">FROM</span><span class="w"> </span><span class="n">rockcore_data_store</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">WHERE</span><span class="w"> </span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="n">temperature</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">temperature</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">120</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">vibration</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">vibration</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="n">truck_id</span><span class="p">,</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">&#39;minute&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">from_unixtime</span><span class="p">(</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">))</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="n">time_bucket</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="n">truck_id</span>
 </span></code></pre></div>
-<p><strong>Greengrass function reads Modbus and publishes MQTT:</strong></p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># modbus_to_mqtt.py - Protocol gateway</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span> <span class="nn">pymodbus.client.sync</span> <span class="kn">import</span> <span class="n">ModbusTcpClient</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kn">import</span> <span class="nn">greengrasssdk</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">client_mqtt</span> <span class="o">=</span> <span class="n">greengrasssdk</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;iot-data&#39;</span><span class="p">)</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">client_modbus</span> <span class="o">=</span> <span class="n">ModbusTcpClient</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">502</span><span class="p">)</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="c1"># Read Modbus registers</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">client_modbus</span><span class="o">.</span><span class="n">read_holding_registers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="n">temp</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">registers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="n">vibe</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">registers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">10.0</span>  <span class="c1"># Convert back to g</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="c1"># Convert to MQTT/JSON</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>        <span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="n">temp</span><span class="p">,</span>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="s1">&#39;vibration&#39;</span><span class="p">:</span> <span class="n">vibe</span><span class="p">,</span>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>        <span class="s1">&#39;protocol&#39;</span><span class="p">:</span> <span class="s1">&#39;modbus&#39;</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="p">}</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>    <span class="n">client_mqtt</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span>
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>        <span class="n">topic</span><span class="o">=</span><span class="s1">&#39;rockcore/industrial/HC01&#39;</span><span class="p">,</span>
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>        <span class="n">payload</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>    <span class="p">)</span>
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
-</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
+<p><strong>Schedule:</strong> Every 5 minutes (minimum interval for real-time insights)</p>
+<p><strong>Retention:</strong> 7 days for quick-access dashboard, archive older data to S3</p>
+<hr />
+<h3 id="task-4-create-dataset-for-historical-analysis">Task 4: Create Dataset for Historical Analysis<a class="headerlink" href="#task-4-create-dataset-for-historical-analysis" title="Permanent link">&para;</a></h3>
+<p><strong>30-Day Trend Analysis:</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">-- Daily aggregation for trend detection</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">SELECT</span><span class="w"> </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="n">truck_id</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">from_unixtime</span><span class="p">(</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">temperature</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">daily_avg_temp</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="n">ROUND</span><span class="p">(</span><span class="n">STDDEV</span><span class="p">(</span><span class="n">temperature</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">temp_variance</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">vibration</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">daily_avg_vibration</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="n">ROUND</span><span class="p">(</span><span class="n">STDDEV</span><span class="p">(</span><span class="n">vibration</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">vibration_variance</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_samples</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">FROM</span><span class="w"> </span><span class="n">rockcore_data_store</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">WHERE</span><span class="w"> </span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="n">from_unixtime</span><span class="p">(</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">current_timestamp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;30&#39;</span><span class="w"> </span><span class="k">day</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="n">truck_id</span><span class="p">,</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">from_unixtime</span><span class="p">(</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">))</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="n">truck_id</span><span class="p">,</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="nb">date</span><span class="w"> </span><span class="k">DESC</span>
+</span></code></pre></div>
+<p><strong>Use Case:</strong> Identify trucks with increasing vibration trend (predictive maintenance signal)</p>
+<hr />
+<h3 id="task-5-export-data-for-dashboard">Task 5: Export Data for Dashboard<a class="headerlink" href="#task-5-export-data-for-dashboard" title="Permanent link">&para;</a></h3>
+<p><strong>Create Dataset for QuickSight Integration:</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- Fleet summary for dashboard KPIs</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">SELECT</span><span class="w"> </span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">truck_id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_trucks</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">temperature</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fleet_avg_temp</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="k">MAX</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fleet_max_temp</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">vibration</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fleet_avg_vibration</span><span class="p">,</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_messages</span><span class="p">,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="n">ROUND</span><span class="p">(</span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">from_unixtime</span><span class="p">(</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">))),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">messages_per_hour</span><span class="p">,</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="k">MAX</span><span class="p">(</span><span class="n">from_unixtime</span><span class="p">(</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">latest_update</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">FROM</span><span class="w"> </span><span class="n">rockcore_data_store</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">from_unixtime</span><span class="p">(</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">current_timestamp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="n">hour</span>
+</span></code></pre></div>
+<p><strong>Schedule:</strong> Every 1 minute (real-time KPI updates)</p>
+<hr />
+<h3 id="task-6-store-aggregated-data-in-s3-optional-advanced">Task 6: Store Aggregated Data in S3 (Optional Advanced)<a class="headerlink" href="#task-6-store-aggregated-data-in-s3-optional-advanced" title="Permanent link">&para;</a></h3>
+<p><strong>For long-term storage and ML training:</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">-- Export daily summaries to S3 for archival and ML</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">rockcore_daily_archive</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="n">truck_id</span><span class="w"> </span><span class="n">STRING</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nb">date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="n">avg_temperature</span><span class="w"> </span><span class="n">DOUBLE</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="n">avg_vibration</span><span class="w"> </span><span class="n">DOUBLE</span><span class="p">,</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="n">sample_count</span><span class="w"> </span><span class="nb">INT</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">)</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">PARTITIONED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">(</span><span class="k">year</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">month</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">day</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">STORED</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">PARQUET</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">LOCATION</span><span class="w"> </span><span class="s1">&#39;s3://rockcore-data-lake/archives/daily/&#39;</span>
+</span></code></pre></div>
+<hr />
+<h2 id="data-pipeline-architecture">Data Pipeline Architecture<a class="headerlink" href="#data-pipeline-architecture" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>IoT Core Rules
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    ↓
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>IoT Analytics Channel (raw telemetry)
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    ↓
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Pipeline (validation/filtering)
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    ↓
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Data Store (30-day retention)
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    ↓
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>Datasets (SQL queries)
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    ├→ Real-time (5-min buckets) → QuickSight Dashboards
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    ├→ Historical (daily) → Trend Analysis
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    └→ S3 Export (archive) → ML Training (Week 15)
 </span></code></pre></div>
 <hr />
 <h2 id="check-your-knowledge">Check Your Knowledge<a class="headerlink" href="#check-your-knowledge" title="Permanent link">&para;</a></h2>
 <div class="admonition question">
-<p class="admonition-title">Q1 – Edge vs Cloud Processing</p>
-<p>When should you process data at the edge instead of sending everything to the cloud?</p>
+<p class="admonition-title">Q1 – IoT Analytics vs. Lambda Rules</p>
+<p>When should you use IoT Analytics instead of Lambda functions triggered by IoT Rules?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>Edge processing when: 1) Low latency required (safety systems), 2) Limited bandwidth, 3) Intermittent connectivity, 4) Privacy concerns, 5) High data volume with low value (send summaries only).</p>
+<p>Use IoT Analytics for: 1) Complex data transformations, 2) Historical queries over large datasets, 3) Time-series aggregations (GROUP BY time), 4) Scheduled batch processing. Use Lambda for: 1) Simple real-time actions, 2) Immediate alerts, 3) Device-specific logic.</p>
 </details>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Q2 – Greengrass Offline</p>
-<p>If Greengrass loses internet, can it still run Lambda functions?</p>
+<p class="admonition-title">Q2 – Data Retention Strategy</p>
+<p>You have 20 trucks publishing 1 message/sec (86.4M messages/day). Store raw data 30 days = ~2.6B records. How reduce costs?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>Yes! Greengrass Core runs Lambda functions locally. Devices can communicate via local MQTT broker. When connectivity returns, Greengrass syncs logs and queued cloud messages.</p>
+<p>1) Aggregate to 1-min averages in pipeline (1440 records/truck/day instead of 86,400), 2) Archive raw data to S3 Glacier after 7 days, 3) Partition datasets by truck_id and date for fast queries, 4) Use retention policies to auto-delete old data.</p>
 </details>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Q3 – Protocol Conversion</p>
-<p>Why can't ESP32 directly speak Modbus to industrial sensors?</p>
+<p class="admonition-title">Q3 – SQL Aggregation Functions</p>
+<p>Why use ROUND(AVG(vibration), 2) instead of just AVG(vibration)?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>Modbus requires RS-485 hardware interface (not on ESP32) or TCP stack complexity. Gateway pattern separates concerns: ESP32 handles sensors, Greengrass handles legacy industrial protocols.</p>
+<p>ROUND() reduces data precision for display (avoiding floating-point noise), reduces storage size when stored, and makes dashboards more readable. Statistical analysis still works correctly with rounded averages.</p>
 </details>
 </div>
 <hr />
 <h2 id="portfolio-checkpoint">Portfolio Checkpoint<a class="headerlink" href="#portfolio-checkpoint" title="Permanent link">&para;</a></h2>
 <p><strong>Submit to GitHub:</strong></p>
 <ol>
-<li>SimuLearn completion screenshots (3 labs)</li>
-<li><strong>Greengrass deployment</strong> screenshot showing Core device online</li>
-<li><strong>Lambda function logs</strong> from Greengrass showing local anomaly detection</li>
-<li><strong>Architecture diagram</strong> showing ESP32 → Greengrass Core → AWS Cloud flow</li>
-<li><strong>Test video</strong> (4-5 minutes):</li>
-<li>ESP32 publishing to local Greengrass</li>
-<li>Lambda function detecting anomaly locally</li>
-<li>Immediate response to ESP32 (&lt; 100ms latency)</li>
-<li>Cloud alert appearing in AWS console</li>
-<li>Demonstrate offline operation (disconnect laptop from internet)</li>
+<li>AWS Skill Builder completion screenshot</li>
+<li><strong>IoT Analytics Channel Setup</strong> screenshot showing active channel with data flowing in</li>
+<li><strong>Pipeline Configuration</strong> screenshot showing data store and retention settings</li>
+<li><strong>SQL Query Results</strong> - First 10 rows of each dataset:</li>
+<li>Real-time aggregation (5-minute buckets)</li>
+<li>Historical analysis (daily trends)</li>
+<li><strong>Data Export Log</strong> - Screenshot showing successful S3 export (if completed)</li>
+<li><strong>Test video</strong> (3-4 minutes):</li>
+<li>Publish data from ESP32 to IoT Core</li>
+<li>Wait 30 seconds, verify message in IoT Analytics channel</li>
+<li>Run real-time query, show results updating</li>
+<li>Run historical query over past 7 days</li>
+<li>Demonstrate data volume reduction (raw vs. aggregated)</li>
+<li><strong>Architecture Diagram</strong> showing data flow:</li>
+<li>ESP32 → IoT Core Rules → IoT Analytics Channel → Pipeline → Data Store → Datasets → S3/QuickSight</li>
 </ol>
 <hr />
 <p><strong>Navigation:</strong> <a href="../12/">← Week 12</a> | <a href="../../">Course Overview</a> | <a href="../14/">Week 14 →</a></p>

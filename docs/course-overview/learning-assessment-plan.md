@@ -6,6 +6,7 @@
 
 
 
+
 ## Course Overview
 
 **Duration:** 18 weeks (integrated delivery)  
@@ -66,8 +67,8 @@
 | **[Week 10](../aws/10.md)** **(4hrs)** | AWS IoT Core & Secure Connection | Real ESP32 | AWS IoT Core basics, device registration, secure MQTT connection | AWS Skill Builder: Getting Started (35 min) + Securely Connecting (1 h) | Complete AWS training courses, set up device certificates | Register truck → MQTT publish DHT11/gas data | 4 |
 | **[Week 11](../aws/11.md)** **(4hrs)** | Device Data, Rules & Shadows | Real ESP32 | Device Shadow, IoT Rules Engine, SNS notifications | AWS Skill Builder: Handling AWS IoT Device Data (2 h) | Implement device shadows, create data processing rules | Device Shadow for engine temp & cabin lock | 4 |
 | **[Week 12](../aws/12.md)** **(4hrs)** | Fleet Management & OTA | Real ESP32 | Thing Groups, fleet management, OTA updates | AWS Skill Builder: Managing Devices at Scale (3.5 h) + OTA Updates (1 h) | Configure thing groups, test firmware updates | Thing Groups, OTA firmware deployment | 4 |
-| **[Week 13](../aws/13.md)** **(4hrs)** | Edge Processing & Industrial | Real ESP32 | AWS IoT Greengrass, edge computing, local processing | AWS Lab: Deploying Greengrass Components (1 h) | Deploy Greengrass components, implement edge logic | Greengrass core with local anomaly detection | 4 |
-| **[Week 14](../aws/14.md)** **(4hrs)** | Analytics & Visualization | Real ESP32 | AWS IoT SiteWise, QuickSight dashboards, insights | AWS Skill Builder: Analytics & Visualization (45 m) + Manufacturing (45 m) | Build analytics models, create dashboard visualizations | SiteWise asset model "RockCore-Truck-01", QuickSight dashboard | 4 |
+| **[Week 13](../aws/13.md)** **(4hrs)** | Cloud Analytics & Real-Time Processing | Real ESP32 | AWS IoT Analytics pipelines, SQL data transformation, real-time dashboards | AWS Skill Builder: Analytics & Visualization (45 min) | Build IoT Analytics channel and pipeline, create SQL queries | IoT Analytics data store with real-time aggregations | 4 |
+| **[Week 14](../aws/14.md)** **(4hrs)** | SiteWise Asset Modeling & Visualization | Real ESP32 | AWS IoT SiteWise asset hierarchy, QuickSight dashboards, insights | AWS Skill Builder: Analytics & Visualization (45 min) | Build asset models, create interactive dashboards | SiteWise asset model "RockCore-Truck-01", QuickSight dashboard | 4 |
 
 !!! warning "Assessment Point 5: A5b Complete - Analytics Phase"
     **[A5b: Cloud Analytics & Visualization](../assessments/index.md)** (Due Week 14)
@@ -121,13 +122,11 @@
 | 11 | Handling AWS IoT Device Data and States | 2 h | AWS Skill Builder (free) |
 | 12 | Managing AWS IoT Devices at Scale | 3 h 30 m | AWS Skill Builder (free) |
 | 12 | OTA Updates in Edge Devices | 1 h | NMTAFE Sandbox (instructor adds you) |
-| 13 | ETL at the Edge | 1 h | NMTAFE Sandbox (instructor adds you) |
-| 13 | Lab – Deploying AWS IoT Greengrass Components | 1 h | AWS Free Lab (free) |
+| 13 | AWS IoT Analytics & Real-Time Processing | 2 h | AWS Skill Builder (free) |
 | 14 | Analyzing, Visualizing, and Gaining Insights from IoT Devices | 45 min | AWS Skill Builder (free) |
-| 14 | Connecting Systems and Machines to AWS for Industrial Manufacturing | 45 min | AWS Skill Builder (free) |
 | 15–17 | AWS Industry Quest: Manufacturing and Automotive | 13 h | NMTAFE Sandbox (instructor adds you) |
 
-**Total: ~27 hours of AWS training (Weeks 10–17)**
+**Total: ~25 hours of AWS training (Weeks 10–17)**
 
 ---
 

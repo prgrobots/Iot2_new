@@ -12,4 +12,4 @@ For advanced users: [platformio.org](https://platformio.org/)
 
 **Install:** [aws.amazon.com/cli](https://aws.amazon.com/cli/)
 
-Needed for OTA updates and Greengrass deployment (Weeks 12-13).
+Needed for OTA updates and device management (Weeks 12-13).

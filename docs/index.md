@@ -50,8 +50,8 @@ For the complete 18-week course schedule with detailed learning activities, asse
     - [Week 10](aws/10.md): AWS IoT Core Basics
     - [Week 11](aws/11.md): Device Data & Shadows
     - [Week 12](aws/12.md): Fleet Management & OTA
-    - [Week 13](aws/13.md): Edge Processing & Industrial
-    - [Week 14](aws/14.md): Analytics & Visualization
+    - [Week 13](aws/13.md): Cloud Analytics & Real-Time Processing
+    - [Week 14](aws/14.md): SiteWise Asset Modeling & Visualization
 
 === "Weeks 15-18: Capstone Integration"
     

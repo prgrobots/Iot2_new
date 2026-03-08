@@ -1754,22 +1754,18 @@
 </li>
 <li>Truck-01 body color: Green (normal) → Yellow (anomaly) → Red (maintenance needed)</li>
 </ul>
-<h3 id="lab-6-edge-to-cloud-data-pipeline">Lab 6: Edge-to-Cloud Data Pipeline<a class="headerlink" href="#lab-6-edge-to-cloud-data-pipeline" title="Permanent link">&para;</a></h3>
+<h3 id="lab-6-real-time-cloud-processing">Lab 6: Real-Time Cloud Processing<a class="headerlink" href="#lab-6-real-time-cloud-processing" title="Permanent link">&para;</a></h3>
 <p><strong>Expected Duration:</strong> 1–1.5 hours</p>
 <p><strong>Concepts:</strong>
-- AWS Greengrass running on edge (laptop in this case)
-- Local processing before cloud transmission
-- Sync when connection restored</p>
+- Cloud-based anomaly detection and alerting
+- Real-time data aggregation and dashboards
+- Immediate response to sensor anomalies</p>
 <p><strong>Your Task:</strong>
-- If you completed Greengrass deployment in Week 13:
-  - Run anomaly detection <strong>locally</strong> on Greengrass
-  - Send alert to cloud only when threshold crossed (saves bandwidth)
-  - Demonstrate 5-minute offline period → messages queued → resync when online</p>
-<ul>
-<li>If not completed Week 13:</li>
-<li>Simulate edge processing with Lambda@Edge or EC2</li>
-<li>Focus on understanding the <strong>concept</strong> and data flow</li>
-</ul>
+- Implement <strong>cloud-based anomaly detection</strong> using IoT Analytics:
+  - Create real-time queries to detect vibration spikes
+  - Send alerts to TwinMaker and dashboards when anomalies detected
+  - Demonstrate cloud processing reducing latency to &lt; 5 seconds
+  - Show how cloud-based approach scales to 20+ trucks easily</p>
 <hr />
 <h2 id="hands-on-extend-to-multi-truck-fleet">Hands-On: Extend to Multi-Truck Fleet<a class="headerlink" href="#hands-on-extend-to-multi-truck-fleet" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-update-twinmaker-scene-with-fleet-view">Step 1: Update TwinMaker Scene with Fleet View<a class="headerlink" href="#step-1-update-twinmaker-scene-with-fleet-view" title="Permanent link">&para;</a></h3>
