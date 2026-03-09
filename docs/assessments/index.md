@@ -59,26 +59,24 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 **Objective:** Build IoT device with thermal and light-responsive status display.
 
-**Scenario:** RockCore Mining needs engine bay monitoring in dark tunnels. Your system must display engine temperature via LED color and respond to low-light conditions by auto-activating the display.
+**Scenario:** RockCore Mining needs engine bay monitoring. Your system must display engine temperature via LED colour — from normal (green) through warning (yellow) to critical (red).
 
 **Components:**
-- DHT11 temperature/humidity sensor
-- Photocell (LDR) for ambient light sensing
-- RGB LED for color-coded status + brightness control
+- Thermistor (NTC 10kΩ) for temperature sensing
+- RGB LED for colour-coded status display
 
 **Requirements:**
-- Read DHT11 temperature and handle NaN (sensor error) gracefully
-- Read photocell analog values (0–4095) and classify light levels
-- Map temperature to LED color: Green (< 60°C) → Yellow (60–80°C) → Red (≥ 80°C)
-- Scale LED brightness based on ambient light; auto-activate at full brightness when dark (< 500)
+- Read thermistor ADC value and convert to temperature (°C)
+- Handle out-of-range ADC readings gracefully
+- Map temperature to LED colour: Green (< 60°C) → Yellow (60–80°C) → Red (≥ 80°C)
 - Pseudocode structure and flowcharts provided (NO complete working code in submission)
 
 **Deliverables:**
 1. **Pseudocode Sketch** – `engine_bay_monitor.ino` with structure and comments (structure only, no implementation)
-2. **Wiring Diagram** – Fritzing or hand-drawn schematic
-3. **System Flowcharts** – Mermaid diagrams: main loop, temp→color mapping, light→brightness mapping, auto-on logic
-4. **Demo Video** (2–3 min) – Normal op, low-light auto-on test, temp color transitions, fault rectification
-5. **Reflection** – How will photocell control OLED brightness and truck lights in future weeks?
+2. **Wiring Diagram** – Fritzing or hand-drawn schematic showing thermistor voltage divider and RGB LED
+3. **System Flowcharts** – Mermaid diagrams: main loop, thermistor ADC → temperature conversion, temp→colour mapping
+4. **Demo Video** (2–3 min) – Normal op, temperature range colour transitions, fault rectification
+5. **Reflection** – How would you extend this system to log temperature to the cloud or notify a pit station?
 
 **Submission:**
 - GitHub: `A1-Electronics-Fundamentals/code/esp32-arduino/`
@@ -95,7 +93,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 - RFID-RC522 module reading multiple cards
 - DS3231 RTC module for timestamps
 - Serial output logging access events
-- Authorized/unauthorized card handling
+- Authorised/unauthorised card handling
 
 **Submission:**
 - Arduino `.ino` file
@@ -153,7 +151,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 **Core Requirements:**
 - X.509 certificate authentication (no API keys)
-- MQTT publish to `truck/{truckID}/telemetry` (DHT11, GY-521, MQ-2, lock state)
+- MQTT publish to `truck/{truckID}/telemetry` (thermistor temp, GY-521, MQ-2, lock state)
 - Device Shadow for offline state management (desired vs. reported state)
 - IoT Rules Engine routing to SNS (alerts), DynamoDB (storage)
 - CloudWatch metrics for message volume and latency
@@ -195,7 +193,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 **Core Requirements:**
 
 **Hardware & Sensors**
-- Real ESP32 with all A1-A5b sensors functional (DHT11, GY-521, MQ-2, touch sensor)
+- Real ESP32 with all A1-A5b sensors functional (thermistor, GY-521, MQ-2)
 - Continuous MQTT telemetry to AWS IoT Core
 - Pit station: Simple 3-LED status indicator (red=error, orange=warning, green=normal)
 

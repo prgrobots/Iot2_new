@@ -22,18 +22,24 @@
 !!! note "Week 1-2 Structure"
     The combined Week 1-2 session (8 hours) covers Voltage, Current, and Ohm's Law fundamentals. Navigation references `electronics/01.md`. Note: A separate `electronics/02.md` file exists with LEDs & Breadboards content but is not yet integrated into the course structure—this should be consolidated with Week 3 (Advanced Output + Buttons) or clarified as a separate week depending on course redesign.
 
+!!! warning "Schedule Note — Public Holiday & Equipment Changes"
+    A public holiday fell between Sessions 4 and 5 (calendar Weeks 4–5), shifting the schedule by one week. Session 5 content is now delivered in calendar Week 6, Session 6 in Week 7, and so on. The table below reflects the adjusted calendar week labels.
+    
+    Additionally, Session 4 and Assessment 1 have been updated: the **DHT11 sensor is replaced by a thermistor**, and the **photocell (LDR) has been removed from A1 scope**. Session 6 has been simplified: the **capacitive touch sensor is no longer required** for Assessment 2.  See the [Course Transition Log](../course-transition.md) for full details.
+
 ### Phase 1: Electronics Fundamentals (Weeks 1–9)
 
 | Week | Session Title | Simulator / Hardware | Key Content | Learning Resources* | Out-of-Class Activities* | Truck Progress | Hours |
 |------|---------------|----------------------|-------------|-------------------|-------------------------|----------------|-------|
 | **[Week 1-2](../electronics/01.md)** **(8hrs)** | L1–L3: Voltage, Current, Ohm's Law | Tinkercad Circuits | PhysComp Electronics basics, build series circuit with current measurement | PhysComp Lesson 1-3, Tinkercad tutorials | Review electronics fundamentals, complete circuit simulations | Print chassis | 8 |
 | **[Week 3](../electronics/03.md)** **(4hrs)** | Advanced Output + Buttons | Wokwi (ESP32) | Fade PWM, RGB crossfade, buttons, debouncing | PhysComp Lesson 4, Wokwi documentation | Practice LED control patterns, button handling | Front panel alerts, chassis assembly begins | 4 |
-| **[Week 4](../electronics/04.md)** **(4hrs)** | Analog Input + Sensors | Wokwi → Real ESP32 | DHT11, MQ-2, flame sensor fundamentals | PhysComp Lesson 5, sensor datasheets | Test analog reading code, troubleshoot sensor connections | Front panel sensors | 4 |
-| **[Week 5](../electronics/05.md)** **(4hrs)** | I²C + Actuators | Real ESP32 | OLED display, accelerometer (GY-521), servo control | PhysComp Lesson 6, I²C protocol guides | Implement I²C communication, test multi-device integration | Base + Back panels | 4 |
-| **[Week 6](../electronics/06.md)** **(4hrs)** | RFID, RTC, Touch | Real ESP32 | RFID reader, real-time clock, capacitive touch sensors | PhysComp Lesson 7, access system design | Build access control logic, implement time tracking | Left panel access system | 4 |
-| **[Week 7](../electronics/07.md)** **(4hrs)** | Environmental + Tones | Real ESP32 | Rain sensor, dust sensor, buzzer tone generation | PhysComp Lesson 8, environmental monitoring patterns | Create alert sounds, integrate environmental data | Roof panel | 4 |
-| **[Week 8](../electronics/08.md)** **(4hrs)** | Signal Processing & Vibration | Real ESP32 | Filtering techniques, anomaly detection, vibration analysis | PhysComp Signals module, DSP algorithms | Implement predictive algorithms, test fault detection | Base panel predictive algo | 4 |
-| **[Week 9](../electronics/09.md)** **(4hrs)** | Full Truck Assembly & Testing | Real ESP32 | Inter-panel I²C communication, fault testing, final integration | Integration testing guides, debugging tools | Complete system testing, troubleshoot all components | Complete physical truck | 4 |
+| **[Week 4](../electronics/04.md)** **(4hrs)** | Analog Input + Sensors | Wokwi → Real ESP32 | Thermistor (NTC 10kΩ), ADC reading, voltage divider, RGB LED colour mapping | PhysComp Lesson 5, sensor datasheets | Test analog reading code, troubleshoot thermistor connections | Front panel sensors | 4 |
+| **Week 5** **(Public Holiday)** | — No class — | — | Course catch-up; thermistor self-study; prepare for Session 5 | See [Week 5 Transition page](../electronics/week5-transition.md) | Review Session 4 work; commit A1 to GitHub; install I²C libraries | — | — |
+| **[Week 6 (Session 5)](../electronics/05.md)** **(4hrs)** | I²C + Actuators | Real ESP32 | OLED display, accelerometer (GY-521), servo control | PhysComp Lesson 6, I²C protocol guides | Implement I²C communication, test multi-device integration | Base + Back panels | 4 |
+| **[Week 7 (Session 6)](../electronics/06.md)** **(4hrs)** | RFID, RTC & Access Control | Real ESP32 | RFID reader, real-time clock | PhysComp Lesson 7, access system design | Build access control logic, implement time tracking | Left panel access system | 4 |
+| **[Week 8 (Session 7)](../electronics/07.md)** **(4hrs)** | Environmental + Tones | Real ESP32 | Rain sensor, dust sensor, buzzer tone generation | PhysComp Lesson 8, environmental monitoring patterns | Create alert sounds, integrate environmental data | Roof panel | 4 |
+| **[Week 9 (Session 8)](../electronics/08.md)** **(4hrs)** | Signal Processing & Vibration | Real ESP32 | Filtering techniques, anomaly detection, vibration analysis | PhysComp Signals module, DSP algorithms | Implement predictive algorithms, test fault detection | Base panel predictive algo | 4 |
+| **[Week 10 (Session 9)](../electronics/09.md)** **(4hrs)** | Full Truck Assembly & Testing | Real ESP32 | Inter-panel I²C communication, fault testing, final integration | Integration testing guides, debugging tools | Complete system testing, troubleshoot all components | Complete physical truck | 4 |
 
 !!! warning "Assessment Point 1: A1 Complete"
     **[A1: Engine Compartment Monitor](../assessments/index.md)** (Due Week 4)
@@ -64,7 +70,7 @@
 
 | Week | Session Title | Hardware | Key Content | Learning Resources* | Out-of-Class Activities* | Cloud Progress | Hours |
 |------|---------------|----------|-------------|-------------------|-------------------------|----------------|-------|
-| **[Week 10](../aws/10.md)** **(4hrs)** | AWS IoT Core & Secure Connection | Real ESP32 | AWS IoT Core basics, device registration, secure MQTT connection | AWS Skill Builder: Getting Started (35 min) + Securely Connecting (1 h) | Complete AWS training courses, set up device certificates | Register truck → MQTT publish DHT11/gas data | 4 |
+| **[Week 10](../aws/10.md)** **(4hrs)** | AWS IoT Core & Secure Connection | Real ESP32 | AWS IoT Core basics, device registration, secure MQTT connection | AWS Skill Builder: Getting Started (35 min) + Securely Connecting (1 h) | Complete AWS training courses, set up device certificates | Register truck → MQTT publish thermistor/gas data | 4 |
 | **[Week 11](../aws/11.md)** **(4hrs)** | Device Data, Rules & Shadows | Real ESP32 | Device Shadow, IoT Rules Engine, SNS notifications | AWS Skill Builder: Handling AWS IoT Device Data (2 h) | Implement device shadows, create data processing rules | Device Shadow for engine temp & cabin lock | 4 |
 | **[Week 12](../aws/12.md)** **(4hrs)** | Fleet Management & OTA | Real ESP32 | Thing Groups, fleet management, OTA updates | AWS Skill Builder: Managing Devices at Scale (3.5 h) + OTA Updates (1 h) | Configure thing groups, test firmware updates | Thing Groups, OTA firmware deployment | 4 |
 | **[Week 13](../aws/13.md)** **(4hrs)** | Cloud Analytics & Real-Time Processing | Real ESP32 | AWS IoT Analytics pipelines, SQL data transformation, real-time dashboards | AWS Skill Builder: Analytics & Visualization (45 min) | Build IoT Analytics channel and pipeline, create SQL queries | IoT Analytics data store with real-time aggregations | 4 |

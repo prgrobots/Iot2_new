@@ -23,8 +23,9 @@ nav:
       - Week 1-2 - Voltage, Current, Ohm's Law: electronics/01.md
       - Week 03 - Advanced Output + Buttons: electronics/03.md
       - Week 04 - Analog Input + Sensors: electronics/04.md
-      - Week 05 - I²C + Actuators: electronics/05.md
-      - Week 06 - RFID, RTC, Touch: electronics/06.md
+      - Week 05 - Course Update & Catch-Up: electronics/week5-transition.md
+      - Week 05/06 - I²C + Actuators: electronics/05.md
+      - Week 06 - RFID, RTC, Access Control: electronics/06.md
       - Week 07 - Environmental + Tones: electronics/07.md
       - Week 08 - Signal Processing & Vibration: electronics/08.md
       - Week 09 - Full Truck Assembly & Testing: electronics/09.md
@@ -43,6 +44,7 @@ nav:
       - Overview: assessments/index.md
   - Resources:
       - Overview: resources.md
+      - Course Transition Log: course-transition.md
       - PhysComp Website: resources/physcomp-website.md
       - AWS Training & Courses: resources/aws-training.md
       - AWS Resources: resources/aws-resources.md

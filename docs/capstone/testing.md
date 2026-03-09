@@ -19,7 +19,7 @@ Week 17 focuses on comprehensive testing of your complete system. You must simul
 - Temperature at 55°C
 
 **Trigger:**
-- Heat DHT11 sensor above 80°C (use hair dryer or hot water)
+- Heat thermistor above 80°C (apply warm object, warm air from heat gun/hair dryer, or simulate by holding between fingers)
 
 **Expected System Response:**
 1. Truck: Red LED illuminates, buzzer sounds
@@ -114,7 +114,7 @@ Week 17 focuses on comprehensive testing of your complete system. You must simul
 
 **Test Procedure:**
 1. Disconnect truck from WiFi
-2. Change temperature from 55°C to 75°C (warning level)
+2. Change temperature from 55°C to 75°C (warm the thermistor to warning level)
 3. Check AWS Shadow → shows last known (55°C)
 4. Reconnect WiFi
 5. Shadow automatically updates to 75°C
