@@ -37,10 +37,9 @@ For the complete 18-week course schedule with detailed learning activities, asse
     - [Week 1-2](electronics/01.md): Electronics Foundations
     - [Week 3](electronics/03.md): Advanced Output + Buttons
     - [Week 4](electronics/04.md): Analog Input + Sensors
-    - [Week 5](electronics/05.md): I²C + Actuators
-    - [Week 6](electronics/06.md): RFID, RTC, Touch
-    - [Week 7](electronics/07.md): Environmental + Tones
-    - [Week 8](electronics/08.md): Signal Processing & Vibration
+    - [Week 5/6](electronics/05.md): I²C + Actuators
+    - [Week 6/7](electronics/0607.md): RFID, Tones & Environment
+    - [Week 8](electronics/08.md): Signal Processing & Vibration (A3)
     - [Week 9](electronics/09.md): Full Truck Assembly & Testing
 
 === "Weeks 10-14: AWS Cloud Services"
@@ -76,7 +75,7 @@ Each assessment includes both theoretical understanding and practical implementa
 !!! note "Quick Week Access"
     Jump directly to any week:
     
-    **Electronics:** [Week 1-2](electronics/01.md) | [Week 3](electronics/03.md) | [Week 4](electronics/04.md) | [Week 5](electronics/05.md) | [Week 6](electronics/06.md) | [Week 7](electronics/07.md) | [Week 8](electronics/08.md) | [Week 9](electronics/09.md)
+    **Electronics:** [Week 1-2](electronics/01.md) | [Week 3](electronics/03.md) | [Week 4](electronics/04.md) | [Week 5/6](electronics/05.md) | [Week 6/7](electronics/0607.md) | [Week 8](electronics/08.md) | [Week 9](electronics/09.md)
     
     **AWS:** [Week 10](aws/10.md) | [Week 11](aws/11.md) | [Week 12](aws/12.md) | [Week 13](aws/13.md) | [Week 14](aws/14.md)
     

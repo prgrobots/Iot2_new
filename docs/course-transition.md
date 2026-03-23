@@ -57,7 +57,7 @@ A public holiday fell between Sessions 4 and 5, creating a one-week gap in deliv
 |------|-------------|
 | `mkdocs.yml` | Added `electronics/week5-transition.md` to nav between Sessions 4 and 5 |
 | `docs/electronics/04.md` | DHT11 → thermistor; photocell/LDR removed entirely |
-| `docs/electronics/06.md` | Capacitive touch sensor Task 3 removed; integrated code updated |
+| `docs/electronics/06.md` | Capacitive touch sensor Task 3 removed; integrated code updated; **subsequently replaced by `0607.md`** |
 | `docs/assessments/index.md` | A1: thermistor + no photocell; A2: no touch sensor; A6: sensor list updated |
 | `docs/assessments/A1_SUBMISSION_TEMPLATE.md` | All DHT11 + photocell references replaced with thermistor |
 | `docs/course-overview/learning-assessment-plan.md` | Week 4 hardware list; Week 6 hardware list; public holiday note added |
@@ -70,6 +70,7 @@ A public holiday fell between Sessions 4 and 5, creating a one-week gap in deliv
 | File | Purpose |
 |------|---------|
 | `docs/electronics/week5-transition.md` | Student-facing gap page; public holiday notice + thermistor reference |
+| `docs/electronics/0607.md` | Combined Week 6/7 session — RFID + tones + environment; replaces 06.md and 07.md |
 | `docs/course-transition.md` | This document |
 
 ---

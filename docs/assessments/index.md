@@ -7,8 +7,8 @@ This course uses **competency-based assessment** where students demonstrate mast
 | Assessment | Unit Elements | Due Date | Deliverable |
 |------------|---------------|----------|-------------|
 | **A1** | 502: 1.1, 1.2, 1.3, 1.4, 2.4, 3.2 | Week 4 | ESP32 + temp/gas/flame sensors |
-| **A2** | 502: 2.2, 3.1, 3.3 | Week 6 | RFID access control + RTC logging |
-| **A3** | 502: 2.1, 2.3 | Week 8 | GY-521 accelerometer integration |
+| **A2** | 502: 2.2, 3.1, 3.3 | Week 6/7 | RFID access control + buzzer tones |
+| **A3** | 502: 2.1, 2.3 | Week 8 | Pico W + MPU6050 I²C vibration monitor |
 | **A4** | 502: 3.4, 4.1 | Week 9 | Full haul truck system |
 | **A5** | 503: 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3 | Week 14 | AWS IoT integration + testing |
 | **A5b** | 503: 2.4 | Week 14 | QuickSight analytics dashboard |
@@ -85,57 +85,79 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 ---
 
-## Assessment 2: Access Control System (Week 6)
+## Assessment 2: Access Control System (Week 6/7)
 
-**Objective:** Implement RFID authentication with timestamp logging.
+**Objective:** Implement RFID authentication with distinct audio feedback tones.
 
 **Requirements:**
-- RFID-RC522 module reading multiple cards
-- DS3231 RTC module for timestamps
-- Serial output logging access events
+- RFID-RC522 module reading multiple cards (SPI protocol)
+- Access granted: distinct "good" buzzer tone + green LED
+- Access denied: distinct "bad" buzzer tone pattern + red LED
+- Serial output logging access events (card UID + outcome)
 - Authorised/unauthorised card handling
+- Brief explanation of SPI vs I²C protocol choice
 
 **Submission:**
-- Arduino `.ino` file
-- CSV log file (5+ access attempts)
-- Breadboard photo with RFID and RTC wired
-- 2-minute demonstration video
+- Arduino `.ino` file (or MicroPython `.py`)
+- Serial Monitor screenshot showing 5+ access attempts (mix of authorised/unauthorised)
+- Breadboard photo with RFID, buzzer, and LEDs wired
+- 2-minute demonstration video showing both tone patterns
 
 ---
 
-## Assessment 3: Tire & Suspension Health Monitor (Week 7)
+## Assessment 3: Tire & Suspension Health Monitor (Week 8)
 
-**Objective:** Use accelerometer for predictive maintenance.
+**Objective:** Use the Raspberry Pi Pico W with soldered I²C devices for vibration-based predictive maintenance.
+
+**MCU:** Raspberry Pi Pico W (carrier board with OLED + MPU6050 soldered on)  
+**Language:** MicroPython
+
+!!! info "Building on Session 5/6"
+    You received the Pico W carrier board and took raw MPU6050 readings during session 5/6. Assessment 3 formalises that work by adding filtering algorithms and anomaly detection. This is also why the Pico W counts as your **second MCU** for the training package requirement (program 2 devices).
 
 **Requirements:**
-- GY-521 (MPU6050) measuring X, Y, Z acceleration
+- Power the OLED and MPU6050 via GPIO output pins (bring VCC pins HIGH in code)
+- Run I²C scanner first — confirm both devices found (0x3C and 0x68)
+- MPU6050 measuring X, Y, Z acceleration via I²C on Pico W
+- OLED displaying live accelerometer readings
 - Threshold detection for abnormal vibration
 - Moving average filtering to reduce noise
 - Serial output with filtered values
 
 **Submission:**
-- Arduino `.ino` file
-- Breadboard photo
+- MicroPython `.py` file(s)
+- Screenshot of I²C scanner output showing 0x3C and 0x68
+- Photo of Pico W carrier board with VCC pins annotated
 - CSV data file (60 seconds of readings)
-- 2-minute demonstration video
+- 2-minute demonstration video showing OLED + serial output
+
+**Competency:** ICTIOT503 Element 3 – Produce design documentation; I²C bus integration and device addressing
 
 ---
 
 ## Assessment 4: Payload & Load Management (Week 9)
 
-**Objective:** Integrate all sensors, actuators, and I²C peripherals.
+**Objective:** Integrate sensors, actuators, and I²C peripherals — with real-world breadboard wiring.
+
+**MCU:** A different MCU (not the Pico W carrier board) using header pins on a **solderless breadboard**  
+**Language:** Arduino (C++) or MicroPython
+
+!!! warning "Different MCU — Breadboard Required"
+    Assessment 4 is deliberately done on a different MCU with components wired on a solderless breadboard. This tests your ability to make reliable I²C connections without the aid of a soldered carrier board. Run the I²C scanner to verify your wiring, and document any connection issues you troubleshoot.
 
 **Requirements:**
-- All sensors from A1-A3 functional
+- All sensors from A1–A3 functional
 - SG90 servo controlling dump bed
 - OLED display showing truck status
 - RGB LED status indicator
 - Buzzer for alarms
 - Clean, modular code with functions
+- I²C scanner output included as evidence of working connections
 
 **Submission:**
-- Complete Arduino `.ino` file with comments
-- Fritzing diagram or breadboard photo
+- Complete code file(s) with comments
+- Fritzing diagram or breadboard photo (clearly showing all connections)
+- I²C scanner screenshot confirming device addresses found
 - GitHub repository with README
 - 5-minute demonstration video showing:
   - All sensors reading values
@@ -151,7 +173,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 **Core Requirements:**
 - X.509 certificate authentication (no API keys)
-- MQTT publish to `truck/{truckID}/telemetry` (thermistor temp, GY-521, MQ-2, lock state)
+- MQTT publish to `truck/{truckID}/telemetry` (thermistor temp, MPU6050 vibration, MQ-2, lock state)
 - Device Shadow for offline state management (desired vs. reported state)
 - IoT Rules Engine routing to SNS (alerts), DynamoDB (storage)
 - CloudWatch metrics for message volume and latency
@@ -193,7 +215,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 **Core Requirements:**
 
 **Hardware & Sensors**
-- Real ESP32 with all A1-A5b sensors functional (thermistor, GY-521, MQ-2)
+- Real ESP32 with all A1-A5b sensors functional (thermistor, MPU6050, MQ-2)
 - Continuous MQTT telemetry to AWS IoT Core
 - Pit station: Simple 3-LED status indicator (red=error, orange=warning, green=normal)
 
@@ -265,11 +287,11 @@ iot-portfolio.zip
 │   ├── A2_SUBMISSION_TEMPLATE.md
 │   └── README.md
 ├── A3-Vibration-Monitoring/
-│   ├── code/esp32-arduino/
+│   ├── code/pico-w-micropython/
 │   ├── A3_SUBMISSION_TEMPLATE.md
 │   └── README.md
 ├── A4-Haul-Truck-Integration/
-│   ├── code/esp32-arduino/
+│   ├── code/                    ← language/MCU depends on your A4 choice
 │   ├── A4_SUBMISSION_TEMPLATE.md
 │   └── README.md
 ├── A5-AWS-IoT-Integration/

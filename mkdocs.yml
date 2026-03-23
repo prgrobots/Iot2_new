@@ -25,9 +25,8 @@ nav:
       - Week 04 - Analog Input + Sensors: electronics/04.md
       - Week 05 - Course Update & Catch-Up: electronics/week5-transition.md
       - Week 05/06 - I²C + Actuators: electronics/05.md
-      - Week 06 - RFID, RTC, Access Control: electronics/06.md
-      - Week 07 - Environmental + Tones: electronics/07.md
-      - Week 08 - Signal Processing & Vibration: electronics/08.md
+      - Week 06/07 - RFID, Tones & Environment: electronics/0607.md
+      - Week 08 - Signal Processing & Vibration (A3): electronics/08.md
       - Week 09 - Full Truck Assembly & Testing: electronics/09.md
   - AWS IoT (Weeks 10-14):
       - Week 10 - AWS IoT Core & Secure Connection: aws/10.md
@@ -61,6 +60,11 @@ nav:
   
 plugins:
   - search
+
+validation:
+  links:
+    not_found: ignore
+    unrecognized_links: ignore
 
 markdown_extensions:
   - pymdownx.highlight

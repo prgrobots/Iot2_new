@@ -1,0 +1,15 @@
+# Python / MkDocs
+site/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# Node / Slidev
+node_modules/
+docs/slides/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,17 @@
+{
+  "name": "iot2-course",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "slides:dev": "slidev slides/0607/slides.md --open",
+    "slides:build": "slidev build slides/0607/slides.md --out ../../docs/slides/0607 --base /Iot2_new/slides/0607/",
+    "slides:build:local": "slidev build slides/0607/slides.md --out ../../docs/slides/0607 --base /slides/0607/",
+    "slides:export": "slidev export slides/0607/slides.md --output docs/slides/0607.pdf",
+    "build": "npm run slides:build && mkdocs build",
+    "deploy": "npm run slides:build && mkdocs gh-deploy --force"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^0.50.0",
+    "@slidev/theme-default": "^0.24.0"
+  }
+}
