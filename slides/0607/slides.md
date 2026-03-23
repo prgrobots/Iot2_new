@@ -1,6 +1,6 @@
 ---
 theme: default
-title: 'Session 06/07 — RFID, Tones & Environmental Monitoring'
+title: 'Session 06/07 — RFID, Access Control & Ultrasonic Distance'
 titleTemplate: '%s | IoT2'
 info: |
   ## Session 06/07
@@ -18,7 +18,7 @@ fonts:
 
 # Session 06/07
 
-**RFID, Tones & Environmental Monitoring**
+**RFID, Access Control & Ultrasonic Distance**
 
 <div class="text-gray-400 mt-4">Industrial IoT — RockCore Mining</div>
 
@@ -39,7 +39,6 @@ layout: section
 ### ✅ What's in
 - **RFID** card authentication (SPI)
 - **Buzzer tones** — good & bad feedback
-- **Rain sensor** (analog)
 - **Ultrasonic** distance sensor
 - **SPI vs I²C** — protocol comparison
 
@@ -108,10 +107,9 @@ layout: section
 </div>
 <div>
 
-5. **Rain Sensor** — analog water detection
-6. **Ultrasonic** — distance measurement
-7. **Integration** — cabin + roof panel
-8. **Assessment 2** — what to submit
+5. **Ultrasonic** — distance measurement
+6. **Integration** — cabin + roof panel
+7. **Assessment 2** — what to submit
 
 </div>
 </div>
@@ -120,7 +118,7 @@ layout: section
 layout: section
 ---
 
-# 🔌 Two Protocols, One ESP32
+# 🔌 Two Protocols, One MCU
 ## SPI vs I²C
 
 ---
@@ -135,11 +133,11 @@ All devices on **two wires**.
 Each device has a **7-bit address**.
 Master picks who to talk to.
 
-```
-SDA ──┬──── OLED (0x3C)
-      ├──── MPU6050 (0x68)
-      └──── any other I²C device
-SCL ──┴──── (same)
+```mermaid
+graph LR
+  MCU -->|SDA + SCL| OLED["OLED 0x3C"]
+  MCU -->|SDA + SCL| MPU["MPU6050 0x68"]
+  MCU -->|SDA + SCL| More["..."]
 ```
 
 </div>
@@ -150,41 +148,53 @@ SCL ──┴──── (same)
 plus one **SS/CS pin per device**.
 Full-duplex, much faster.
 
-```
-MOSI ─────────── RFID
-MISO ─────────── RFID
-SCK  ─────────── RFID
-SS   ─────────── RFID (GPIO 5)
+```mermaid
+graph LR
+  MCU2[MCU] -->|MOSI + MISO + SCK| RFID["RFID-RC522"]
+  MCU2 -->|SS pin| RFID
 ```
 
 </div>
 </div>
+
+<style>
+.slidev-layout :deep(.mermaid svg) { max-height: 120px; }
+</style>
 
 ---
 
 # SPI vs I²C — Bus Topology
 
-```mermaid
-graph LR
-  subgraph I2C Bus
-    direction LR
-    MCU1[ESP32] -->|SDA + SCL| OLED[OLED 0x3C]
-    MCU1 -->|SDA + SCL| MPU[MPU6050 0x68]
-    MCU1 -->|SDA + SCL| MORE[other devices...]
-  end
-```
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div>
+
+**I²C** — shared bus, address-based
 
 ```mermaid
-graph LR
-  subgraph SPI Bus
-    direction LR
-    MCU2[ESP32] -->|MOSI / MISO / SCK| RFID[RFID-RC522]
-    MCU2 -->|SS = GPIO 5| RFID
-    MCU2 -.->|SS = GPIO X| SD[SD Card optional]
-  end
+graph TD
+  MCU -->|SDA + SCL| OLED["OLED 0x3C"]
+  MCU -->|SDA + SCL| MPU["MPU6050 0x68"]
+  MCU -->|SDA + SCL| More["other devices..."]
 ```
 
-<div class="mt-2 text-sm text-gray-500">I²C: shared bus, address-based. SPI: dedicated lanes, chip-select-based.</div>
+</div>
+<div>
+
+**SPI** — dedicated lanes, chip-select-based
+
+```mermaid
+graph TD
+  MCU2[MCU] -->|MOSI / MISO / SCK| RFID["RFID-RC522"]
+  MCU2 -->|SS pin| RFID
+  MCU2 -.->|SS pin| SD["SD Card (optional)"]
+```
+
+</div>
+</div>
+
+<style>
+.slidev-layout :deep(.mermaid svg) { max-height: 200px; }
+</style>
 
 ---
 
@@ -197,7 +207,7 @@ graph LR
 | **Speed** | 100 – 400 kHz typical | 1 – 80 MHz typical |
 | **Duplex** | Half-duplex | Full-duplex |
 | **Best for** | Many slow sensors on shared bus | Fast single-device transfers |
-| **Used in this course** | OLED, MPU6050, RTC | RFID-RC522, SD cards |
+| **Used in this course** | OLED, MPU6050 | RFID-RC522, SD cards |
 
 <div class="mt-4 p-3 bg-amber-50 rounded border-l-4 border-amber-400">
 <strong>Rule of thumb:</strong> Use <strong>I²C</strong> to connect many devices cheaply. Use <strong>SPI</strong> when you need speed or the device demands it (like RFID card reads).
@@ -217,6 +227,10 @@ flowchart TD
     E -->|Yes| G[Change address pin or use multiplexer]
     D --> H[Assign unique SS pin per device ✅]
 ```
+
+<style>
+.slidev-layout :deep(.mermaid svg) { max-height: 340px; }
+</style>
 
 ---
 layout: section
@@ -329,47 +343,16 @@ flowchart TD
     I --> A
 ```
 
+<style>
+.slidev-layout :deep(.mermaid svg) { max-height: 360px; }
+</style>
+
 ---
 layout: section
 ---
 
-# 🌧️ Environmental Sensors
-## Rain + Ultrasonic
-
----
-
-# Rain Sensor — Analog Detection
-
-<div class="grid grid-cols-2 gap-8 mt-2">
-<div>
-
-**Wiring:** Rain sensor analog → GPIO 34
-
-```cpp
-int rainValue = analogRead(RAIN_PIN);
-
-// Lower value = more moisture
-if (rainValue < 2000) {
-  Serial.println(
-    "ALERT: Rain — reduce speed"
-  );
-}
-```
-
-**Note:** Lower ADC value = more water on sensor surface (resistance drops when wet).
-
-</div>
-<div>
-
-**Limitations in mining:**
-- Dust / mineral deposits cause false positives
-- Calibrate thresholds on-site
-- Clean sensor regularly
-
-**Better approach:** Detect relative change, not absolute threshold — or calibrate baseline at startup.
-
-</div>
-</div>
+# 📏 Ultrasonic Distance
+## HC-SR04 Proximity Sensing
 
 ---
 
@@ -414,6 +397,10 @@ Warning below **50 cm** → buzzer alert
 
 </div>
 </div>
+
+<style>
+.slidev-layout :deep(.mermaid svg) { max-height: 160px; }
+</style>
 
 ---
 layout: section
