@@ -4,7 +4,7 @@ This page provides a week-by-week timeline for the entire IoT course, including 
 
 ## Portfolio Setup
 
-**Before Week 1:** Create your portfolio using the [IoT Portfolio Template](https://github.com/your-institution/iot-portfolio-template). Click "Use this template" to create your own independent copy. This is where you'll commit all code for A1–A6.
+**Before Week 1:** Create your portfolio using the [IoT Portfolio Template](https://github.com/prgrobots/iot-portfolio-template). Click "Use this template" to create your own independent copy. This is where you'll commit all code for A1–A6.
 
 Each assessment folder contains a pre-filled submission template. When submitting each assessment:
 1. Complete your code and push to GitHub
