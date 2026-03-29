@@ -92,7 +92,8 @@ Next week (calendar **Week 6**) we pick up with **Session 5: I²C & Actuators**.
     - [ ] Complete any remaining Session 4 tasks (thermistor + RGB LED)
     - [ ] Ensure Assessment 1 submission is committed to GitHub
     - [ ] Read: PhysComp → [I²C Protocol](https://makeabilitylab.github.io/physcomp/esp32/i2c.html)
-    - [ ] Install libraries: `Adafruit SSD1306`, `Adafruit GFX`, `Adafruit MPU6050`
+    - [ ] **Arduino IDE / ESP32 tasks only:** Install Arduino libraries `Adafruit SSD1306`, `Adafruit GFX`
+    - [ ] **Pico W tasks (MicroPython):** No Arduino library install needed — MicroPython libraries (`ssd1306`, `imu`) are imported directly in code. Instead, confirm [Thonny IDE](https://thonny.org/) is installed and connects to your Pico W.
     - [ ] Locate OLED display and GY-521 accelerometer in your kit
 
 **Session 5 covers:** OLED display, GY-521 accelerometer (MPU6050), and servo motor — all on the I²C bus. This session launches **Assessments 3 and 4**.
