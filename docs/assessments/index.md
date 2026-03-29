@@ -283,7 +283,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
    - **Testing & Validation** (200-250 words): Data flow verification, offline sync test, anomaly response timing
    - **Industry Quest Integration** (150-200 words): Key learnings from Weeks 15-17, application to capstone
    - **Reflection** (150-200 words): Challenges, solutions, future improvements (scaling, multi-truck coordination)
-   - **Appendices:** Architecture diagram (PNG), code snippets (key functions only), datasheets, unit mapping table
+   - **Appendices:** Architecture diagram (PNG), code snippets (key functions only), datasheets
 
 **Submission Checklist:**
 - [ ] GitHub repository link
@@ -291,7 +291,6 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 - [ ] Portfolio PDF (20-30 pages, justified paragraphs)
 - [ ] Architecture diagram (PNG/PDF)
 - [ ] Offline resilience test documented in portfolio (disconnect/reconnect/Shadow sync with timestamps and screenshot)
-- [ ] Unit mapping table (ICTIOT502 + ICTIOT503 alignment)
 - [ ] A6_SUBMISSION_TEMPLATE.md completed
 - [ ] Complete portfolio ZIP (A1-A6) with all submission templates
 

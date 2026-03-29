@@ -141,11 +141,6 @@ rockcore-iot-fleet/
 !!! info "No Separate Test Report"
     All testing content goes directly into this **"Testing & Results" portfolio section** — there is no separate test report document to submit.
 
-**Performance Criteria Mapping** (2-3 pages)
-- Table mapping **every** ICTIOT502 and ICTIOT503 performance criterion to evidence in your portfolio or GitHub repo
-- The full list of criteria is in the [Learning Assessment Plan](../course-overview/learning-assessment-plan.md) — your table must include a row for every criterion listed there
-- Use the example table in [aws/17.md](../aws/17.md#unit-mapping-document) as a template (approximately 15 criteria across both units — confirm the exact count with your instructor or the official unit training package)
-
 **Reflection** (1-2 pages)
 - Design decisions and trade-offs
 - Challenges encountered and solutions
