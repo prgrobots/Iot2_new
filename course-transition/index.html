@@ -1,0 +1,1899 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="18-week IoT course covering ESP32 and Raspberry Pi Pico W, sensors, actuators, and AWS cloud services">
+      
+      
+        <meta name="author" content="Course Team">
+      
+      
+      
+        <link rel="prev" href="../resources/">
+      
+      
+        <link rel="next" href="../resources/physcomp-website/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Course Transition Log - Industrial IoT Course - Physical Computing to Cloud</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#course-transition-log-iot2-rockcore-mining" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Industrial IoT Course - Physical Computing to Cloud" class="md-header__button md-logo" aria-label="Industrial IoT Course - Physical Computing to Cloud" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Industrial IoT Course - Physical Computing to Cloud
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Course Transition Log
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+  
+  
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../course-overview/learning-assessment-plan/" class="md-tabs__link">
+        
+  
+    
+  
+  Course Overview - LAP
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../scenario/" class="md-tabs__link">
+        
+  
+    
+  
+  RockCore Mining Scenario
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../electronics/01/" class="md-tabs__link">
+          
+  
+  Electronics (Weeks 1-9)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../aws/10/" class="md-tabs__link">
+          
+  
+  AWS IoT (Weeks 10-14)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../capstone/integration/" class="md-tabs__link">
+          
+  
+  Capstone (Weeks 15-18)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../assessments/" class="md-tabs__link">
+          
+  
+  Assessments
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../resources/" class="md-tabs__link">
+          
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Industrial IoT Course - Physical Computing to Cloud" class="md-nav__button md-logo" aria-label="Industrial IoT Course - Physical Computing to Cloud" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Industrial IoT Course - Physical Computing to Cloud
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-overview/learning-assessment-plan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Overview - LAP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RockCore Mining Scenario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Electronics (Weeks 1-9)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Electronics (Weeks 1-9)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electronics/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 1-2 - Voltage, Current, Ohm's Law
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electronics/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 03 - Advanced Output + Buttons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electronics/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 04 - Analog Input + Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electronics/week5-transition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 05 - Course Update & Catch-Up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electronics/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 05/06 - I²C + Actuators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electronics/0607/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 06/07 - RFID, Tones & Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electronics/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 08 - Signal Processing & Vibration (A3)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electronics/09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 09 - Full Truck Assembly & Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AWS IoT (Weeks 10-14)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            AWS IoT (Weeks 10-14)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 10 - AWS IoT Core & Secure Connection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 11 - Device Data, Rules & Shadows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 12 - Fleet Management & OTA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 13 - Edge Processing & Industrial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 14 - Analytics & Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Capstone (Weeks 15-18)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Capstone (Weeks 15-18)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capstone/integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 15 - Full Integration Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capstone/pit-station/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 16 - Pit Station Build
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capstone/testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 17 - Testing Scenarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capstone/demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 18 - Demo & Final Submission
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AWS Industry Quest (Weeks 15-17)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            AWS Industry Quest (Weeks 15-17)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 15 - Industry Quest: Manufacturing (1/3)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 16 - Industry Quest: Manufacturing (2/3)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 17 - Industry Quest: Manufacturing (3/3)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Assessments
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Assessments
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assessments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Course Transition Log
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Course Transition Log
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#context-issues-encountered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context &amp; Issues Encountered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-of-all-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of All Changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-modified" class="md-nav__link">
+    <span class="md-ellipsis">
+      Files Modified
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      Files Created
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assessment-1-hardware-change-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment 1 — Hardware Change Detail
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assessment-2-hardware-change-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment 2 — Hardware Change Detail
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thermistor-quick-reference-for-teaching-staff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thermistor Quick Reference (for teaching staff)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auditing-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auditing Checklist
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/physcomp-website/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PhysComp Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/aws-training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Training & Courses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/aws-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/wokwi-simulator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wokwi Simulator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/software-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/documentation-datasheets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation & Datasheets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/github-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/aws-documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/troubleshooting-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/community-forums/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community & Forums
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/advanced-reading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optional Advanced Reading
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3D Print Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="course-transition-log-iot2-rockcore-mining">Course Transition Log — IoT2 (RockCore Mining)<a class="headerlink" href="#course-transition-log-iot2-rockcore-mining" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>For teaching staff only.</strong> This document records all curriculum changes made due to equipment issues and scheduling adjustments. Use this as a reference when running auditing tools or advising students.</p>
+</blockquote>
+<hr />
+<h2 id="context-issues-encountered">Context &amp; Issues Encountered<a class="headerlink" href="#context-issues-encountered" title="Permanent link">&para;</a></h2>
+<p><strong>Date of Changes:</strong> March 2026<br />
+<strong>Affected Sessions:</strong> Session 4 (Week 4), Session 5 (Week 5 → delivered Week 6), Session 6 (Week 6 → delivered Week 7+)</p>
+<h3 id="issue-1-platformio-raspberry-pi-pico-connection-failure">Issue 1: PlatformIO / Raspberry Pi Pico Connection Failure<a class="headerlink" href="#issue-1-platformio-raspberry-pi-pico-connection-failure" title="Permanent link">&para;</a></h3>
+<p>PlatformIO IDE could not reliably connect to Raspberry Pi Pico microcontrollers during real hardware sessions. This prevented students from flashing and testing firmware in class, significantly disrupting hands-on work.</p>
+<p><strong>Impact:</strong> Students unable to complete physical hardware tasks as originally scheduled.<br />
+<strong>Resolution:</strong> Continued with available hardware and adjusted session pacing. Students may use Wokwi simulation as a fallback for task completion where physical connection is not possible.</p>
+<h3 id="issue-2-dht11-sensor-failures-assessment-1">Issue 2: DHT11 Sensor Failures (Assessment 1)<a class="headerlink" href="#issue-2-dht11-sensor-failures-assessment-1" title="Permanent link">&para;</a></h3>
+<p>The DHT11 temperature/humidity sensors in the kit were found to be unreliable — returning frequent NaN errors even with good wiring — and some units were completely non-functional. This made Assessment 1 impossible to complete as originally designed.</p>
+<p><strong>Impact:</strong> A1 could not be demonstrated reliably on real hardware.<br />
+<strong>Resolution:</strong> Replaced DHT11 with a <strong>thermistor</strong> (NTC 10kΩ). Thermistors are:
+- Passive (no library required, just analogRead)
+- Simpler to wire (voltage divider, two components)
+- More robust (no digital protocol to fail)
+- Still appropriate for the learning outcomes (analog sensor reading, ADC, threshold logic)</p>
+<p>The photocell (LDR) component was also <strong>removed from A1 scope</strong> to simplify the assessment and allow catch-up after the delays.</p>
+<h3 id="issue-3-public-holiday-calendar-shift">Issue 3: Public Holiday — Calendar Shift<a class="headerlink" href="#issue-3-public-holiday-calendar-shift" title="Permanent link">&para;</a></h3>
+<p>A public holiday fell between Sessions 4 and 5, creating a one-week gap in delivery. As a result, students are now one week behind the original schedule.</p>
+<p><strong>Resolution:</strong> A transition/catch-up page has been added to the navigation between Session 4 and Session 5. Session numbers remain unchanged; the gap page acknowledges the calendar shift and provides a thermistor self-study reference.</p>
+<hr />
+<h2 id="summary-of-all-changes">Summary of All Changes<a class="headerlink" href="#summary-of-all-changes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Change</th>
+<th>Reason</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DHT11 replaced with thermistor in Session 4</td>
+<td>Unreliable/broken hardware</td>
+<td>✅ Done</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Photocell (LDR) removed from Session 4 and A1</td>
+<td>Scope simplification for catch-up</td>
+<td>✅ Done</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Capacitive touch sensor removed from Session 6 and A2</td>
+<td>Not essential; simplify scope</td>
+<td>✅ Done</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gap/transition page added between Sessions 4 and 5</td>
+<td>Public holiday calendar acknowledgement</td>
+<td>✅ Done</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A1 Submission Template updated</td>
+<td>Reflects thermistor, no photocell</td>
+<td>✅ Done</td>
+</tr>
+<tr>
+<td>6</td>
+<td>LAP updated (Weeks 4 and 6 rows)</td>
+<td>Accurate hardware list</td>
+<td>✅ Done</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Capstone testing.md Scenario 1 updated</td>
+<td>DHT11 reference replaced with thermistor</td>
+<td>✅ Done</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="files-modified">Files Modified<a class="headerlink" href="#files-modified" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What Changed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdocs.yml</code></td>
+<td>Added <code>electronics/week5-transition.md</code> to nav between Sessions 4 and 5</td>
+</tr>
+<tr>
+<td><code>docs/electronics/04.md</code></td>
+<td>DHT11 → thermistor; photocell/LDR removed entirely</td>
+</tr>
+<tr>
+<td><code>docs/electronics/06.md</code></td>
+<td>Capacitive touch sensor Task 3 removed; integrated code updated; <strong>subsequently replaced by <code>0607.md</code></strong></td>
+</tr>
+<tr>
+<td><code>docs/assessments/index.md</code></td>
+<td>A1: thermistor + no photocell; A2: no touch sensor; A6: sensor list updated</td>
+</tr>
+<tr>
+<td><code>docs/assessments/A1_SUBMISSION_TEMPLATE.md</code></td>
+<td>All DHT11 + photocell references replaced with thermistor</td>
+</tr>
+<tr>
+<td><code>docs/course-overview/learning-assessment-plan.md</code></td>
+<td>Week 4 hardware list; Week 6 hardware list; public holiday note added</td>
+</tr>
+<tr>
+<td><code>docs/capstone/testing.md</code></td>
+<td>Scenario 1 trigger updated from DHT11 to thermistor</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="files-created">Files Created<a class="headerlink" href="#files-created" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docs/electronics/week5-transition.md</code></td>
+<td>Student-facing gap page; public holiday notice + thermistor reference</td>
+</tr>
+<tr>
+<td><code>docs/electronics/0607.md</code></td>
+<td>Combined Week 6/7 session — RFID + tones + environment; replaces 06.md and 07.md</td>
+</tr>
+<tr>
+<td><code>docs/course-transition.md</code></td>
+<td>This document</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="assessment-1-hardware-change-detail">Assessment 1 — Hardware Change Detail<a class="headerlink" href="#assessment-1-hardware-change-detail" title="Permanent link">&para;</a></h2>
+<p><strong>Before:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DHT11</td>
+<td>Temperature reading (digital/one-wire)</td>
+</tr>
+<tr>
+<td>Photocell (LDR)</td>
+<td>Ambient light → LED brightness</td>
+</tr>
+<tr>
+<td>RGB LED</td>
+<td>Status display</td>
+</tr>
+</tbody>
+</table>
+<p><strong>After:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thermistor (NTC 10kΩ)</td>
+<td>Temperature reading (analog/ADC)</td>
+</tr>
+<tr>
+<td>RGB LED</td>
+<td>Status display</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What students still demonstrate with thermistor:</strong>
+- Analog sensor reading via ADC (<code>analogRead</code>)
+- Voltage divider circuit construction
+- Temperature-to-colour mapping logic (same thresholds: 60°C warning, 80°C critical)
+- PWM control of RGB LED
+- Error handling (out-of-range ADC values)</p>
+<p><strong>What is no longer required:</strong>
+- Ambient light sensing
+- Auto-on brightness logic
+- Photocell wiring (voltage divider was the same pattern — this is now the thermistor)</p>
+<hr />
+<h2 id="assessment-2-hardware-change-detail">Assessment 2 — Hardware Change Detail<a class="headerlink" href="#assessment-2-hardware-change-detail" title="Permanent link">&para;</a></h2>
+<p><strong>Before:</strong>
+- RFID-RC522 card reader
+- DS3231 RTC module
+- Capacitive touch sensor (ESP32 T0/GPIO 4) — emergency override</p>
+<p><strong>After:</strong>
+- RFID-RC522 card reader ✅ unchanged
+- DS3231 RTC module ✅ unchanged
+- <del>Capacitive touch sensor</del> — removed</p>
+<p><strong>What students still demonstrate:</strong>
+- RFID card read and authorisation logic
+- RTC-stamped access logging
+- Authorised/unauthorised card handling
+- Serial log export (CSV format)</p>
+<hr />
+<h2 id="thermistor-quick-reference-for-teaching-staff">Thermistor Quick Reference (for teaching staff)<a class="headerlink" href="#thermistor-quick-reference-for-teaching-staff" title="Permanent link">&para;</a></h2>
+<p><strong>Wiring:</strong> NTC thermistor + 10kΩ resistor in voltage divider (same as photocell wiring from original design)</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>3.3V ──── [Thermistor] ──── GPIO 34 ──── [10kΩ] ──── GND
+</span></code></pre></div>
+<p><strong>Formula (simplified Steinhart-Hart for NTC 10kΩ B=3950):</strong></p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">BETA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3950</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">R_FIXED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10000</span><span class="p">;</span><span class="w">  </span><span class="c1">// 10kΩ fixed resistor</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">NOMINAL_TEMP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">25.0</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">NOMINAL_R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10000.0</span><span class="p">;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kt">float</span><span class="w"> </span><span class="nf">readThermistorTemp</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">adcPin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">adcVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">adcPin</span><span class="p">);</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">voltage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adcVal</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">4095.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3.3</span><span class="p">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">resistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R_FIXED</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">voltage</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mf">3.3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">voltage</span><span class="p">);</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">tempK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">298.15</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">BETA</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="n">resistance</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">NOMINAL_R</span><span class="p">));</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">tempK</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">273.15</span><span class="p">;</span><span class="w">  </span><span class="c1">// Convert to Celsius</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Range:</strong> NTC 10kΩ (B=3950) typically accurate from -40°C to +125°C. More than sufficient for the 0–100°C range needed for the truck monitoring scenario.</p>
+<hr />
+<h2 id="auditing-checklist">Auditing Checklist<a class="headerlink" href="#auditing-checklist" title="Permanent link">&para;</a></h2>
+<p>After changes are made, run the course auditing agents to verify consistency:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> All Session 4 content refers to thermistor, not DHT11 or photocell</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> All Assessment 1 content refers to thermistor, not DHT11 or photocell</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Session 6 has no capacitive touch content</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Assessment 2 has no capacitive touch requirement</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Gap page is visible in navigation between Sessions 4 and 5</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> LAP table rows for Weeks 4 and 6 are accurate</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Capstone testing.md Scenario 1 uses thermistor language</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A6 sensor list does not include DHT11 or touch sensor</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> No broken links introduced by any changes</li>
+</ul>
+<hr />
+<p><strong>Document maintained by:</strong> Teaching Team<br />
+<strong>Last updated:</strong> March 2026</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../js/custom.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block header %}
+  {{ super() }}
+  {% if page and page.file.src_path in ['index.md', 'overview.md', 'scenario.md'] %}
+    <div class="md-header-banner" style="background: url('{{ base_url }}/images/banner.png') no-repeat center center; background-size: cover; height: 200px; width: 100%; margin-top: -64px; position: relative; z-index: 10;"></div>
+  {% endif %}
+  {% if page and page.file.src_path in ['electronics/01.md']%}
+    <div class="md-header-banner" style="background: url('{{ base_url }}/images/image.png') no-repeat center center; background-size: cover; height: 200px; width: 100%; margin-top: -64px; position: relative; z-index: 10;"></div>
+  {% endif %}
+{% endblock %}
+
+
+
+

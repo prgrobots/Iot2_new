@@ -1,0 +1,20 @@
+/* Banner image styling in header */
+.md-header-banner {
+    transition: all 0.3s ease;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.md-header-banner.hidden {
+    height: 0 !important;
+    opacity: 0;
+    margin-top: 0 !important;
+}
+
+/* Parallax effect for banner */
+.md-header-banner.parallax {
+    background-attachment: fixed;
+}
