@@ -43,10 +43,10 @@ See [Assessment Submission Process](assessments/index.md) for details.
 | 1 | L1–L3: Voltage, Current, Ohm's Law | Tinkercad Circuits | PhysComp Electronics basics, build series circuit with current measurement | — | — |
 | 2 | L4–L7: Resistors, LEDs, Breadboards | Wokwi | LED on, blink, serial, fade, RGB | Front panel RGB status | — |
 | 3 | Advanced Output + Buttons | Wokwi (Pico W) | Fade PWM, RGB crossfade, buttons, debouncing | Front panel alerts, chassis assembly begins | A1 start |
-| 4 | Analog Input + Sensors | Wokwi → Real Pico W | MQ-2, flame sensor, thermistor | Front panel sensors | A1 complete |
+| 4 | Analog Input + Sensors | Wokwi → Real Pico W | Thermistor | Front panel sensors | A1 complete |
 | 5 | I²C + Actuators | Real **Pico W** | OLED, GY-521 (MPU6050 on Pico W), servo sweep | Base + Back panels | A3 & A4 start |
-| 6 | RFID, RTC, Touch | Real Pico W | RFID-RC522, DS3231 RTC, buzzer tones | Left panel access system | A2 complete |
-| 7 | Environmental + Tones | Real Pico W | Rain, dust, ultrasonic, buzzer tones | Roof panel | A5 complete |
+| 6 | RFID + Touch | Real Pico W | RFID-RC522, buzzer tones | Left panel access system | A2 complete |
+| 7 | Environmental + Tones | Real Pico W | Photoresistor, buzzer tones | Roof panel | A5 complete |
 | 8 | Signal Processing & Vibration | Real Pico W | Filtering, anomaly detection, MPU6050 | Base panel predictive algo | A3 complete |
 | 9 | Full Truck Assembly & Testing | 2x Pico W | Inter-board I2C/serial, fault testing, final debug | Complete truck + display system | A4 & A5 finalised |
 | — | **PUBLIC HOLIDAY + TERM BREAK** | — | No class — Week 10 resumes **20 April 2026** | — | — |

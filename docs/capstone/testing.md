@@ -57,7 +57,7 @@
 6. Pit Station: Shows "Security Alert: HC-01"
 
 **Documentation:**
-- RTC timestamp of attempt
+- System timestamp of attempt
 - AWS CloudWatch screenshot showing metric
 - RFID card ID logged
 - Shadow document showing cabin_locked still true

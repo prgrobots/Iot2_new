@@ -6,7 +6,7 @@ This course uses **competency-based assessment** where students demonstrate mast
 
 | Assessment | Unit Elements | Due Date | Deliverable |
 |------------|---------------|----------|-------------|
-| **A1** | 502: 1.1, 1.2, 1.3, 1.4, 2.4, 3.2 | Week 4 | ESP32 + temp/gas/flame sensors |
+| **A1** | 502: 1.1, 1.2, 1.3, 1.4, 2.4, 3.2 | Week 4 | ESP32 + thermistor temperature sensor |
 | **A2** | 502: 2.2, 3.1, 3.3 | Week 6/7 | RFID access control + buzzer tones |
 | **A3** | 502: 2.1, 2.3 | Week 8 | Pico W + MPU6050 I²C vibration monitor |
 | **A4** | 502: 3.4, 4.1 | Week 9 | Full haul truck system |
@@ -173,7 +173,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 **Core Requirements:**
 - X.509 certificate authentication (no API keys)
-- MQTT publish to `truck/{truckID}/telemetry` (thermistor temp, MPU6050 vibration, MQ-2, lock state)
+- MQTT publish to `truck/{truckID}/telemetry` (thermistor temp, MPU6050 vibration, lock state)
 - Device Shadow for offline state management (desired vs. reported state)
 - IoT Rules Engine routing to SNS (alerts), DynamoDB (storage)
 - CloudWatch metrics for message volume and latency
@@ -223,7 +223,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 **Core Requirements:**
 
 **Hardware & Sensors**
-- Haul truck Pico W with all A1-A5b sensors functional (thermistor, MPU6050, MQ-2) — running Arduino framework
+- Haul truck Pico W with all A1-A5b sensors functional (thermistor, MPU6050, RFID, GY-521) — running Arduino framework
 - Continuous MQTT telemetry to AWS IoT Core
 - **Pit station** (second Pico W): 16×2 or 20×4 I²C LCD display, piezo buzzer, RGB LED, push button — subscribes to fleet MQTT topics and displays live truck status
 
@@ -231,7 +231,7 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 - IoT Core with X.509 certificate authentication
 - Device Shadow for offline state management
 - IoT Rules Engine routing to SiteWise, DynamoDB, SNS
-- **SiteWise:** Asset model "RockCore-Truck-01" with properties (temperature, vibration, gas, lock_state)
+- **SiteWise:** Asset model "RockCore-Truck-01" with properties (temperature, vibration, lock_state)
 - QuickSight dashboard from A5b displaying real truck data
 - SNS alerts for anomalies
 
