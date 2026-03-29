@@ -10,7 +10,20 @@
 
 The Capstone integrates all work from Weeks 1-14 into Assessment 6: **Integrated Fleet System + AWS Dashboard**. You'll create a complete RockCore Mining haul truck monitoring system with pit station, demonstrate fault scenarios, and produce comprehensive documentation mapping to every performance criterion.
 
-## Capstone Objectives
+### 4-Week Capstone Roadmap
+
+| Week | Capstone Build | AWS Activity | Key Deliverable |
+|------|---------------|-------------|----------------|
+| **15** | Unified truck code + architecture diagram | [Industry Quest Labs 1-4](../aws/15.md) — TwinMaker digital twin | Integration test log + digital twin |
+| **16** | Pit station device + fleet MQTT display | [Industry Quest Labs 4-6](../aws/16.md) — Fleet simulation | Pit station functional + wiring diagram |
+| **17** | 3 fault scenarios + test report | [Industry Quest Labs 7-13](../aws/17.md) — Predictive maintenance | Test report (4-6 pages) + test video |
+| **18** | Demo video recording + portfolio | — | A6 submission (video + portfolio + GitHub) |
+
+!!! info "Week 15 AWS Activity"
+    The Industry Quest component for this week runs in parallel with the build tasks below.
+    See the [Week 15 AWS guide](../aws/15.md) for the TwinMaker digital twin labs that produce your A6 TwinMaker deliverable — those labs feed directly into this week's architecture diagram and the digital twin section of your portfolio.
+
+
 
 By completion of Week 18, you will have:
 
@@ -26,14 +39,14 @@ By completion of Week 18, you will have:
 ## Assessment 6 Requirements
 
 **Devices Required:**
-1. **Haul Truck HC-01** (ESP32 from Weeks 1-9)
+1. **Haul Truck HC-01** (Pico W — Arduino framework)
    - Engine compartment monitor (A1)
    - Cabin safety system (A2)
    - Vibration monitor (A3)
    - Payload system (A4)
    - Environmental sensors (A5)
    
-2. **Pit Station** (Second ESP32 + LCD)
+2. **Pit Station** (second Pico W + LCD)
    - Receives fleet telemetry via MQTT
    - Displays live truck status
    - Operator alert interface
@@ -53,6 +66,23 @@ By completion of Week 18, you will have:
 - Performance criteria mapping table
 - Reflection on design decisions
 
+### AWS → A6 Deliverable Map
+
+This table shows exactly which Industry Quest lab groups produce which Assessment 6 evidence.
+
+| AWS Activity | Week | Produces This A6 Deliverable |
+|---|---|---|
+| Industry Quest Labs 1-2: TwinMaker modeling | 15 | TwinMaker scene with RockCore-Truck-01 bound to live sensors |
+| Industry Quest Labs 3-4: Data binding + visualisation | 15 | Digital twin visual anomaly feedback (colour/state change on alert) |
+| Industry Quest Labs 4-6: Fleet simulation | 16 | MQTT subscription architecture for pit station; multi-truck capability |
+| Industry Quest Labs 7-13: Predictive maintenance | 17 | CloudWatch alarms + SNS alert evidence (fault scenario test report) |
+| IoT Core (Week 10) | 15 | `truck_complete.ino` MQTT publish; Thing + certificate screenshots |
+| Device Shadow (Week 11) | 15 | Shadow console screenshot; `engine_temp` + `cabin_locked` JSON |
+| IoT Rules (Week 11) | 17 | Rule SQL routing temp > 70°C to SNS; vibration to CloudWatch |
+| CloudWatch Alarms (Week 12-13) | 17 | Vibration anomaly alarm state-change screenshot |
+| SiteWise Asset Model (Week 14) | 15 | Asset "RockCore-Truck-01" hierarchy screenshot |
+| QuickSight Dashboard (Week 14) | 15 | 3+ visualisations with live data screenshot |
+
 ---
 
 ## Week 15: Full Integration
@@ -65,13 +95,13 @@ Create complete architecture diagram showing all components and data flows:
 
 ```mermaid
 graph TB
-    Truck[ESP32 Truck HC-01<br/>All sensors from A1-A5] -->|MQTT/TLS| IoTCore[AWS IoT Core]
+    Truck[Pico W Truck HC-01<br/>All sensors from A1-A5] -->|MQTT/TLS| IoTCore[AWS IoT Core]
     IoTCore --> Shadow[Device Shadow<br/>Engine temp + Cabin lock]
     IoTCore -->|IoT Rule| SNS[SNS Alerts<br/>SMS/Email]
     IoTCore -->|IoT Rule| DynamoDB[(DynamoDB<br/>Historical data)]
     IoTCore --> SiteWise[IoT SiteWise<br/>Asset model]
     SiteWise --> QuickSight[QuickSight<br/>Dashboard]
-    IoTCore -->|MQTT Subscribe| PitStation[ESP32 Pit Station<br/>LCD display]
+    IoTCore -->|MQTT Subscribe| PitStation[Pico W Pit Station<br/>LCD display]
     CloudWatch[CloudWatch<br/>Metrics + Alarms] --> SNS
     
     Operator[Pit Operator] -->|Views| PitStation

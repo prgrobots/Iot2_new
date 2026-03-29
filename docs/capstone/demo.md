@@ -122,16 +122,29 @@ rockcore-iot-fleet/
 - IoT Rules and actions
 - CloudWatch alarms
 - SiteWise/QuickSight dashboard (if implemented)
-- Screenshots of all AWS components
+- **Required screenshots** — include one for each of the following:
+  - IoT Core: Thing detail + certificate attached
+  - Device Shadow: console showing `reported` state with live sensor values
+  - IoT Rule: rule configuration with SQL statement and action visible
+  - CloudWatch: alarm shown in `ALARM` state (captured during a fault scenario)
+  - SiteWise: asset hierarchy showing RockCore-Truck-01 and its properties
+  - QuickSight: dashboard with live or recent truck data visible
+  - TwinMaker: scene showing truck model responding to an anomaly state
 
 **Testing & Results** (4-6 pages)
 - Test scenarios (3 minimum)
 - Results with timestamps and screenshots
 - Performance measurements (latency, bandwidth)
-- Fault rectification log
+- Fault rectification log (see [testing guide](testing.md) for the required table format)
+- Offline resilience test: WiFi disconnect → reconnect → Device Shadow sync verification
+
+!!! info "No Separate Test Report"
+    All testing content goes directly into this **"Testing & Results" portfolio section** — there is no separate test report document to submit.
 
 **Performance Criteria Mapping** (2-3 pages)
-- Table mapping every criterion to evidence
+- Table mapping **every** ICTIOT502 and ICTIOT503 performance criterion to evidence in your portfolio or GitHub repo
+- The full list of criteria is in the [Learning Assessment Plan](../course-overview/learning-assessment-plan.md) — your table must include a row for every criterion listed there
+- Use the example table in [aws/17.md](../aws/17.md#unit-mapping-document) as a template (approximately 15 criteria across both units — confirm the exact count with your instructor or the official unit training package)
 
 **Reflection** (1-2 pages)
 - Design decisions and trade-offs
@@ -200,6 +213,7 @@ Before submission, verify:
 
 - [ ] Demo video is 5-7 minutes
 - [ ] All 3 fault scenarios shown in video
+- [ ] Offline resilience test documented (disconnect/reconnect/Shadow sync with timestamps)
 - [ ] Portfolio document has page numbers and table of contents
 - [ ] All screenshots have captions explaining what they show
 - [ ] GitHub repo has README with setup instructions

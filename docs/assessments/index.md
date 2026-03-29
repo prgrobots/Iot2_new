@@ -212,12 +212,20 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 **Objective:** Demonstrate complete IoT solution integrating electronics, AWS cloud, and digital twins for fleet monitoring.
 
+!!! info "Full week-by-week requirements"
+    The detailed build guide for Assessment 6 spans four files — read these alongside this summary:
+
+    - [Week 15 – Full Integration Guide](../capstone/integration.md)
+    - [Week 16 – Pit Station Build](../capstone/pit-station.md)
+    - [Week 17 – Testing Scenarios](../capstone/testing.md)
+    - [Week 18 – Demo & Final Submission](../capstone/demo.md)
+
 **Core Requirements:**
 
 **Hardware & Sensors**
-- Real ESP32 with all A1-A5b sensors functional (thermistor, MPU6050, MQ-2)
+- Haul truck Pico W with all A1-A5b sensors functional (thermistor, MPU6050, MQ-2) — running Arduino framework
 - Continuous MQTT telemetry to AWS IoT Core
-- Pit station: Simple 3-LED status indicator (red=error, orange=warning, green=normal)
+- **Pit station** (second Pico W): 16×2 or 20×4 I²C LCD display, piezo buzzer, RGB LED, push button — subscribes to fleet MQTT topics and displays live truck status
 
 **AWS Cloud Integration**
 - IoT Core with X.509 certificate authentication
@@ -226,6 +234,19 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 - **SiteWise:** Asset model "RockCore-Truck-01" with properties (temperature, vibration, gas, lock_state)
 - QuickSight dashboard from A5b displaying real truck data
 - SNS alerts for anomalies
+
+!!! info "Required vs Optional AWS Services"
+    | Service | Status | Condition |
+    |---------|--------|-----------|
+    | IoT Core (Thing, cert, MQTT) | **Required** | Always |
+    | Device Shadow | **Required** | Always |
+    | IoT Rules Engine | **Required** | Always |
+    | CloudWatch alarms | **Required** | Always |
+    | SNS alerts | **Required** | Always |
+    | SiteWise + QuickSight | **Required** | If you completed A5b |
+    | TwinMaker digital twin | **Required** | If you completed Industry Quest Labs 1–3 |
+    | DynamoDB historical data | Recommended | Strongly recommended |
+    | Lambda (advanced rules) | Optional | If extending beyond core requirements |
 
 **Digital Twins (AWS IoT TwinMaker)**
 - Scene with 6 truck models (1 real truck + 5 simulated)
@@ -237,28 +258,28 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 1. **GitHub Repository** – Clean structure:
    ```
-   /truck     – ESP32 firmware with all sensors + MQTT
-   /pit-station – 3-LED status code
-   /aws       – IaC scripts (CloudFormation/CDK)
-   /docs      – Architecture diagram, setup guide
-   README.md  – Deployment instructions
+   /truck        – truck firmware (Pico W, Arduino framework) with all sensors + MQTT
+   /pit-station  – LCD + buzzer + RGB fleet display code
+   /aws          – IaC scripts (CloudFormation/CDK)
+   /docs         – Architecture diagram, setup guide
+   README.md     – Deployment instructions
    ```
 
-2. **Demonstration Video (5 minutes)**
+2. **Demonstration Video (5-7 minutes)**
    - Truck in action: sensors working, MQTT messages flowing
    - AWS console: IoT Core, SiteWise asset model, DynamoDB data
    - QuickSight dashboard: live data with anomaly trigger
    - TwinMaker: digital twins responding to real truck state change
-   - Pit station: 3 LEDs reflecting truck health status
+   - Pit station: LCD and alerts reflecting fleet status
    - Business value: safety, maintenance prediction, efficiency
 
-3. **Portfolio Document (Justified paragraphs, ~15-20 pages)**
+3. **Portfolio Document (Justified paragraphs, 20-30 pages)**
    - **System Overview** (250-300 words): Problem statement, RockCore scenario, how solution delivers value
    - **Architecture** (250-300 words): Truck → IoT Core → Analytics → TwinMaker, with diagram
    - **Hardware** (200-250 words): Sensor integration, wiring, photos
    - **AWS Integration** (300-350 words): IoT Core setup, Shadows, Rules, SiteWise configuration, DynamoDB schema
    - **Analytics & Digital Twins** (250-300 words): QuickSight queries, TwinMaker scene binding, anomaly detection
-   - **Pit Station** (150-200 words): 3-LED status logic, how it reflects truck state
+   - **Pit Station** (200-250 words): LCD display logic, fleet MQTT subscriptions, button cycling, alert triggering
    - **Testing & Validation** (200-250 words): Data flow verification, offline sync test, anomaly response timing
    - **Industry Quest Integration** (150-200 words): Key learnings from Weeks 15-17, application to capstone
    - **Reflection** (150-200 words): Challenges, solutions, future improvements (scaling, multi-truck coordination)
@@ -266,10 +287,11 @@ Each assessment folder in your portfolio template contains a pre-filled submissi
 
 **Submission Checklist:**
 - [ ] GitHub repository link
-- [ ] 5-minute demonstration video (MP4)
-- [ ] Portfolio PDF (15-20 pages, justified paragraphs)
+- [ ] 5-7 minute demonstration video (MP4 or YouTube/Vimeo link)
+- [ ] Portfolio PDF (20-30 pages, justified paragraphs)
 - [ ] Architecture diagram (PNG/PDF)
-- [ ] Unit mapping table (ICTIOT503 alignment)
+- [ ] Offline resilience test documented in portfolio (disconnect/reconnect/Shadow sync with timestamps and screenshot)
+- [ ] Unit mapping table (ICTIOT502 + ICTIOT503 alignment)
 - [ ] A6_SUBMISSION_TEMPLATE.md completed
 - [ ] Complete portfolio ZIP (A1-A6) with all submission templates
 
@@ -301,8 +323,8 @@ iot-portfolio.zip
 │   ├── A5b_SUBMISSION_TEMPLATE.md
 │   └── README.md
 └── A6-Capstone-Fleet-Demo/
-    ├── truck/ – ESP32 firmware
-    ├── pit-station/ – 3-LED status code
+    ├── truck/ – truck firmware (Pico W, Arduino)
+    ├── pit-station/ – LCD + buzzer + RGB fleet display code
     ├── aws/ – CloudFormation/CDK scripts
     ├── docs/ – Architecture diagram, setup guide
     ├── portfolio/ – Portfolio.pdf + unit-mapping.pdf

@@ -6,9 +6,11 @@
 
 ---
 
-## Overview
+!!! info "Week 17 AWS Activity"
+    The Industry Quest component for this week runs in parallel with this testing.
+    See the [Week 17 AWS guide](../aws/17.md) for Labs 7-13 — those labs cover predictive maintenance and multi-truck anomaly detection, which directly inform the CloudWatch alarm and SNS alert scenarios tested below.
 
-Week 17 focuses on comprehensive testing of your complete system. You must simulate and document at least **3 real fault scenarios** that demonstrate all assessments working together and triggering appropriate cloud alerts.
+## Overview of your complete system. You must simulate and document at least **3 real fault scenarios** that demonstrate all assessments working together and triggering appropriate cloud alerts.
 
 ## Required Test Scenarios
 
@@ -164,11 +166,18 @@ Serial.println("ms");
 
 ## Test Deliverables for Week 17
 
-1. **Test Report** (4-6 pages):
+!!! info "Test Report = Portfolio Section"
+    The "Test Report" is **not a separate submission document**. It is the **"Testing & Results" section of your portfolio** (see [Demo & Final Submission](demo.md#portfolio-document)). Complete the content below and incorporate it directly into your portfolio document.
+
+1. **Test Report** (4-6 pages in your portfolio "Testing & Results" section):
    - Executive summary
    - All 3 scenarios documented with timestamps
    - Screenshots/photos for each expected response
-   - Fault rectification log (any issues encountered and fixed)
+   - **Fault rectification log** — use this format for each issue you encountered and resolved:
+
+     | Fault name | Timestamp | Symptoms observed | Root cause | Action taken | Resolution confirmed | Retest result |
+     |---|---|---|---|---|---|---|
+     | e.g. Shadow not updating | 10:34am | Console shows stale state | Wrong topic path in code | Fixed topic string in secrets.h | Shadow reflects live value | ✅ Pass |
 
 2. **Test Video** (5-7 minutes):
    - Show normal operation
@@ -179,7 +188,7 @@ Serial.println("ms");
 3. **Performance Data:**
    - Latency measurements table
    - Bandwidth calculations
-   - Offline resilience proof
+   - **Offline Resilience Test** (required): disconnect truck from WiFi for 60 seconds, reconnect, and verify Device Shadow syncs reported state correctly. Document: disconnect timestamp, reconnect timestamp, Shadow update timestamp, and a screenshot of the Shadow console showing the sync.
 
 4. **Updated Architecture Diagram:**
    - Add fault flow paths

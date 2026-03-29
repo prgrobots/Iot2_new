@@ -6,18 +6,23 @@
 
 ---
 
-## Overview
+!!! info "Week 16 AWS Activity"
+    The Industry Quest component for this week runs in parallel with this build.
+    See the [Week 16 AWS guide](../aws/16.md) for the fleet simulation labs — those labs explain the multi-truck MQTT architecture your pit station implements.
 
-The **Pit Station** is the second required IoT device for Assessment 6. It subscribes to MQTT topics and displays live fleet data on an LCD screen, giving pit operators real-time visibility into all truck statuses without accessing AWS console.
+## Overview for Assessment 6. It subscribes to MQTT topics and displays live fleet data on an LCD screen, giving pit operators real-time visibility into all truck statuses without accessing AWS console.
 
 ## Hardware Requirements
 
-- ESP32 (second board)
+- Pico W (second MCU)
 - 16×2 or 20×4 I²C LCD display
 - Piezo buzzer (for critical alerts)
 - RGB LED (fleet status indicator)
-- Push button (cycle through trucks)
+- Push button (cycle through trucks) — **expected** unless you have a documented hardware constraint
 - Enclosure (3D print or project box)
+
+!!! warning "Push Button Requirement"
+    The push button enabling Mode 2 (Individual Truck Detail) is **expected** in your build. If you cannot implement it, you must document the specific hardware constraint in your portfolio. Omitting the button without documentation will be treated as incomplete functionality.
 
 ---
 
@@ -25,7 +30,11 @@ The **Pit Station** is the second required IoT device for Assessment 6. It subsc
 
 ### Display Modes
 
-**Mode 1: Fleet Summary**
+!!! info "Required vs optional modes"
+    **Mode 1 (Fleet Summary)** and **Mode 3 (Active Alerts)** are **required** for Assessment 6.
+    **Mode 2 (Individual Truck Detail)** is **required if you implement button cycling** — if your build includes the push button, all three modes must work. If you omit the button due to hardware constraints, document this decision in your portfolio.
+
+**Mode 1: Fleet Summary** *(required)*
 ```
 RockCore Fleet
 Trucks: 20  OK:18
@@ -33,7 +42,7 @@ WARN:1  FAULT:1
 [HC-03 needs service]
 ```
 
-**Mode 2: Individual Truck Detail (button press cycles)**
+**Mode 2: Individual Truck Detail** *(required with button cycling)*
 ```
 HC-01: OPERATIONAL
 Temp:62C Vibe:1.2g
@@ -41,7 +50,7 @@ Gas:120  Rain:NO
 Update: 3s ago
 ```
 
-**Mode 3: Active Alerts**
+**Mode 3: Active Alerts** *(required)*
 ```
 !ALERTS!
 HC-07: High temp 78C
