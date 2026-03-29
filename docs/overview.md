@@ -48,7 +48,7 @@ See [Assessment Submission Process](assessments/index.md) for details.
 | 6 | RFID, RTC, Touch | Real Pico W | RFID-RC522, DS3231 RTC, buzzer tones | Left panel access system | A2 complete |
 | 7 | Environmental + Tones | Real Pico W | Rain, dust, ultrasonic, buzzer tones | Roof panel | A5 complete |
 | 8 | Signal Processing & Vibration | Real Pico W | Filtering, anomaly detection, MPU6050 | Base panel predictive algo | A3 complete |
-| 9 | Full Truck Assembly & Testing | Pico W | Inter-panel I²C, fault testing, final debug | Complete physical truck | A4 & A5 finalised |
+| 9 | Full Truck Assembly & Testing | 2x Pico W | Inter-board I2C/serial, fault testing, final debug | Complete truck + display system | A4 & A5 finalised |
 | — | **PUBLIC HOLIDAY + TERM BREAK** | — | No class — Week 10 resumes **20 April 2026** | — | — |
 | 10 | AWS IoT Core & Secure Connection | Pico W | Foundations: Getting Started + Securely Connecting (1.5 h) | Register truck → MQTT publish sensor data | — |
 | 11 | Device Data, Rules & Shadows | Pico W | Handling AWS IoT Device Data and States (2 h) | Device Shadow for engine temp & cabin lock; IoT Rule → SNS | — |
