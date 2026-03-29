@@ -138,9 +138,9 @@
 - Measure time from sensor read to AWS IoT Core receipt
 - Target: < 500ms
 
-**Cloud to Pit Station:**
-- Measure time from AWS publish to pit station LCD update
-- Target: < 1000ms total (sensor → cloud → pit station)
+**Cloud to Display (Slave MCU):**
+- Measure time from AWS publish to slave display LCD update
+- Target: < 1000ms total (sensor → cloud → slave display)
 
 **Method:**
 ```cpp
@@ -182,7 +182,7 @@ Serial.println("ms");
 2. **Test Video** (5-7 minutes):
    - Show normal operation
    - Trigger each scenario
-   - Pan to show: truck response, pit station, AWS console, phone (SMS alert)
+   - Pan to show: truck response, slave display, AWS console, phone (SMS alert)
    - Narrate what's happening
 
 3. **Performance Data:**

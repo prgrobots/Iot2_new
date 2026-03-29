@@ -8,7 +8,7 @@
 
 ## Overview
 
-The Capstone integrates all work from Weeks 1-14 into Assessment 6: **Integrated Fleet System + AWS Dashboard**. You'll create a complete RockCore Mining haul truck monitoring system with pit station, demonstrate fault scenarios, and produce comprehensive documentation mapping to every performance criterion.
+The Capstone integrates all work from Weeks 1-14 into Assessment 6: **Integrated Fleet System + AWS Dashboard**. You'll create a complete RockCore Mining haul truck monitoring system with slave display node, demonstrate fault scenarios, and produce comprehensive documentation mapping to every performance criterion.
 
 ### 4-Week Capstone Roadmap
 
@@ -27,7 +27,7 @@ The Capstone integrates all work from Weeks 1-14 into Assessment 6: **Integrated
 
 By completion of Week 18, you will have:
 
-- Two fully functional IoT devices (truck + pit station)
+- Two fully functional IoT devices (master + slave display MCU)
 - AWS cloud integration with real-time dashboard
 - Device Shadows for offline resilience
 - Predictive maintenance alerts (CloudWatch + SNS)
@@ -74,7 +74,7 @@ This table shows exactly which Industry Quest lab groups produce which Assessmen
 |---|---|---|
 | Industry Quest Labs 1-2: TwinMaker modeling | 15 | TwinMaker scene with RockCore-Truck-01 bound to live sensors |
 | Industry Quest Labs 3-4: Data binding + visualisation | 15 | Digital twin visual anomaly feedback (colour/state change on alert) |
-| Industry Quest Labs 4-6: Fleet simulation | 16 | MQTT subscription architecture for pit station; multi-truck capability |
+| Industry Quest Labs 4-6: Fleet simulation | 16 | MQTT subscription architecture for slave display; multi-truck capability |
 | Industry Quest Labs 7-13: Predictive maintenance | 17 | CloudWatch alarms + SNS alert evidence (fault scenario test report) |
 | IoT Core (Week 10) | 15 | `truck_complete.ino` MQTT publish; Thing + certificate screenshots |
 | Device Shadow (Week 11) | 15 | Shadow console screenshot; `engine_temp` + `cabin_locked` JSON |
